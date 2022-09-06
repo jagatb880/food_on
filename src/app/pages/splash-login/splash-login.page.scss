@@ -1,0 +1,58 @@
+.contain{
+    --background: transparent url(././../../../assets/images/asda.png)0 0/100% 100% no-repeat;
+    background-color: #ffffff;
+}
+.loginacconttext{
+    color: #232844;
+    line-height: 27px;
+    font-size: 24px;
+    font-weight: 500;
+    padding-top: 18px;
+}
+.contain-dv{
+    padding: 26px;
+    margin-top: 38px;
+}
+.email-adress-text{
+    margin: 0;
+    padding-top: 112px;
+    color: #232844;
+}
+.item{
+    display: flex;
+    border-bottom: 1px solid black;
+    --background: white;
+    color: black;
+    --padding-start: 0;
+    --padding-end: 0;
+}
+.icon{
+    color: black;
+    margin-top: 11px;
+}
+.input{
+    --padding-bottom: 8px;
+    font-size: 13px;
+}
+.password-adress-text{
+    @extend .email-adress-text;
+    padding-top: 20px;
+}
+
+.login-button{
+    margin-top: 16%;
+    --background: #887eed;
+    text-transform: capitalize;
+    font-size: 18px;
+    color: white;
+    --border-radius: 27px;
+    height: 48px;
+    letter-spacing: 0px;
+}
+
+.forgotpasword{
+    color: #ff4646;
+    text-align: center;
+    font-size: 17px;
+    font-weight: 500;
+}
