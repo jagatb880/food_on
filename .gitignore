@@ -5,6 +5,9 @@ types/
 .sourcemaps
 xcuserdata/
 node_modules/
+android/
+ios/
+www/
 Pods/
 *.map
 .DS_Store
