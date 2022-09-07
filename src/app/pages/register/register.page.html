@@ -1,8 +1,38 @@
 <ion-content class="contain">
   <div class="contain-dv">
-    <span class="loginacconttext">WELCOME TO FOOD ON</span>
+    <span class="loginacconttext">Log In to <br>Your Account</span>
 
-   
+    <p class="email-adress-text">Full Name</p>
+    <div class="item">
+    <ion-icon name="person-outline" class="icon"></ion-icon>
+    <ion-input type="email" placeholder="Enter Your Full Name" class="input"></ion-input>
+    </div>
+
+    <p class="password-adress-text">Contact Number</p>
+    <div class="item">
+    <ion-icon name="call-outline" class="icon"></ion-icon>
+    <ion-input type="email" placeholder="Enter Your Contact Number" class="input"></ion-input>
+    </div>
+
+    <p class="password-adress-text">Email Address</p>
+    <div class="item">
+    <ion-icon name="mail-sharp" class="icon"></ion-icon>
+    <ion-input type="email" placeholder="Enter Your Email Address" class="input"></ion-input>
+    </div>
+
+    <p class="password-adress-text">Password</p>
+    <div class="item">
+    <ion-icon name="lock-closed" class="icon"></ion-icon>
+    <ion-input type="Password" placeholder="Enter Your Password" class="input"></ion-input>
+    </div>
+
+    <ion-button expand="block" class="login-button" (click)="register()" >REGISTER
+    </ion-button>
+
+    <p class="forgotpasword">Already a member? LOGIN</p>
+
+    <ion-button expand="block" class="google-button" (click)="sendOtp()" >Sign Up With Google
+    </ion-button>
   </div>
 
 </ion-content>
