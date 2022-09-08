@@ -7,9 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomePage implements OnInit {
 
+  segmentModel = 'all';
   constructor() { }
 
   ngOnInit() {
+  }
+
+  segmentChanged(event) {
+    console.log(this.segmentModel);
+
+    console.log(event);
   }
 
 }

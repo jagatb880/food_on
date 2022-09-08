@@ -1,39 +1,48 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <img  style="width:32px;padding-left: 10%;" src="assets/images/burger_menu_ic.png">
+      <img style="width:32px;padding-left: 10%;" src="assets/images/burger_menu_ic.png">
     </ion-buttons>
     <ion-buttons slot="primary">
-        <img  style="width:32px;padding-right: 10%;" src="assets/images/profile_menu_ic.png">
+      <img style="width:32px;padding-right: 10%;" src="assets/images/profile_menu_ic.png">
     </ion-buttons>
 
-    <ion-title style="font-size:30px">FOOD ON</ion-title>
+    <ion-title style="font-size:35px">FOOD ON</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-tabs>
-    <ion-tab-bar slot="bottom">
-      <ion-tab-button tab="schedule">
-        <ion-icon name="calendar"></ion-icon>
-        <ion-label>DASHBOARD</ion-label>
-        <ion-badge>6</ion-badge>
-      </ion-tab-button>
+  <div>
+    <ion-title class="header">World Movers Inc - Distributor Profile</ion-title>
+  </div>
+  <div>
+    <ion-title class="top-type">Top Type</ion-title>
+  </div>
+
+  <div>
+    <ion-tabs>
+      <ion-tab-bar slot="bottom">
+        <ion-tab-button tab="schedule">
+          <img width="27" src="assets/images/dashboard_ic.png">
+          <ion-label class="tab-lable">DASHBOARD</ion-label>
+        </ion-tab-button>
   
-      <ion-tab-button tab="speakers">
-        <ion-icon name="person-circle"></ion-icon>
-        <ion-label>PRODUCTS</ion-label>
-      </ion-tab-button>
+        <ion-tab-button tab="speakers">
+          <img width="25" src="assets/images/products_ic.png">
+          <ion-label class="tab-lable">PRODUCTS</ion-label>
+        </ion-tab-button>
   
-      <ion-tab-button tab="map">
-        <ion-icon name="map"></ion-icon>
-        <ion-label>DISTRIBUTORS</ion-label>
-      </ion-tab-button>
+        <ion-tab-button tab="map">
+          <img width="25" src="assets/images/distributors_ic.png">
+          <ion-label class="tab-lable">DISTRIBUTORS</ion-label>
+        </ion-tab-button>
   
-      <ion-tab-button tab="about">
-        <ion-icon name="information-circle"></ion-icon>
-        <ion-label>RECEIVE LOT</ion-label>
-      </ion-tab-button>
-    </ion-tab-bar>
-  </ion-tabs>
+        <ion-tab-button tab="about">
+          <img width="25" src="assets/images/receive_lot_ic.png">
+          <ion-label class="tab-lable">RECEIVE LOT</ion-label>
+        </ion-tab-button>
+      </ion-tab-bar>
+    </ion-tabs>
+  </div>
+ 
 </ion-content>

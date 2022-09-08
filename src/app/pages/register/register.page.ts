@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -8,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class RegisterPage implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private _location: Location) { }
 
   ngOnInit() {
   }
@@ -16,5 +17,10 @@ export class RegisterPage implements OnInit {
   register() {
     this.router.navigate(['home']);
   }
+
+  goToBack() {
+    this._location.back();
+  }
+
 
 }
