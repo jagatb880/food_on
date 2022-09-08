@@ -4,7 +4,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'splash-login',
+    redirectTo: 'home',
     pathMatch: 'full'
   },
   {
@@ -13,47 +13,47 @@ const routes: Routes = [
   },
   {
     path: 'login',
-    loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
+    loadChildren: () => import('./pages/login/login.module').then(m => m.LoginPageModule)
   },
   {
     path: 'register',
-    loadChildren: () => import('./pages/register/register.module').then( m => m.RegisterPageModule)
+    loadChildren: () => import('./pages/register/register.module').then(m => m.RegisterPageModule)
   },
   {
     path: 'home',
-    loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule)
+    loadChildren: () => import('./pages/home/home.module').then(m => m.HomePageModule)
   },
   {
     path: 'product-details',
-    loadChildren: () => import('./pages/product-details/product-details.module').then( m => m.ProductDetailsPageModule)
+    loadChildren: () => import('./pages/product-details/product-details.module').then(m => m.ProductDetailsPageModule)
   },
   {
     path: 'production-lot',
-    loadChildren: () => import('./pages/production-lot/production-lot.module').then( m => m.ProductionLotPageModule)
+    loadChildren: () => import('./pages/production-lot/production-lot.module').then(m => m.ProductionLotPageModule)
   },
   {
     path: 'view-details',
-    loadChildren: () => import('./pages/view-details/view-details.module').then( m => m.ViewDetailsPageModule)
+    loadChildren: () => import('./pages/view-details/view-details.module').then(m => m.ViewDetailsPageModule)
   },
   {
     path: 'my-qr-code',
-    loadChildren: () => import('./pages/my-qr-code/my-qr-code.module').then( m => m.MyQrCodePageModule)
+    loadChildren: () => import('./pages/my-qr-code/my-qr-code.module').then(m => m.MyQrCodePageModule)
   },
   {
     path: 'view-trace',
-    loadChildren: () => import('./pages/view-trace/view-trace.module').then( m => m.ViewTracePageModule)
+    loadChildren: () => import('./pages/view-trace/view-trace.module').then(m => m.ViewTracePageModule)
   },
   {
     path: 'view-geographical-journey',
-    loadChildren: () => import('./pages/view-geographical-journey/view-geographical-journey.module').then( m => m.ViewGeographicalJourneyPageModule)
+    loadChildren: () => import('./pages/view-geographical-journey/view-geographical-journey.module').then(m => m.ViewGeographicalJourneyPageModule)
   },
   {
     path: 'my-distributor',
-    loadChildren: () => import('./pages/my-distributor/my-distributor.module').then( m => m.MyDistributorPageModule)
+    loadChildren: () => import('./pages/my-distributor/my-distributor.module').then(m => m.MyDistributorPageModule)
   },
   {
     path: 'send-invitation',
-    loadChildren: () => import('./pages/send-invitation/send-invitation.module').then( m => m.SendInvitationPageModule)
+    loadChildren: () => import('./pages/send-invitation/send-invitation.module').then(m => m.SendInvitationPageModule)
   },
 ];
 
