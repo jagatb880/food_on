@@ -244,8 +244,23 @@
 }
 
 @font-face {
-  font-family: 'Nunito-Bold';
+  font-family: 'Poppins-Bold';
   font-style: normal;
   font-weight: bold;
-  src: url('../assets/fonts/myCustomFont/Nunito-Bold.ttf');
+  src: url('../assets/fonts/myCustomFont/Poppins-Bold.ttf');
 }
+
+@font-face {
+  font-family: 'Poppins-Regular';
+  font-style: normal;
+  font-weight: normal;
+  src: url('../assets/fonts/myCustomFont/Poppins-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'Poppins-Medium';
+  font-style: normal;
+  font-weight: normal;
+  src: url('../assets/fonts/myCustomFont/Poppins-Medium.ttf');
+}
+

@@ -8,6 +8,7 @@
     font-size: 24px;
     font-weight: 500;
     padding-top: 18px;
+    font-family: 'Poppins-Regular';
 }
 .contain-dv{
     padding: 12px 26px 26px 26px;
@@ -16,6 +17,7 @@
     margin: 0;
     padding-top: 24px;
     color: #001E62;
+    font-family: 'Poppins-Regular';
 }
 .item{
     display: flex;
@@ -36,6 +38,7 @@
 .password-adress-text{
     @extend .email-adress-text;
     padding-top: 20px;
+    font-family: 'Poppins-Regular';
 }
 
 .login-button{
@@ -47,6 +50,7 @@
     --border-radius: 27px;
     height: 48px;
     letter-spacing: 0px;
+    font-family: 'Poppins-Regular';
 }
 
 .google-button{
@@ -58,6 +62,7 @@
     --border-radius: 27px;
     height: 48px;
     letter-spacing: 0px;
+    font-family: 'Poppins-Regular';
 }
 
 .forgotpasword{
@@ -65,6 +70,7 @@
     text-align: center;
     font-size: 17px;
     font-weight: 500;
+    font-family: 'Poppins-Regular';
 }
 .backicon{
     margin-left: 15px;
