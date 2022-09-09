@@ -4,7 +4,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'splash-login',
+    redirectTo: 'splash',
     pathMatch: 'full'
   },
   {
@@ -54,6 +54,10 @@ const routes: Routes = [
   {
     path: 'send-invitation',
     loadChildren: () => import('./pages/send-invitation/send-invitation.module').then(m => m.SendInvitationPageModule)
+  },
+  {
+    path: 'splash',
+    loadChildren: () => import('./pages/splash/splash.module').then(m => m.SplashPageModule)
   },
 ];
 
