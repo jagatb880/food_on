@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar style="--background: #ffffff;">
     <ion-buttons slot="start">
       <img style="width:32px;padding-left: 10%;" src="assets/images/burger_menu_ic.png">
     </ion-buttons>
@@ -7,42 +7,82 @@
       <img style="width:32px;padding-right: 10%;" src="assets/images/profile_menu_ic.png">
     </ion-buttons>
 
-    <ion-title style="font-size:35px">FOOD ON</ion-title>
+    <ion-title style="font-size:35px;color: #232844;">FOOD ON</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <div>
-    <ion-title class="header">World Movers Inc - Distributor Profile</ion-title>
-  </div>
-  <div>
-    <ion-title class="top-type">Top Type</ion-title>
+<ion-content style="--background: #ffffff;">
+  <div style="padding: 12px 14px 26px 14px;">
+    <div style="text-align: center;">
+      <span class="header">World Movers Inc - Distributor Profile</span>
+    </div>
+
+    <div class="shadow-dv">
+    <div class="total-select-dv">
+      <ion-select placeholder="Please Select a Producer" class="producerselect">
+        <ion-select-option value="apples">Apples</ion-select-option>
+        <ion-select-option value="oranges">Oranges</ion-select-option>
+        <ion-select-option value="bananas">Bananas</ion-select-option>
+      </ion-select>
+    </div>
+
+    <div class="total-select-dv" style="margin-top: 12px;">
+      <ion-select placeholder="Please Select a Product" class="producerselect">
+        <ion-select-option value="apples">Apples</ion-select-option>
+        <ion-select-option value="oranges">Oranges</ion-select-option>
+        <ion-select-option value="bananas">Bananas</ion-select-option>
+      </ion-select>
+    </div>
+
+    <ion-row style="margin-top: 7px;">
+      <ion-col size="6" style="padding-left: 0;">
+        <div class="total-select-dv">
+          <ion-select placeholder="Select a Year" class="producerselect">
+            <ion-select-option value="apples">Apples</ion-select-option>
+            <ion-select-option value="oranges">Oranges</ion-select-option>
+            <ion-select-option value="bananas">Bananas</ion-select-option>
+          </ion-select>
+        </div>
+      </ion-col>
+      <ion-col size="6" style="padding-right: 0;">
+        <div class="total-select-dv">
+          <ion-select placeholder="Select a Month" class="producerselect">
+            <ion-select-option value="apples">Apples</ion-select-option>
+            <ion-select-option value="oranges">Oranges</ion-select-option>
+            <ion-select-option value="bananas">Bananas</ion-select-option>
+          </ion-select>
+        </div>
+      </ion-col>
+    </ion-row>
+
   </div>
 
-  <div>
-    <ion-tabs>
-      <ion-tab-bar slot="bottom">
-        <ion-tab-button tab="schedule">
-          <img width="27" src="assets/images/dashboard_ic.png">
-          <ion-label class="tab-lable">DASHBOARD</ion-label>
-        </ion-tab-button>
-  
-        <ion-tab-button tab="speakers">
-          <img width="25" src="assets/images/products_ic.png">
-          <ion-label class="tab-lable">PRODUCTS</ion-label>
-        </ion-tab-button>
-  
-        <ion-tab-button tab="map">
-          <img width="25" src="assets/images/distributors_ic.png">
-          <ion-label class="tab-lable">DISTRIBUTORS</ion-label>
-        </ion-tab-button>
-  
-        <ion-tab-button tab="about">
-          <img width="25" src="assets/images/receive_lot_ic.png">
-          <ion-label class="tab-lable">RECEIVE LOT</ion-label>
-        </ion-tab-button>
-      </ion-tab-bar>
-    </ion-tabs>
+
+
   </div>
- 
 </ion-content>
+<div>
+  <ion-tabs>
+    <ion-tab-bar slot="bottom">
+      <ion-tab-button tab="schedule">
+        <img width="27" src="assets/images/dashboard_ic.png">
+        <ion-label class="tab-lable">DASHBOARD</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button tab="speakers">
+        <img width="25" src="assets/images/products_ic.png">
+        <ion-label class="tab-lable">PRODUCTS</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button tab="map">
+        <img width="25" src="assets/images/distributors_ic.png">
+        <ion-label class="tab-lable">DISTRIBUTORS</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button tab="about">
+        <img width="25" src="assets/images/receive_lot_ic.png">
+        <ion-label class="tab-lable">RECEIVE LOT</ion-label>
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs>
+</div>

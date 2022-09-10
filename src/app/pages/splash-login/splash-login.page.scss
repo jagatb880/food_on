@@ -1,6 +1,9 @@
 .contain{
-    --background: transparent url(././../../../assets/images/splash_screen.png)0 0/100% 100% no-repeat;
+    background: transparent url(././../../../assets/images/login_background.png)0 0/100% 100% no-repeat;
     background-color: #ffffff;
+    height: 100%;
+    width: 100%;
+    padding-top: 120px;
 }
 .loginacconttext{
     color: #232844;
@@ -11,7 +14,7 @@
 }
 .contain-dv{
     padding: 13px;
-    margin-top: 80%
+    // margin-top: 80%
     // margin-top: 38px;
 }
 .email-adress-text{
@@ -80,4 +83,29 @@
     border-radius: 10px;
     --border-radius: 9px;
     font-family: 'Poppins-Medium';
+  }
+
+  .round-dv{
+    border-radius: 140px;
+    background: #fcfdfd;
+    padding: 1px;
+    width: 200px;
+    height: 194px;
+    box-shadow: 0 5px 8px 0 rgb(0 0 0 / 5%), 0 6px 20px 0 rgb(0 0 0 / 3%);
+  }
+  .seconddev{
+    border-radius: 140px;
+    background: #f5f6f9;
+    padding: 40px;
+    width: 280px;
+    height: 280px;
+    box-shadow: 0 5px 8px 0 rgb(0 0 0 / 5%), 0 6px 20px 0 rgb(0 0 0 / 3%);
+  }
+  .third-dv{
+    border-radius: 158px;
+    background: #ebedf3;
+    padding: 29px;
+    width: 340px;
+    height: 340px;
+    box-shadow: 0 5px 8px 0 rgb(0 0 0 / 5%), 0 6px 20px 0 rgb(0 0 0 / 3%);
   }

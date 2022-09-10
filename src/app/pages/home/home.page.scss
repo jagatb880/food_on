@@ -1,7 +1,7 @@
 ion-title {
     &.md {
         width: 100%;
-        position: absolute;
+        // position: absolute;
         left: 0;
         height: 0;
         text-align: center;
@@ -18,10 +18,28 @@ ion-title {
     font-family: 'Nunito-Bold';
     color: #001e62;
     font-size: 4.9vw;
-    margin-top: 7%;
+    // margin-top: 7%;
 }
 .top-type{
     @extend .header;
     font-size: 5vw;
     margin-top: 17%;
+}
+.producerselect{
+   
+    --placeholder-opacity: 1 !important;
+    color: black;
+    --placeholder-color: black;
+    padding-right: 11px;
+}
+.total-select-dv{
+    border: 1px solid #001e62;
+    border-radius: 8px;
+}
+.shadow-dv{
+    background: white;
+    padding: 16px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgb(0 0 0 / 9%), 0 6px 9px 0 rgb(0 0 0 / 9%);
+    margin-top: 20px;
 }
