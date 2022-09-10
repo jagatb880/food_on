@@ -1,111 +1,73 @@
-.contain{
-    background: transparent url(././../../../assets/images/login_background.png)0 0/100% 100% no-repeat;
-    background-color: #ffffff;
-    height: 100%;
-    width: 100%;
-    padding-top: 120px;
-}
-.loginacconttext{
-    color: #232844;
-    line-height: 27px;
-    font-size: 24px;
-    font-weight: 500;
-    padding-top: 18px;
-}
-.contain-dv{
-    padding: 13px;
-    // margin-top: 80%
-    // margin-top: 38px;
-}
-.email-adress-text{
-    margin: 0;
-    padding-top: 112px;
-    color: #232844;
-}
-.item{
-    display: flex;
-    border-bottom: 1px solid black;
-    --background: white;
-    color: black;
-    --padding-start: 0;
-    --padding-end: 0;
-}
-.icon{
-    color: black;
-    margin-top: 11px;
-}
-.input{
-    --padding-bottom: 8px;
-    font-size: 13px;
-}
-.password-adress-text{
-    @extend .email-adress-text;
-    padding-top: 20px;
+.contain {
+  background: transparent url(././../../../assets/images/login_background.png)0 0/100% 100% no-repeat;
+  background-color: #ffffff;
+  height: 100%;
+  width: 100%;
+  padding-top: 120px;
 }
 
-.login-button{
-    margin-top: 16%;
-    --background: #887eed;
-    text-transform: capitalize;
-    font-size: 18px;
-    color: white;
-    --border-radius: 27px;
-    height: 48px;
-    letter-spacing: 0px;
+.loginacconttext {
+  color: #232844;
+  line-height: 27px;
+  font-size: 24px;
+  font-weight: 500;
+  padding-top: 18px;
 }
 
-.forgotpasword{
-    color: #ff4646;
-    text-align: center;
-    font-size: 17px;
-    font-weight: 500;
-}
-.rateke-button {
-    width: 100%;
-    --box-shadow: none;
-    --background: #001e62;
-    font-size: 16px;
-    color: #ffffff;
-    --border-radius: 9px;
-    height: 54px;
-    letter-spacing: 0px;
-    font-family: 'Poppins-Medium';
+.contain-dv {
+  padding: 13px;
+  // margin-top: 80%
+  // margin-top: 38px;
 }
 
-  .lookgood-button {
-    width: 100%;
-    --background: #E9EBF1;
-    font-size: 16px;
-    color: #001e62;
-    height: 54px;
-    letter-spacing: 0px;
-    border: 2px solid #001e62;
-    border-radius: 10px;
-    --border-radius: 9px;
-    font-family: 'Poppins-Medium';
-  }
+.email-adress-text {
+  margin: 0;
+  padding-top: 112px;
+  color: #232844;
+}
 
-  .round-dv{
-    border-radius: 140px;
-    background: #fcfdfd;
-    padding: 1px;
-    width: 200px;
-    height: 194px;
-    box-shadow: 0 5px 8px 0 rgb(0 0 0 / 5%), 0 6px 20px 0 rgb(0 0 0 / 3%);
-  }
-  .seconddev{
-    border-radius: 140px;
-    background: #f5f6f9;
-    padding: 40px;
-    width: 280px;
-    height: 280px;
-    box-shadow: 0 5px 8px 0 rgb(0 0 0 / 5%), 0 6px 20px 0 rgb(0 0 0 / 3%);
-  }
-  .third-dv{
-    border-radius: 158px;
-    background: #ebedf3;
-    padding: 29px;
-    width: 340px;
-    height: 340px;
-    box-shadow: 0 5px 8px 0 rgb(0 0 0 / 5%), 0 6px 20px 0 rgb(0 0 0 / 3%);
-  }
+.item {
+  display: flex;
+  border-bottom: 1px solid black;
+  --background: white;
+  color: black;
+  --padding-start: 0;
+  --padding-end: 0;
+}
+
+.icon {
+  color: black;
+  margin-top: 11px;
+}
+
+.input {
+  --padding-bottom: 8px;
+  font-size: 13px;
+}
+
+.round-dv {
+  border-radius: 140px;
+  background: #fcfdfd;
+  padding: 2px;
+  width: 205px;
+  height: 205px;
+  box-shadow: 0 5px 8px 0 rgb(0 0 0 / 5%), 0 6px 20px 0 rgb(0 0 0 / 3%);
+}
+
+.seconddev {
+  border-radius: 140px;
+  background: #f5f6f9;
+  padding: 31px;
+  width: 270px;
+  height: 270px;
+  box-shadow: 0 5px 8px 0 rgb(0 0 0 / 5%), 0 6px 20px 0 rgb(0 0 0 / 3%);
+}
+
+.third-dv {
+  border-radius: 158px;
+  background: #ebedf3;
+  padding: 29px;
+  width: 332px;
+  height: 330px;
+  box-shadow: 0 5px 8px 0 rgb(0 0 0 / 5%), 0 6px 20px 0 rgb(0 0 0 / 3%);
+}
