@@ -54,35 +54,49 @@
         </div>
       </ion-col>
     </ion-row>
-
   </div>
 
+  <ion-segment (ionChange)="segmentChanged($event)" mode="ios" class="alldv" value="valid">
+    <ion-segment-button value="all" mode="ios" class="segment">
+      <ion-label>All</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="valid" mode="ios"  class="segment">
+      <ion-label>Valid</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="invalid" mode="ios"  class="segment">
+      <ion-label>Invalid</ion-label>
+    </ion-segment-button>
+  </ion-segment>
 
 
   </div>
+  
 </ion-content>
-<div>
-  <ion-tabs>
-    <ion-tab-bar slot="bottom">
-      <ion-tab-button tab="schedule">
-        <img width="27" src="assets/images/dashboard_ic.png">
-        <ion-label class="tab-lable">DASHBOARD</ion-label>
-      </ion-tab-button>
 
-      <ion-tab-button tab="speakers">
-        <img width="25" src="assets/images/products_ic.png">
-        <ion-label class="tab-lable">PRODUCTS</ion-label>
-      </ion-tab-button>
-
-      <ion-tab-button tab="map">
-        <img width="25" src="assets/images/distributors_ic.png">
-        <ion-label class="tab-lable">DISTRIBUTORS</ion-label>
-      </ion-tab-button>
-
-      <ion-tab-button tab="about">
-        <img width="25" src="assets/images/receive_lot_ic.png">
-        <ion-label class="tab-lable">RECEIVE LOT</ion-label>
-      </ion-tab-button>
-    </ion-tab-bar>
-  </ion-tabs>
-</div>
+<ion-footer>
+  <div>
+    <ion-tabs>
+      <ion-tab-bar slot="bottom">
+        <ion-tab-button tab="schedule">
+          <img width="27" src="assets/images/dashboard_ic.png">
+          <ion-label class="tab-lable">DASHBOARD</ion-label>
+        </ion-tab-button>
+  
+        <ion-tab-button tab="speakers">
+          <img width="25" src="assets/images/products_ic.png">
+          <ion-label class="tab-lable">PRODUCTS</ion-label>
+        </ion-tab-button>
+  
+        <ion-tab-button tab="map">
+          <img width="25" src="assets/images/distributors_ic.png">
+          <ion-label class="tab-lable">DISTRIBUTORS</ion-label>
+        </ion-tab-button>
+  
+        <ion-tab-button tab="about">
+          <img width="25" src="assets/images/receive_lot_ic.png">
+          <ion-label class="tab-lable">RECEIVE LOT</ion-label>
+        </ion-tab-button>
+      </ion-tab-bar>
+    </ion-tabs>
+  </div>
+</ion-footer>
