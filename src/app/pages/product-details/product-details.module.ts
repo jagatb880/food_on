@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 import { ProductDetailsPageRoutingModule } from './product-details-routing.module';
+// import { ChartsModule } from 'ng2-charts';
 
 import { ProductDetailsPage } from './product-details.page';
 
@@ -13,6 +14,7 @@ import { ProductDetailsPage } from './product-details.page';
     CommonModule,
     FormsModule,
     IonicModule,
+    // ChartsModule,
     ProductDetailsPageRoutingModule
   ],
   declarations: [ProductDetailsPage]
