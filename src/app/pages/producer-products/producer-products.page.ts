@@ -3,11 +3,11 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-product-details',
-  templateUrl: './product-details.page.html',
-  styleUrls: ['./product-details.page.scss'],
+  selector: 'app-producer-products',
+  templateUrl: './producer-products.page.html',
+  styleUrls: ['./producer-products.page.scss'],
 })
-export class ProductDetailsPage implements OnInit {
+export class ProducerProductsPage implements OnInit {
 
   constructor(private _location: Location, private router: Router) { }
 
@@ -18,8 +18,8 @@ export class ProductDetailsPage implements OnInit {
     this._location.back();
   }
 
-  productLots() {
-    this.router.navigate(['production-lot']);
+  goToNext() {
+    this.router.navigate(['product-details']);
   }
 
 }

@@ -73,7 +73,6 @@
   
 </ion-content>
 
-<ion-footer>
   <div>
     <ion-tabs>
       <ion-tab-bar slot="bottom">
@@ -82,7 +81,7 @@
           <ion-label class="tab-lable">DASHBOARD</ion-label>
         </ion-tab-button>
   
-        <ion-tab-button tab="speakers">
+        <ion-tab-button tab="speakers" (click)="goToProduct()">
           <img width="25" src="assets/images/products_ic.png">
           <ion-label class="tab-lable">PRODUCTS</ion-label>
         </ion-tab-button>
@@ -99,4 +98,3 @@
       </ion-tab-bar>
     </ion-tabs>
   </div>
-</ion-footer>

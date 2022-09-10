@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -8,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class HomePage implements OnInit {
 
   segmentModel = 'all';
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
   }
@@ -17,6 +18,10 @@ export class HomePage implements OnInit {
     console.log(this.segmentModel);
 
     console.log(event);
+  }
+
+  goToProduct() {
+    this.router.navigate(['producer-products'])
   }
 
 }

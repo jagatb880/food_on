@@ -14,10 +14,14 @@
 <ion-content style="--background: #ffffff;">
   <div style="padding: 12px 14px 26px 14px;">
     <div style="text-align: center;">
-      <span class="header">My Products Lots</span>
+      <span class="header">My Products</span>
     </div>
+
     <div class="shadow-dv">
+      <ion-searchbar showCancelButton="never"
+      placeholder="Search Products" mode="ios"></ion-searchbar>
 
     </div>
+    <ion-button (click)="goToNext()"></ion-button>
   </div>
 </ion-content>
