@@ -71,13 +71,13 @@
       </ion-col>
     </ion-row>
     <div *ngIf ="map ==true">
-      <p style="color: red;">debi</p>
+      <p style="color: red;">Here to show map view</p>
     </div>
     <div *ngIf="graphshow == true">
     <canvas #barCanvas></canvas>
     </div>
   </div>
-  <!-- <ion-segment (ionChange)="segmentChanged($event)" mode="ios" class="alldv" value="valid">
+  <ion-segment (ionChange)="segmentChanged($event)" mode="ios" class="alldv" value="valid">
     <ion-segment-button value="all" mode="ios" class="segment">
       <ion-label>All</ion-label>
     </ion-segment-button>
@@ -87,14 +87,14 @@
     <ion-segment-button value="invalid" mode="ios"  class="segment">
       <ion-label>Invalid</ion-label>
     </ion-segment-button>
-  </ion-segment> -->
+  </ion-segment>
 
 
   </div>
   
 </ion-content>
 
-  <!-- <div>
+  <ion-toolbar>
     <ion-tabs>
       <ion-tab-bar slot="bottom">
         <ion-tab-button tab="schedule">
@@ -118,4 +118,4 @@
         </ion-tab-button>
       </ion-tab-bar>
     </ion-tabs>
-  </div> -->
+  </ion-toolbar>
