@@ -1,7 +1,7 @@
-import { Component, OnInit,ViewChild, ElementRef} from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 // import { ChartType, ChartOptions } from 'chart.js';
 // import { Chart, ChartConfiguration, ChartEvent, ChartType ,ChartOptions} from 'chart.js';
-import { BaseChartDirective } from 'ng2-charts';
+// import { BaseChartDirective } from 'ng2-charts';
 // import * as Chart from 'chart.js';
 import { Chart } from 'chart.js';
 
@@ -11,11 +11,17 @@ import { Chart } from 'chart.js';
   styleUrls: ['./product-details.page.scss'],
 })
 export class ProductDetailsPage implements OnInit {
-  @ViewChild('lineCanvas') lineCanvas: ElementRef | undefined;
+  // @ViewChild('barCanvas') lineCanvas: ElementRef | undefined;
+  @ViewChild('barCanvas') private lineCanvas: ElementRef;
   lineChart: any;
-  constructor() { 
-    this.lineChartMethod()
+  bars: any;
+  colorArray: any;
+  constructor() {
   }
+  ionViewDidEnter() {
+    this.lineChartMethod();
+  }
+
   lineChartMethod() {
     this.lineChart = new Chart(this.lineCanvas?.nativeElement, {
       type: 'line',
@@ -36,7 +42,7 @@ export class ProductDetailsPage implements OnInit {
         datasets: [
           {
             label: 'Sell per week',
-          //  lineTension: 0.2, 
+            //  lineTension: 0.2, 
             fill: false,
             backgroundColor: 'rgba(75,192,192,0.4)',
             borderColor: 'rgba(75,192,192,1)',
