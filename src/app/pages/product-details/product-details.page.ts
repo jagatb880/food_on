@@ -63,4 +63,12 @@ export class ProductDetailsPage implements OnInit {
   ngOnInit() {
   }
 
+  // goToBack() {
+  //   this._location.back();
+  // }
+
+  // productLots() {
+  //   this.router.navigate(['production-lot']);
+  // }
+
 }

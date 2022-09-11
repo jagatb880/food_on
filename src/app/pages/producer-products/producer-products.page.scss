@@ -1,0 +1,41 @@
+ion-title {
+  &.md {
+      width: 100%;
+      // position: absolute;
+      left: 0;
+      height: 0;
+      text-align: center;
+      font-family: 'Nunito-Bold';
+  }
+}
+.header {
+  font-family: 'Nunito-Bold';
+  color: #001e62;
+  font-size: 4.9vw;
+  // margin-top: 7%;
+}
+.sechbar{
+  --background: #f2f2f2;
+  --color: black;
+  --box-shadow: 0;
+  --border-radius: 11px;
+  --icon-color: black;
+  --cancel-button-color: black;
+}
+.shadowdv{
+  background: white;
+  padding: 16px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 9%), 0 6px 9px 0 rgb(0 0 0 / 9%);
+  margin-top: 20px;
+}
+.organic{
+  color: #001e62;
+}
+.aldvvv{
+  background: #ecf1fb;
+  border: 1px solid #001e62;
+  text-align: center;
+  border-radius: 10px;
+  padding-top: 10px;
+}
