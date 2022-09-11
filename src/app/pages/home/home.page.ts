@@ -1,4 +1,4 @@
-import { Component, OnInit ,ViewChild,ElementRef} from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { Chart } from 'chart.js';
 
@@ -8,13 +8,14 @@ import { Chart } from 'chart.js';
   styleUrls: ['./home.page.scss'],
 })
 export class HomePage implements OnInit {
-  @ViewChild('barCanvas') private lineCanvas: ElementRef;
+  @ViewChild("lineCanvas") lineCanvas: ElementRef;
+
   lineChart: any;
   bars: any;
   colorArray: any;
   segmentModel = 'all';
   secondgraph = false;
-  map =true
+  map = true
   third = false
   closerightarow = false;
   graphshow = false
@@ -23,6 +24,7 @@ export class HomePage implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit() {
+    // this.lineChartMethod();
   }
 
   segmentChanged(event) {
@@ -82,34 +84,29 @@ export class HomePage implements OnInit {
       },
     });
   }
-  fastgraph()
-  {
-    if(this.third == true)
-    {
+  fastgraph() {
+    if (this.third == true) {
 
       this.graphshow = true
       this.lineChartMethod()
-      this.third  = false
+      this.third = false
     }
-    else
-    {
+    else {
       this.secondtext = false
       this.thirdtext = false
       this.graphshow = false
       this.map = true
       this.secondgraph = false
-      this.third  = false
+      this.third = false
       this.closerightarow = false
     }
   }
 
-  rightarow()
-  {
+  rightarow() {
     this.graphshow = true
     this.map = false;
     this.secondgraph = true
-    if(this.third == true &&  this.map == false)
-    {
+    if (this.third == true && this.map == false) {
       this.thirdtext = true
       this.secondtext = false
       this.closerightarow = true;
@@ -157,11 +154,11 @@ export class HomePage implements OnInit {
         },
       });
     }
-    else{
-     
+    else {
+
       this.lineChartMethod()
     }
-   
+
   }
   goToProduct() {
     this.router.navigate(['producer-products'])

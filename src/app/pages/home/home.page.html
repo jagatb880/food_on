@@ -73,8 +73,8 @@
     <div *ngIf ="map ==true">
       <p style="color: red;">Here to show map view</p>
     </div>
-    <div *ngIf="graphshow == true">
-    <canvas #barCanvas></canvas>
+    <div [hidden]="!graphshow">
+    <canvas #lineCanvas></canvas>
     </div>
   </div>
   <ion-segment (ionChange)="segmentChanged($event)" mode="ios" class="alldv" value="valid">
