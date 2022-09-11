@@ -56,7 +56,28 @@
     </ion-row>
   </div>
 
-  <ion-segment (ionChange)="segmentChanged($event)" mode="ios" class="alldv" value="valid">
+  <div class="shadowdv">
+    <div style="text-align: center;">
+      <span class="header" *ngIf ="map ==true">Geographical Location</span>
+      <span class="header" *ngIf= "secondtext == true">Amount of Product Sold</span>
+      <span class="header" *ngIf= "thirdtext == true">Product Sale</span>
+    </div>
+    <ion-row>
+      <ion-col size="6">
+        <img style="width:32px;padding-right: 10%;" src="assets/images/leftarow.png" *ngIf="secondgraph == true" (click)="fastgraph()">
+      </ion-col>
+      <ion-col size="6" style="text-align: end;">
+        <img style="width: 19px;" src="assets/images/rightarow.png" (click)="rightarow()" *ngIf="closerightarow == false">
+      </ion-col>
+    </ion-row>
+    <div *ngIf ="map ==true">
+      <p style="color: red;">debi</p>
+    </div>
+    <div *ngIf="graphshow == true">
+    <canvas #barCanvas></canvas>
+    </div>
+  </div>
+  <!-- <ion-segment (ionChange)="segmentChanged($event)" mode="ios" class="alldv" value="valid">
     <ion-segment-button value="all" mode="ios" class="segment">
       <ion-label>All</ion-label>
     </ion-segment-button>
@@ -66,14 +87,14 @@
     <ion-segment-button value="invalid" mode="ios"  class="segment">
       <ion-label>Invalid</ion-label>
     </ion-segment-button>
-  </ion-segment>
+  </ion-segment> -->
 
 
   </div>
   
 </ion-content>
 
-  <div>
+  <!-- <div>
     <ion-tabs>
       <ion-tab-bar slot="bottom">
         <ion-tab-button tab="schedule">
@@ -97,4 +118,4 @@
         </ion-tab-button>
       </ion-tab-bar>
     </ion-tabs>
-  </div>
+  </div> -->
