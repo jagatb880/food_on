@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { NavController, MenuController, ModalController, Platform, AlertController } from '@ionic/angular';
 
 @Component({
-  selector: 'app-view-details-popup',
-  templateUrl: './view-details-popup.component.html',
-  styleUrls: ['./view-details-popup.component.scss'],
+  selector: 'app-view-geography',
+  templateUrl: './view-geography.component.html',
+  styleUrls: ['./view-geography.component.scss'],
 })
-export class ViewDetailsPopupComponent implements OnInit {
+export class ViewGeographyComponent implements OnInit {
 
   constructor(private modalCtrl: ModalController) { }
 
@@ -15,5 +15,4 @@ export class ViewDetailsPopupComponent implements OnInit {
   {
     this.modalCtrl.dismiss()
   }
-
 }
