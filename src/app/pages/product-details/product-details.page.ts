@@ -1,4 +1,6 @@
+import { Location } from '@angular/common';
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -7,19 +9,19 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
   styleUrls: ['./product-details.page.scss'],
 })
 export class ProductDetailsPage implements OnInit {
- 
-  constructor() {
+
+  constructor(private _location: Location, private router: Router) {
   }
 
   ngOnInit() {
   }
 
-  // goToBack() {
-  //   this._location.back();
-  // }
+  goToBack() {
+    this._location.back();
+  }
 
-  // productLots() {
-  //   this.router.navigate(['production-lot']);
-  // }
+  productLots() {
+    this.router.navigate(['production-lot']);
+  }
 
 }

@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar style="--background: #ffffff;">
     <ion-buttons slot="start">
-      <img style="width:32px;padding-left: 10%;" src="assets/images/back_a.png">
+      <img style="width:32px;padding-left: 10%;" src="assets/images/back_a.png" (click)="goToBack()">
     </ion-buttons>
     <ion-buttons slot="primary">
       <img style="width:32px;padding-right: 10%;" src="assets/images/profile_menu_ic.png">
@@ -50,7 +50,7 @@
 <div>
   <ion-tabs>
     <ion-tab-bar slot="bottom">
-      <ion-tab-button tab="schedule">
+      <ion-tab-button tab="schedule" (click)="productLots()">
         <img width="27" src="assets/images/production_lots_ic.png">
         <ion-label class="tab-lable">PRODUCTION LOTS</ion-label>
       </ion-tab-button>
