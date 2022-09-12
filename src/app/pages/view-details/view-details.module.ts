@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 import { ViewDetailsPageRoutingModule } from './view-details-routing.module';
+// import { ViewDetailsPopupComponent } from 'src/app/pages/component/view-details-popup/view-details-popup.component';
 
 import { ViewDetailsPage } from './view-details.page';
 
@@ -13,7 +14,8 @@ import { ViewDetailsPage } from './view-details.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    ViewDetailsPageRoutingModule
+    ViewDetailsPageRoutingModule,
+    // ViewDetailsPopupComponent
   ],
   declarations: [ViewDetailsPage]
 })
