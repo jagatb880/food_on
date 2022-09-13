@@ -161,7 +161,7 @@ export class HomePage implements OnInit {
 
   }
   goToProduct() {
-    this.router.navigate(['producer-products'])
+    this.router.navigate(['producer-products'], { replaceUrl: true })
   }
 
 }

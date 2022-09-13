@@ -15,7 +15,7 @@ export class RegisterPage implements OnInit {
   }
 
   register() {
-    this.router.navigate(['home']);
+    this.router.navigate(['home'], {replaceUrl: true});
   }
 
   goToBack() {
