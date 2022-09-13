@@ -1,5 +1,6 @@
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-production-lot',
@@ -8,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductionLotPage implements OnInit {
 
-  constructor(private _location: Location) { }
+  constructor(private _location: Location, private router: Router) { }
 
   ngOnInit() {
   }
@@ -17,6 +18,8 @@ export class ProductionLotPage implements OnInit {
     this._location.back();
   }
 
-
+  viewDetails() {
+    this.router.navigate(['view-details']);
+  }
 
 }

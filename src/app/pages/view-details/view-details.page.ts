@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { NavController, MenuController, ModalController, Platform, AlertController } from '@ionic/angular';
 import { ViewDetailsPopupComponent } from 'src/app/pages/component/view-details-popup/view-details-popup.component';
@@ -9,10 +10,15 @@ import { ViewDetailsPopupComponent } from 'src/app/pages/component/view-details-
 })
 export class ViewDetailsPage implements OnInit {
 
-  constructor(private modalCtrl: ModalController) { }
+  constructor(private _location: Location,private modalCtrl: ModalController) { }
 
   ngOnInit() {
   }
+
+  goToBack() {
+    this._location.back();
+  }
+
   async view() {
     const popover = await this.modalCtrl.create({
         component: ViewDetailsPopupComponent,
