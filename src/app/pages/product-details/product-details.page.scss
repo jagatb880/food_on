@@ -30,7 +30,7 @@ ion-title {
     padding-top: 9px;
     border-radius: 10px;
     font-family: 'Nunito-Bold';
-    font-size: 14px;
+    font-size: 13px;
 }
 .domydeta{
 
@@ -42,3 +42,10 @@ ion-title {
     color: #333333;
     border-radius: 10px;
 }
+
+ion-tab-bar {
+    --background: white;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    box-shadow: 0 4px 8px 0 rgb(0 0 0 / 29%), 0 6px 9px 0 rgb(0 0 0 / 29%);
+  }
