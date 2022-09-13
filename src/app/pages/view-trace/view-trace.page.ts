@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ViewGeographyComponent } from 'src/app/pages/component/view-geography/view-geography.component';
 import { NavController, MenuController, ModalController, Platform, AlertController } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-view-trace',
@@ -9,17 +10,16 @@ import { NavController, MenuController, ModalController, Platform, AlertControll
 })
 export class ViewTracePage implements OnInit {
 
-  constructor(private modalCtrl: ModalController) { }
+  constructor(private modalCtrl: ModalController, private router: Router) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
   async view() {
     const popover = await this.modalCtrl.create({
-        component: ViewGeographyComponent,
-        cssClass: 'login-unlock-modal-class',
-        
+      component: ViewGeographyComponent,
+      cssClass: 'login-unlock-modal-class',
+
     });
     return await popover.present();
-}
+  }
 }

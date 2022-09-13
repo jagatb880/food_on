@@ -1,5 +1,6 @@
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { NavController, MenuController, ModalController, Platform, AlertController } from '@ionic/angular';
 import { ViewDetailsPopupComponent } from 'src/app/pages/component/view-details-popup/view-details-popup.component';
 
@@ -10,7 +11,7 @@ import { ViewDetailsPopupComponent } from 'src/app/pages/component/view-details-
 })
 export class ViewDetailsPage implements OnInit {
 
-  constructor(private _location: Location,private modalCtrl: ModalController) { }
+  constructor(private _location: Location, private modalCtrl: ModalController, private router: Router) { }
 
   ngOnInit() {
   }
@@ -21,11 +22,9 @@ export class ViewDetailsPage implements OnInit {
 
   async view() {
     const popover = await this.modalCtrl.create({
-        component: ViewDetailsPopupComponent,
-        cssClass: 'login-unlock-modal-class',
-        
+      component: ViewDetailsPopupComponent,
+      cssClass: 'login-unlock-modal-class',
     });
     return await popover.present();
-}
-
+  }
 }

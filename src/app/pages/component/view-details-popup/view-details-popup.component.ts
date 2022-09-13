@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { NavController, MenuController, ModalController, Platform, AlertController } from '@ionic/angular';
 
 @Component({
@@ -9,7 +10,7 @@ import { NavController, MenuController, ModalController, Platform, AlertControll
 export class ViewDetailsPopupComponent implements OnInit {
 
   datas: any[]
-  constructor(private modalCtrl: ModalController) { }
+  constructor(private modalCtrl: ModalController, private router: Router) { }
 
   ngOnInit() {
     this.datas = [
@@ -38,6 +39,11 @@ export class ViewDetailsPopupComponent implements OnInit {
 
   close() {
     this.modalCtrl.dismiss()
+  }
+
+  save() {
+    this.modalCtrl.dismiss();
+    this.router.navigate(['my-qr-code']);
   }
 
 }

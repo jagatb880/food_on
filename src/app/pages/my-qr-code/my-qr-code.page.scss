@@ -12,7 +12,8 @@ ion-title {
     font-family: 'Nunito-Bold';
     color: #001e62;
     font-size: 4.9vw;
-    // margin-top: 7%;
+    margin-top: 10%;
+    font-weight: 600;
 }
 .sechbar{
     --background: #f2f2f2;
@@ -40,13 +41,21 @@ ion-title {
     padding-top: 10px;
 }
 
-.dvvvvvvv{
+.sub-header{
   color: #333333;
   background: #f2f2f2;
   height: 37px;
   border-radius: 10px;
-//   margin-bottom: 23px;
-  margin-top: 10px;
+  margin-top: 5px;
   padding-top: 8px;
   padding-left: 10px;
+}
+
+.show-qrcode-msg{
+    color: #333333;
+    font-size: 14px;
+    font-weight: 500;
+    padding-left: 15px;
+    padding-right: 15px;
+    font-family: 'Nunito-SemiBold';
 }
