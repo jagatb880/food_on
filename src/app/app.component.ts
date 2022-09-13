@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { SplashScreen } from '@capacitor/splash-screen';
+import { App as CapacitorApp } from '@capacitor/app';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-root',
@@ -7,11 +9,22 @@ import { SplashScreen } from '@capacitor/splash-screen';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-  constructor() {
+  constructor(private _location: Location) {
     this.initializeApp()
   }
 
   async initializeApp() {
     await SplashScreen.hide();
+    CapacitorApp.addListener('backButton', () =>
+    {
+      if (this._location.isCurrentPathEqualTo('/home') || this._location.isCurrentPathEqualTo('/producer-products'))
+      {
+        navigator['app'].exitApp();
+      } 
+      else
+      {
+        this._location.back();
+      }
+    });
   }
 }

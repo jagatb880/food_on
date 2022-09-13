@@ -8,11 +8,35 @@ import { NavController, MenuController, ModalController, Platform, AlertControll
 })
 export class ViewDetailsPopupComponent implements OnInit {
 
+  datas: any[]
   constructor(private modalCtrl: ModalController) { }
 
-  ngOnInit() {}
-  close()
-  {
+  ngOnInit() {
+    this.datas = [
+      {
+        "public": false,
+        "description": "Value each unit",
+        "value": "$0.75"
+      },
+      {
+        "public": false,
+        "description": "Fertilizer supp.name",
+        "value": "Eoco unit"
+      },
+      {
+        "public": false,
+        "description": "Planning date",
+        "value": "2021/11/03"
+      },
+      {
+        "public": false,
+        "description": "Fertilizer Type",
+        "value": "Organic bayer"
+      },
+    ]
+  }
+
+  close() {
     this.modalCtrl.dismiss()
   }
 

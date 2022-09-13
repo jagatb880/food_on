@@ -1,51 +1,60 @@
 ion-title {
-    &.md {
-        width: 100%;
-        // position: absolute;
-        left: 0;
-        height: 0;
-        text-align: center;
-        font-family: 'Nunito-Bold';
-    }
+  &.md {
+    width: 100%;
+    // position: absolute;
+    left: 0;
+    height: 0;
+    text-align: center;
+    font-family: 'Nunito-Bold';
+  }
 }
+
 .header {
-    font-family: 'Nunito-Bold';
-    color: #001e62;
-    font-size: 4.9vw;
-    // margin-top: 7%;
+  font-family: 'Nunito-Bold';
+  color: #001e62;
+  font-size: 7sp;
 }
-.shadowdv{
-    background: white;
-    padding: 16px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px 0 rgb(0 0 0 / 9%), 0 6px 9px 0 rgb(0 0 0 / 9%);
-    margin-top: 20px;
-}
-.viewphoto{
-    color: #ffffff;
-    background: #001e62;
-    height: 36px;
-    width: 91px;
-    padding-right: 6px;
-    padding-top: 9px;
-    border-radius: 10px;
-    font-family: 'Nunito-Bold';
-    font-size: 13px;
-}
-.domydeta{
 
-    margin-bottom: 18px;
+.shadowdv {
+  background: white;
+  padding: 16px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 9%), 0 6px 9px 0 rgb(0 0 0 / 9%);
+  margin-top: 20px;
+}
 
-    margin-top: 10px;
-    background: #f2f2f2;
-    padding: 10px;
-    color: #333333;
-    border-radius: 10px;
+.viewphoto {
+  color: #ffffff;
+  background: #001e62;
+  height: 36px;
+  width: 91px;
+  padding-right: 6px;
+  padding-top: 9px;
+  border-radius: 10px;
+  font-family: 'Nunito-Bold';
+  font-size: 13px;
+}
+
+.domydeta {
+
+  margin-bottom: 18px;
+
+  margin-top: 10px;
+  background: #f2f2f2;
+  padding: 10px;
+  color: #333333;
+  border-radius: 10px;
 }
 
 ion-tab-bar {
-    --background: white;
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
-    box-shadow: 0 4px 8px 0 rgb(0 0 0 / 29%), 0 6px 9px 0 rgb(0 0 0 / 29%);
-  }
+  --background: white;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 29%), 0 6px 9px 0 rgb(0 0 0 / 29%);
+}
+
+.tab-lable {
+  font-size: 10px;
+  margin-top: 3px;
+  font-family: 'Nunito-Bold';
+}

@@ -9,9 +9,33 @@ import { Router } from '@angular/router';
 })
 export class ProductionLotPage implements OnInit {
 
+  datas: any[];
   constructor(private _location: Location, private router: Router) { }
 
   ngOnInit() {
+    this.datas = [
+      {
+        "date": "08-Aug-2022",
+        "price": "210.00",
+        "letcode": "65910",
+        "amount": "14.50",
+        "level": "01",
+      },
+      {
+        "date": "08-Aug-2022",
+        "price": "210.00",
+        "letcode": "65910",
+        "amount": "14.50",
+        "level": "01",
+      },
+      {
+        "date": "08-Aug-2022",
+        "price": "210.00",
+        "letcode": "65910",
+        "amount": "14.50",
+        "level": "01",
+      }
+    ];
   }
 
   goToBack() {
