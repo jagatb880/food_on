@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar style="--background: #ffffff;">
     <ion-buttons slot="start">
-      <img style="width:32px;padding-left: 10%;" src="assets/images/back_a.png" (click)="goToBack()">
+      <img style="width:32px;padding-left: 10%;" src="assets/images/burger_menu_ic.png">
     </ion-buttons>
     <ion-buttons slot="primary">
       <img style="width:32px;padding-right: 10%;" src="assets/images/profile_menu_ic.png">
@@ -44,3 +44,29 @@
 
   </div>
 </ion-content>
+
+<ion-toolbar>
+  <ion-tabs style="background-color: white;">
+    <ion-tab-bar slot="bottom">
+      <ion-tab-button tab="schedule">
+        <img width="27" src="assets/images/dashboard_ic.png" (click)="goToHome()">
+        <ion-label class="tab-lable">DASHBOARD</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button tab="speakers">
+        <img width="25" src="assets/images/products_ic.png">
+        <ion-label class="tab-lable">PRODUCTS</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button tab="map">
+        <img width="25" src="assets/images/distributors_ic.png">
+        <ion-label class="tab-lable">DISTRIBUTORS</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button tab="about">
+        <img width="25" src="assets/images/receive_lot_ic.png">
+        <ion-label class="tab-lable">RECEIVE LOT</ion-label>
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs>
+</ion-toolbar>

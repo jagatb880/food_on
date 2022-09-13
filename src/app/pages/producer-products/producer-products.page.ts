@@ -14,8 +14,8 @@ export class ProducerProductsPage implements OnInit {
   ngOnInit() {
   }
 
-  goToBack() {
-    this._location.back();
+  goToHome() {
+    this.router.navigate(['home']);
   }
 
   goToNext() {

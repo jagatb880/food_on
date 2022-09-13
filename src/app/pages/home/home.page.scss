@@ -9,11 +9,6 @@ ion-title {
   }
 }
 
-.tab-lable {
-  font-size: 10px;
-  margin-top: 3px;
-}
-
 .header {
   font-family: 'Nunito-Bold';
   color: #001e62;
@@ -64,10 +59,6 @@ ion-title {
   --color: #001e62;
 }
 
-.tab-lable{
-  font-family: 'Nunito-Bold';
-}
-
 ion-label {
   font-family: 'Nunito-Bold';
 }
@@ -85,6 +76,8 @@ ion-tab-button {
 }
 
 .tab-lable {
+  font-size: 10px;
+  margin-top: 3px;
   font-family: 'Nunito-Bold';
 }
 
