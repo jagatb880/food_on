@@ -9,13 +9,32 @@ import { Router } from '@angular/router';
 })
 export class ProducerProductsPage implements OnInit {
 
+  datas: any[];
   constructor(private _location: Location, private router: Router) { }
 
   ngOnInit() {
+    this.datas = [
+      {
+        "image": "assets/images/mango.png",
+        "name": "Organic Mango"
+      },
+      {
+        "image": "assets/images/mango.png",
+        "name": "Organic Coffee"
+      },
+      {
+        "image": "assets/images/mango.png",
+        "name": "Organic Strawberries"
+      },
+      {
+        "image": "assets/images/mango.png",
+        "name": "Organic Strawberries"
+      }
+    ]
   }
 
   goToHome() {
-    this.router.navigate(['home'], {replaceUrl: true});
+    this.router.navigate(['home'], { replaceUrl: true });
   }
 
   goToNext() {
