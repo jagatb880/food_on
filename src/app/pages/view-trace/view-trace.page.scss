@@ -50,3 +50,114 @@ ion-title {
   padding-top: 8px;
   padding-left: 10px;
 }
+
+.container {
+    width: 95%;
+  }
+  
+  .step {
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    background-color: cream;
+  }
+  
+  .v-stepper {
+    margin-top: 11px;
+    position: relative;
+  }
+  
+  
+  /* regular step */
+  .step .circle {
+    background-color: white;
+    border-radius: 100%;
+    width: 20px;    /* +6 for border */
+    height: 20px;
+    display: inline-block;
+  }
+  
+  .step .line , .step .activeline{
+      top: 48px;
+    left: 23px;
+  /*   height: 120px; */
+    height: 100%;
+      
+      position: absolute;
+      border-left: 3px solid gray;
+  }
+  
+  .step.completed .circle {
+    visibility: visible;
+    width: 50px;
+  height: 50px;
+  background-size: contain;
+  background-image: url("./../../../assets/images/righticon.png");
+  
+    
+  }
+  
+  .step.completed .line {
+    border-left: 3px solid rgb(77, 233, 15);
+  }
+  
+  .step.active .circle {
+  visibility: visible;
+    border-color: rgb(6,150,215);
+    width: 50px;
+    height: 50px;
+    background-size: contain;
+    background-image: url("./../../../assets/images/redsymbole.png");
+  }
+  
+  .step.empty .circle {
+      visibility: hidden;
+  }
+  
+  .step.empty .line {
+  /*     visibility: hidden; */
+  /*   height: 150%; */
+    top: 0;
+    height: 150%;
+  }
+  
+  
+  .step:last-child .line {
+    border-left: 3px solid white;
+    z-index: -1; /* behind the circle to completely hide */
+  }
+  
+  .content {
+    margin-left: 20px;
+    display: inline-block;
+    border: 1px solid lightgray;
+    border-radius: 6px;
+    width: 80vw;
+  }
+  
+  
+  /* codepen override */
+  html *
+  {
+     font-size: 15px !important;
+     color: #000 !important;
+     font-family: Arial !important;
+  }
+  .dateandtext{
+    color: black;
+    margin: 0;
+    font-size: 12px;
+  }
+  .producer_text{
+    font-family: 'Poppins-Regular';
+    margin-top: 0;
+    margin-bottom: 5px;
+    color: black;
+    font-size: 16px;
+    text-transform: uppercase;
+  }
+  .pruct_nametextcss{
+    color: #333333;font-weight: 600;font-family: 'Nunito-Bold';
+    font-size: 3.9vw;
+  }

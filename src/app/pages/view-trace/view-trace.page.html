@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar style="--background: #ffffff;">
     <ion-buttons slot="start">
-      <img style="width:32px;padding-left: 10%;" src="assets/images/back_a.png"  >
+      <img style="width:32px;padding-left: 10%;" src="assets/images/back_a.png">
     </ion-buttons>
     <ion-buttons slot="primary">
       <img style="width:32px;padding-right: 10%;" src="assets/images/profile_menu_ic.png">
@@ -17,54 +17,128 @@
       <span class="header">View Product Traceability</span>
     </div>
     <div class="shadowdv">
-      <span class="header" style="color: #333333;font-weight: 600;font-family: 'Nunito-Bold';
-      font-size: 3.9vw;">Product Name</span>
+      <span class="header" class="pruct_nametextcss">Product Name</span>
       <div class="dvvvvvvv">
         Organic mango
       </div>
 
       <ion-row>
         <ion-col size="6">
-          <span  style="color: #333333;font-weight: 600;font-family: 'Nunito-Bold';
-          font-size: 3.9vw;">Lot Code</span>
+          <span class="pruct_nametextcss">Lot Code</span>
           <div class="dvvvvvvv">
-           56163
+            56163
           </div>
         </ion-col>
         <ion-col size="6">
-          <span  style="color: #333333;font-weight: 600;font-family: 'Nunito-Bold';
-          font-size: 3.9vw;">Amount Of Unit</span>
+          <span class="pruct_nametextcss">Amount Of Unit</span>
           <div class="dvvvvvvv">
-           15.32
+            15.32
           </div>
         </ion-col>
       </ion-row>
 
       <ion-row>
         <ion-col size="6">
-          <span  style="color: #333333;font-weight: 600;font-family: 'Nunito-Bold';
-          font-size: 3.9vw;">Production Date</span>
+          <span class="pruct_nametextcss">Production Date</span>
           <div class="dvvvvvvv">
             08-Aug-2022
           </div>
         </ion-col>
         <ion-col size="6">
-          <span  style="color: #333333;font-weight: 600;font-family: 'Nunito-Bold';
-          font-size: 3.9vw;">Expiration Date</span>
+          <span class="pruct_nametextcss">Expiration Date</span>
           <div class="dvvvvvvv">
             12-Aug-2022
           </div>
         </ion-col>
       </ion-row>
+
+      <div class="container">
+        <div class="step completed">
+          <div class="v-stepper">
+            <div class="circle"></div>
+            <div class="line"></div>
+          </div>
+
+          <div class="content">
+            <ion-row>
+              <ion-col size="2">
+                <ion-icon style=" font-size: 25px;
+                color: black;" name="person-circle">
+                </ion-icon>
+              </ion-col>
+              <ion-col size="7.5">
+                <h3 class="producer_text">Producer</h3>
+                <p class="dateandtext">Finca La Coma</p>
+                <p class="dateandtext">09-Aug-2022</p>
+              </ion-col>
+              <ion-col size="2.5">
+                <ion-icon style="font-size: 37px;margin-top:15px;color: black;" name="information-circle-outline">
+                </ion-icon>
+              </ion-col>
+            </ion-row>
+          </div>
+        </div>
+
+
+        <div class="step completed">
+          <div class="v-stepper">
+            <div class="circle"></div>
+            <div class="activeline"></div>
+          </div>
+
+          <div class="content">
+            <ion-row>
+              <ion-col size="2">
+                <ion-icon style="font-size: 25px;color: black;" name="person-circle">
+                </ion-icon>
+              </ion-col>
+              <ion-col size="7.5">
+                <h3 class="producer_text">distributor</h3>
+                <p class="dateandtext">Finca La Coma</p>
+                <p class="dateandtext">09-Aug-2022</p>
+              </ion-col>
+              <ion-col size="1">
+                <ion-icon style="font-size: 37px;margin-top:15px;color: black;" name="information-circle-outline">
+                </ion-icon>
+              </ion-col>
+            </ion-row>
+          </div>
+        </div>
+
+
+        <div class="step active">
+          <div class="v-stepper">
+            <div class="circle"></div>
+            <div class="line"></div>
+          </div>
+
+          <div class="content">
+            <ion-row>
+              <ion-col size="2">
+                <ion-icon style="font-size: 25px;color: black;" name="person-circle">
+                </ion-icon>
+              </ion-col>
+              <ion-col size="7.5">
+                <h3 class="producer_text">retailer</h3>
+                <p class="dateandtext">Finca La Coma</p>
+                <p class="dateandtext">09-Aug-2022</p>
+              </ion-col>
+              <ion-col size="1">
+                <ion-icon style="font-size: 37px;margin-top:15px;color: black;" name="information-circle-outline">
+                </ion-icon>
+              </ion-col>
+            </ion-row>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-  
+
 </ion-content>
 <ion-footer style="background: white;" (click)="view()">
   <div style="text-align: center;padding-top: 10px;
   padding-bottom: 10px;">
     <img src="assets/images/location.png" style="height: 26px;">
     <p style="margin: 0;color: #333333;">VIEW GEOGRAPHY JOURNEY</p>
-  </div> 
+  </div>
 </ion-footer>
-
