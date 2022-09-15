@@ -52,7 +52,7 @@ ion-title {
 }
 
 .container {
-    width: 95%;
+    width: 96%;
   }
   
   .step {
@@ -145,19 +145,32 @@ ion-title {
      font-family: Arial !important;
   }
   .dateandtext{
-    color: black;
+    color: #7b7b7b;
     margin: 0;
     font-size: 12px;
+    font-family: 'Nunito-SemiBold';
   }
   .producer_text{
     font-family: 'Poppins-Regular';
     margin-top: 0;
     margin-bottom: 5px;
     color: black;
-    font-size: 16px;
+    font-size: 15px;
     text-transform: uppercase;
   }
   .pruct_nametextcss{
     color: #333333;font-weight: 600;font-family: 'Nunito-Bold';
     font-size: 3.9vw;
+  }
+  ion-footer {
+    --background: white;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    box-shadow: 0 4px 8px 0 rgb(0 0 0 / 29%), 0 6px 9px 0 rgb(0 0 0 / 29%);
+  }
+  
+  .tab-lable {
+    font-size: 10px;
+    margin-top: 3px;
+    font-family: 'Nunito-Bold';
   }

@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar style="--background: #ffffff;">
     <ion-buttons slot="start">
-      <img style="width:32px;padding-left: 10%;" src="assets/images/back_a.png">
+      <img style="width:32px;padding-left: 10%;" src="assets/images/back_a.png" (click)="goToBack()">
     </ion-buttons>
     <ion-buttons slot="primary">
       <img style="width:32px;padding-right: 10%;" src="assets/images/profile_menu_ic.png">
@@ -72,7 +72,7 @@
                 <p class="dateandtext">09-Aug-2022</p>
               </ion-col>
               <ion-col size="2.5">
-                <ion-icon style="font-size: 37px;margin-top:15px;color: black;" name="information-circle-outline">
+                <ion-icon style="font-size: 37px;margin-top:9px;margin-bottom:7px;color: black;" name="information-circle-outline" (click)="view()">
                 </ion-icon>
               </ion-col>
             </ion-row>
@@ -98,7 +98,7 @@
                 <p class="dateandtext">09-Aug-2022</p>
               </ion-col>
               <ion-col size="1">
-                <ion-icon style="font-size: 37px;margin-top:15px;color: black;" name="information-circle-outline">
+                <ion-icon style="font-size: 37px;margin-top:9px;margin-bottom:7px;color: black;" name="information-circle-outline">
                 </ion-icon>
               </ion-col>
             </ion-row>
@@ -124,7 +124,7 @@
                 <p class="dateandtext">09-Aug-2022</p>
               </ion-col>
               <ion-col size="1">
-                <ion-icon style="font-size: 37px;margin-top:15px;color: black;" name="information-circle-outline">
+                <ion-icon style="font-size: 37px;margin-top:9px;margin-bottom:7px;color: black;" name="information-circle-outline">
                 </ion-icon>
               </ion-col>
             </ion-row>
@@ -135,10 +135,9 @@
   </div>
 
 </ion-content>
-<ion-footer style="background: white;" (click)="view()">
-  <div style="text-align: center;padding-top: 10px;
-  padding-bottom: 10px;">
+<ion-footer style="background: white;">
+  <div style="text-align: center;padding-top: 7px;" (click)="viewGeographicalJourney()">
     <img src="assets/images/location.png" style="height: 26px;">
-    <p style="margin: 0;color: #333333;">VIEW GEOGRAPHY JOURNEY</p>
+    <p class="tab-lable">VIEW GEOGRAPHY JOURNEY</p>
   </div>
 </ion-footer>

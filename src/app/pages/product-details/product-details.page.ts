@@ -24,4 +24,12 @@ export class ProductDetailsPage implements OnInit {
     this.router.navigate(['production-lot']);
   }
 
+  save() {
+
+  }
+
+  edit() {
+
+  }
+
 }

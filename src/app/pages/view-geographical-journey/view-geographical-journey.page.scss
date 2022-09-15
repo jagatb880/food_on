@@ -1,0 +1,16 @@
+ion-title {
+    &.md {
+        width: 100%;
+        // position: absolute;
+        left: 0;
+        height: 0;
+        text-align: center;
+        font-family: 'Nunito-Bold';
+    }
+}
+.header {
+    font-family: 'Nunito-Bold';
+    color: #001e62;
+    font-size: 4.9vw;
+    // margin-top: 7%;
+}
