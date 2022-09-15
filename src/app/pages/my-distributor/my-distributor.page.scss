@@ -1,71 +1,115 @@
 .header {
-    font-family: 'Nunito-Bold';
-    color: #001e62;
-    font-size: 4.9vw;
-    // margin-top: 7%;
+  font-family: 'Nunito-Bold';
+  color: #001e62;
+  font-size: 4.9vw;
+  // margin-top: 7%;
 }
+
 ion-title {
-    &.md {
-        width: 100%;
-        // position: absolute;
-        left: 0;
-        height: 0;
-        text-align: center;
-        font-family: 'Nunito-Bold';
-    }
-}
-.shadowdv{
-    background: white;
-    padding: 16px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px 0 rgb(0 0 0 / 9%), 0 6px 9px 0 rgb(0 0 0 / 9%);
-    margin-top: 20px;
-}
-.send-invite{
-    margin: 0;
-    color: #ffffff;
-    padding-left: 6px;
+  &.md {
+    width: 100%;
+    // position: absolute;
+    left: 0;
+    height: 0;
+    text-align: center;
     font-family: 'Nunito-Bold';
+  }
 }
-.fastboxdv{
-    display: flex;
-    background: #001e62;
-    height: 40px;
-    padding-top: 10px;
-    justify-content: center;
-    border-radius: 10px;
+
+.shadowdv {
+  background: white;
+  padding: 16px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 9%), 0 6px 9px 0 rgb(0 0 0 / 9%);
+  margin-top: 20px;
 }
+
+.send-invite {
+  margin: 0;
+  color: #ffffff;
+  padding-left: 6px;
+  font-family: 'Nunito-SemiBold';
+  font-size: 14px;
+  padding-top: 1px;
+}
+
+.fastboxdv {
+  display: flex;
+  background: #001e62;
+  height: 40px;
+  padding-top: 10px;
+  justify-content: center;
+  border-radius: 10px;
+}
+
 .sechbar {
-    --background: #f2f2f2;
-    --color: black;
-    --box-shadow: 0;
-    --border-radius: 11px;
-    --icon-color: black;
-    --cancel-button-color: black;
-    padding-left: 0;
-    padding-right: 0;
-    margin-top: 7px;
-  }
-  .name_text{
-    margin: 0;
-    color: #333333;
-    font-family: 'Nunito-Bold';
-    margin-left: 7px;
-  }
-  .last-row{
-    height: 40px;
-    padding-top: 5px;
-      background: #c5d692;
-      border-top-left-radius: 13px;
-      border-top-right-radius: 13px;
-  }
-  .button{
-    font-size: 11px;
-    color: #ffff;
-    font-family: 'Nunito-Bold';
-    --background: #f28a5f;
-  }
-  .value_deta{
-    border-bottom: 1px solid #d8d8d8;
-    background: #f2f2f2;
+  --background: #f2f2f2;
+  --color: black;
+  --box-shadow: 0;
+  --border-radius: 11px;
+  --icon-color: black;
+  --cancel-button-color: black;
+  padding-left: 0;
+  padding-right: 0;
+  margin-top: 7px;
+}
+
+.name-text {
+  margin: 0;
+  color: #333333;
+  font-family: 'Nunito-SemiBold';
+  margin-left: 7px;
+}
+
+.name-text-heading{
+  @extend .name-text;
+  font-family: 'Nunito-Bold';
+}
+
+.last-row {
+  height: 40px;
+  padding-top: 5px;
+  background: #c5d692;
+  border-top-left-radius: 13px;
+  border-top-right-radius: 13px;
+}
+
+.button {
+  font-size: 11px;
+  color: #ffff;
+  font-family: 'Nunito-SemiBold';
+  --background: #f28a5f;
+  width: 80%;
+}
+
+.value_deta {
+  border-bottom: 1px solid #d8d8d8;
+  background: #f2f2f2;
+}
+
+ion-label {
+  font-family: 'Nunito-Bold';
+}
+
+ion-tab-button {
+  --padding-start: 0px;
+  --padding-end: 0px;
+}
+
+.tab-lable {
+  font-size: 10px;
+  margin-top: 3px;
+  font-family: 'Nunito-Bold';
+}
+
+ion-tab-bar {
+  --background: white;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 29%), 0 6px 9px 0 rgb(0 0 0 / 29%);
+}
+
+ion-row:last-child{ /*this will select last tr*/
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
   }

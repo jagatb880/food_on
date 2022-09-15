@@ -37,6 +37,10 @@ export class ProducerProductsPage implements OnInit {
     this.router.navigate(['home'], { replaceUrl: true });
   }
 
+  goToDistributor(){
+    this.router.navigate(['my-distributor'], { replaceUrl: true })
+  }
+
   goToNext() {
     this.router.navigate(['product-details']);
   }
