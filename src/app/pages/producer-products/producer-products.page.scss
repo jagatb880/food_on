@@ -43,12 +43,30 @@ ion-title {
   line-height: 1.2;
 }
 
+.addnewproduct{
+  margin-top: 1vw;
+  color: #ffffff;
+  padding-left: 4px;
+  padding-right: 4px;
+  font-size: 14px;
+  font-family: 'Nunito-SemiBold';
+  line-height: 1.2;
+}
+
 .aldvvv {
   background: #ecf1fb;
   border: 1px solid #001e62;
   text-align: center;
   border-radius: 10px;
   padding-top: 10px;
+}
+
+.addnew {
+  background: #001e62;
+  border: 1px solid #001e62;
+  text-align: center;
+  border-radius: 10px;
+  padding-top: 20px;
 }
 
 .tab-lable {

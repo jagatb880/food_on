@@ -29,24 +29,24 @@
       <div *ngFor="let data of datas"
         style="margin-top: 12px; background: white;border-radius: 10px;box-shadow: 0 4px 8px 0 rgb(0 0 0 / 9%), 0 6px 9px 0 rgb(0 0 0 / 9%);">
         <ion-row style="padding: 5px;">
-          <ion-col size="6.5">
+          <ion-col size="6">
             <div style="display: flex;">
               <img src="assets/images/calender.png" style="height: 26px;">
-              <p style="color: #333333;margin: 0;padding-left: 5px;font-family: 'Nunito-Bold';padding-top: 3px;">
+              <p class="left-heading">
                 {{data.date}}</p>
             </div>
             <div style="display: flex;margin-top: 10px;">
               <img src="assets/images/usacurrency.png" style="height: 26px;">
-              <p style="color: #333333;margin: 0;padding-left: 5px;font-family: 'Nunito-Bold';padding-top: 3px;">
+              <p class="left-heading">
                 ${{data.price}}</p>
             </div>
           </ion-col>
-          <ion-col size="5.5">
-            <p style="color: #333333;margin: 0;padding-left: 5px;font-family: 'Nunito-Bold';">Lot Code : <span
+          <ion-col size="6" style="padding-top: 7px;padding-left: 10px;">
+            <p class="right-heading">Lot Code : <span
                 style="font-family: none;"> {{data.letcode}}</span> </p>
-            <p style="color: #333333;margin: 0;padding-left: 5px;font-family: 'Nunito-Bold';">Amount : <span
+            <p class="right-heading">Amount : <span
                 style="font-family: none;"> {{data.amount}}</span> </p>
-            <p style="color: #333333;margin: 0;padding-left: 5px;font-family: 'Nunito-Bold';">Level :<span
+            <p class="right-heading">Level :<span
                 style="font-family: none;"> {{data.level}}</span> </p>
           </ion-col>
         </ion-row>
@@ -61,8 +61,8 @@
           </ion-col>
           <ion-col size="4" style="background: #f7f7f7;height: 38px;">
             <div style="display: flex;padding-left: 6px;padding-top: 3px;">
-              <img src="assets/images/barcodeicon.png" style="height: 20px;">
-              <p style="margin: 0;color: #000000;padding-left: 5px;font-size: 14px;padding-top: 1px;">QR CODE</p>
+              <img src="assets/images/barcodeicon.png" style="height: 19px;">
+              <p style="margin: 0;color: #000000;padding-left: 5px;font-size: 13px;padding-top: 2px;font-family: 'Nunito-SemiBold';">QR CODE</p>
             </div>
           </ion-col>
           <ion-col size="4" style="background: #87aa3d;height: 38px;border-bottom-right-radius: 11px;">

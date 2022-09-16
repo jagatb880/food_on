@@ -1,46 +1,51 @@
 ion-title {
-    &.md {
-        width: 100%;
-        // position: absolute;
-        left: 0;
-        height: 0;
-        text-align: center;
-        font-family: 'Nunito-Bold';
-    }
-}
-.header {
-    font-family: 'Nunito-Bold';
-    color: #001e62;
-    font-size: 16px;
-    margin-top: 4%;
-}
-.sechbar{
-    --background: #f2f2f2;
-    --color: black;
-    --box-shadow: 0;
-    --border-radius: 11px;
-    --icon-color: black;
-    --cancel-button-color: black;
-}
-.shadowdv{
-    background: white;
-    padding: 16px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px 0 rgb(0 0 0 / 9%), 0 6px 9px 0 rgb(0 0 0 / 9%);
-    margin-top: 20px;
-}
-.organic{
-    color: #001e62;
-}
-.aldvvv{
-    background: #ecf1fb;
-    border: 1px solid #001e62;
+  &.md {
+    width: 100%;
+    // position: absolute;
+    left: 0;
+    height: 0;
     text-align: center;
-    border-radius: 10px;
-    padding-top: 10px;
+    font-family: 'Nunito-Bold';
+  }
 }
 
-.dvvvvvvv{
+.header {
+  font-family: 'Nunito-Bold';
+  color: #001e62;
+  font-size: 16px;
+  margin-top: 4%;
+}
+
+.sechbar {
+  --background: #f2f2f2;
+  --color: black;
+  --box-shadow: 0;
+  --border-radius: 11px;
+  --icon-color: black;
+  --cancel-button-color: black;
+}
+
+.shadowdv {
+  background: white;
+  padding: 16px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 9%), 0 6px 9px 0 rgb(0 0 0 / 9%);
+  margin-top: 20px;
+}
+
+.organic {
+  color: #001e62;
+}
+
+.aldvvv {
+  background: #ecf1fb;
+  border: 1px solid #001e62;
+  text-align: center;
+  border-radius: 10px;
+  padding-top: 10px;
+}
+
+.dvvvvvvv {
   color: #333333;
   background: #f2f2f2;
   height: 37px;
@@ -51,16 +56,32 @@ ion-title {
   padding-left: 10px;
 }
 
-.sub-head-left{
-    color: #333333;margin: 0;padding-left: 5px;font-family: 'Nunito-Bold';
+.sub-head-left {
+  color: #333333;
+  margin: 0;
+  padding-left: 5px;
+  font-family: 'Nunito-Bold';
 }
 
-.create-product-lot{
-    display: flex;
-    padding-top: 3px;
-    background: #001e62;
-    padding: 8px;
-    border-radius: 8px;
-    width: 100%;
-    justify-content: center;
+.create-product-lot {
+  display: flex;
+  padding-top: 3px;
+  background: #001e62;
+  padding: 8px;
+  border-radius: 8px;
+  width: 100%;
+  justify-content: center;
+}
+
+.left-heading {
+  color: #333333;
+  margin: 0;
+  padding-left: 5px;
+  font-family: 'Nunito-Bold';
+  padding-top: 3px;
+  font-size: 15px;
+}
+
+.right-heading {
+    color: #333333;margin: 0;padding-left: 5px;font-family: 'Nunito-Bold';font-size: 15px;
 }

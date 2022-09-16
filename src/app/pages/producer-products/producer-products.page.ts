@@ -45,4 +45,8 @@ export class ProducerProductsPage implements OnInit {
     this.router.navigate(['product-details']);
   }
 
+  goToReceiveLot(){
+    this.router.navigate(['receive-lot'])
+  }
+
 }

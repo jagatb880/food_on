@@ -166,5 +166,8 @@ export class HomePage implements OnInit {
   goToDistributor(){
     this.router.navigate(['my-distributor'], { replaceUrl: true })
   }
+  goToReceiveLot(){
+    this.router.navigate(['receive-lot'])
+  }
 
 }

@@ -31,4 +31,8 @@ export class MyDistributorPage implements OnInit {
     this.router.navigate(['producer-products'], { replaceUrl: true })
   }
 
+  goToReceiveLot(){
+    this.router.navigate(['receive-lot'])
+  }
+
 }
