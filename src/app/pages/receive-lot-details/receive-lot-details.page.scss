@@ -1,0 +1,51 @@
+ion-title {
+    &.md {
+        width: 100%;
+        // position: absolute;
+        left: 0;
+        height: 0;
+        text-align: center;
+        font-family: 'Nunito-Bold';
+    }
+}
+.header {
+    font-family: 'Nunito-Bold';
+    color: #001e62;
+    font-size: 4.9vw;
+    margin-top: 10%;
+    font-weight: 600;
+}
+.shadowdv{
+    // text-align: center;
+    background: white;
+    padding: 16px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgb(0 0 0 / 9%), 0 6px 9px 0 rgb(0 0 0 / 9%);
+    margin-top: 20px;
+}
+.pruct_nametextcss{
+    color: #333333;font-weight: 600;font-family: 'Nunito-Bold';
+    font-size: 3.9vw;
+  }
+  .dvvvvvvv{
+    margin-bottom: 10px;
+    color: #333333;
+    background: #f2f2f2;
+    height: 37px;
+    border-radius: 10px;
+  //   margin-bottom: 23px;
+    margin-top: 10px;
+    padding-top: 8px;
+    padding-left: 10px;
+  }
+  .lasttext{
+    margin: 0;
+    font-weight: 600;
+    font-family: "Nunito-Bold";
+    color: #232844;
+    font-size: 4.9vw;
+  }
+  .lastdv{
+    text-align: center;
+    margin-top: 24px;
+  }
