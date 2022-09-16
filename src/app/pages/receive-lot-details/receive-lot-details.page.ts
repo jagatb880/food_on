@@ -12,4 +12,8 @@ export class ReceiveLotDetailsPage implements OnInit {
   ngOnInit() {
   }
 
+  goToBack() {
+    
+  }
+
 }
