@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RecievelotdetailpopupComponent } from 'src/app/pages/component/recievelotdetailpopup/recievelotdetailpopup.component';
 import { NavController, MenuController, ModalController, Platform, AlertController } from '@ionic/angular';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-receive-lot-details',
@@ -9,7 +10,7 @@ import { NavController, MenuController, ModalController, Platform, AlertControll
 })
 export class ReceiveLotDetailsPage implements OnInit {
 
-  constructor(private modalCtrl: ModalController,) { }
+  constructor(private modalCtrl: ModalController, private _location: Location) { }
 
   ngOnInit() {
   }
@@ -23,7 +24,7 @@ export class ReceiveLotDetailsPage implements OnInit {
   }
 
   goToBack() {
-    
+    this._location.back();
   }
 
 }

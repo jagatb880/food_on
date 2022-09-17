@@ -33,29 +33,34 @@ ion-title {
     background: #f2f2f2;
     height: 37px;
     border-radius: 10px;
-  //   margin-bottom: 23px;
-    margin-top: 10px;
+    font-family: 'Nunito-SemiBold';
+    font-size: 14px;
+    margin-top: 5px;
     padding-top: 8px;
     padding-left: 10px;
   }
   .lasttext{
     margin: 0;
-    font-weight: 600;
     font-family: "Nunito-Bold";
     color: #232844;
-    font-size: 4.9vw;
+    font-size: 4.5vw;
   }
   .lastdv{
     text-align: center;
     margin-top: 24px;
   }
-  .save-button{
-    // margin-top: 7%;
-    --background: #96e98a;
+  .yes-button{
+    --background: #5ED198;
     text-transform: capitalize;
     font-size: 18px;
     color: white;
-    height: 48px;
-    font-family: "Poppins-Regular";
+    height: 38px;
+    font-family: "Nunito-Bold";
     letter-spacing: 0px;
+  }
+
+  .no-button{
+    @extend .yes-button;
+    margin-left: 20px;
+    --background:#EE6464;
   }
