@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { RecievelotdetailpopupComponent } from 'src/app/pages/component/recievelotdetailpopup/recievelotdetailpopup.component';
 import { NavController, MenuController, ModalController, Platform, AlertController } from '@ionic/angular';
 import { Location } from '@angular/common';
+import { RecievelotdetailpopupComponent } from 'src/app/component/recievelotdetailpopup/recievelotdetailpopup.component';
 
 @Component({
   selector: 'app-receive-lot-details',

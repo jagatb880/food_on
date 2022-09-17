@@ -2,7 +2,7 @@ import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NavController, MenuController, ModalController, Platform, AlertController } from '@ionic/angular';
-import { ViewDetailsPopupComponent } from 'src/app/pages/component/view-details-popup/view-details-popup.component';
+import { ViewDetailsPopupComponent } from 'src/app/component/view-details-popup/view-details-popup.component';
 
 @Component({
   selector: 'app-view-details',

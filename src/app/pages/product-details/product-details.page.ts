@@ -9,7 +9,6 @@ import { Router } from '@angular/router';
   styleUrls: ['./product-details.page.scss'],
 })
 export class ProductDetailsPage implements OnInit {
-  viewdata = false;
   constructor(private _location: Location, private router: Router) {
   }
 
@@ -28,9 +27,7 @@ export class ProductDetailsPage implements OnInit {
 
   }
 
-  viewphoto()
-  {
-    this.viewdata = true
+  viewphoto() {
   }
 
   edit() {

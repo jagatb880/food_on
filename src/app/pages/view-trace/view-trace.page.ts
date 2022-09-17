@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ViewGeographyComponent } from 'src/app/pages/component/view-geography/view-geography.component';
 import { NavController, MenuController, ModalController, Platform, AlertController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
+import { ViewGeographyComponent } from 'src/app/component/view-geography/view-geography.component';
 
 @Component({
   selector: 'app-view-trace',
