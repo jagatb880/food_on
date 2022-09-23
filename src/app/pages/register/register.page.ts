@@ -49,7 +49,10 @@ export class RegisterPage implements OnInit {
     }else{
       this.apiDataBindSvc.userRegister(this.userRegister).then(data=>{
         console.log(data);
-        // this.router.navigate(['home'], {replaceUrl: true});
+        if(data.status == 200){
+          console.log(data.data.id);
+          this.router.navigate(['home'], {replaceUrl: true});
+        }
       });
     }
    

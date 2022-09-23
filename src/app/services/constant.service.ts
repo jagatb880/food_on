@@ -7,12 +7,12 @@ import { IMessages } from '../interfaces/message';
 })
 export class ConstantService {
 
-  static baseUrl : string = 'http://tagtrace.ca:4000/api-docs/';
+  static baseUrl : string = 'http://tagtrace.ca:4000/';
   constructor() { }
 
   static api: IApis = {
-    userRegister : "Usr_Usuario/usrCreateUsuario",
-    userLogin: "Usr_Usuario/usrLoginUsuario"
+    userRegister : "usrCreateUsuario",
+    userLogin: "usrLoginUsuario"
   }
 
   static message: IMessages = { 
