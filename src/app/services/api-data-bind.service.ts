@@ -3,6 +3,7 @@ import { IUserRegister } from '../interfaces/user-register';
 import { AuthService } from './auth.service';
 import { Preferences } from '@capacitor/preferences';
 import { ConstantService } from './constant.service';
+import { ILoginData } from '../interfaces/login-data';
 
 @Injectable({
   providedIn: 'root'
@@ -35,6 +36,23 @@ export class ApiDataBindService {
       "email": userData.emailAddress
     }
     this.authSvc.userRegister(body).subscribe(res => {
+        resolve(res)
+      }, (err) => {
+        console.log(err)
+        reject(err);
+      });
+    });
+    return promise
+  }
+
+  loginData(userLogin: ILoginData){
+    let promise = new Promise < any > ((resolve, reject) => {
+    let usuariologin = {
+      "login": userLogin.login,
+      "password": userLogin.password,
+    }
+    let body = {usuariologin};
+    this.authSvc.userLogin(body).subscribe(res => {
         resolve(res)
       }, (err) => {
         console.log(err)
