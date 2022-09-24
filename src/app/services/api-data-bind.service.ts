@@ -61,4 +61,29 @@ export class ApiDataBindService {
     });
     return promise
   }
+
+  getDistributorList(id){
+    let promise = new Promise < any > ((resolve, reject) => {
+    this.authSvc.getDistributorList(id).subscribe(res => {
+        resolve(res)
+      }, (err) => {
+        console.log(err)
+        reject(err);
+      });
+    });
+    return promise
+  }
+
+  getProductList(id){
+    let promise = new Promise < any > ((resolve, reject) => {
+    this.authSvc.getProductList(id).subscribe(res => {
+        resolve(res)
+      }, (err) => {
+        console.log(err)
+        reject(err);
+      });
+    });
+    return promise
+  }
+
 }

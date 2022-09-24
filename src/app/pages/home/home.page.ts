@@ -1,6 +1,9 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
+import { Preferences } from '@capacitor/preferences';
 import { Chart } from 'chart.js';
+import { ApiDataBindService } from 'src/app/services/api-data-bind.service';
+import { ConstantService } from 'src/app/services/constant.service';
 
 @Component({
   selector: 'app-home',
@@ -21,10 +24,23 @@ export class HomePage implements OnInit {
   graphshow = false
   secondtext = false
   thirdtext = false;
-  constructor(private router: Router) { }
+  userID: any;
+  distributorList: any;
+  distributorData: any;
+  productList: any;
+  productData: any;
+  constructor(private router: Router, private apiDataBind: ApiDataBindService) { }
 
   ngOnInit() {
+    this.distributorData = "";
     // this.lineChartMethod();
+  }
+
+  ionViewWillEnter(){
+    Preferences.get({key:ConstantService.dbKey.userID}).then(async (userID)=>{
+      await this.getDistributorList(userID.value);
+      await this.getProductList(userID.value)
+    })
   }
 
   segmentChanged(event) {
@@ -160,6 +176,25 @@ export class HomePage implements OnInit {
     }
 
   }
+
+  getDistributorList(userID){
+    this.apiDataBind.getDistributorList(userID).then(data=>{
+      console.log(data);
+      if(data.status == 200){
+        this.distributorList = data.data
+      }
+    });
+  }
+
+  getProductList(userID){
+    this.apiDataBind.getProductList(userID).then(data=>{
+      console.log(data);
+      if(data.status == 200){
+        this.productList = data.data
+      }
+    });
+  }
+
   goToProduct() {
     this.router.navigate(['producer-products'], { replaceUrl: true })
   }

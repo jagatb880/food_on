@@ -24,4 +24,11 @@ export class HttpService {
       catchError((err) => throwError(err))
     );
   }
+
+  put(url: string, id: any, params?: HttpParams, headers?: HttpHeaders): Observable<any> {
+    return this.http.put(`${ConstantService.baseUrl + url +'/'+ id}`, { headers, params }).pipe(
+      map((res) => res),
+      catchError((err) => throwError(err))
+    );
+  }
 }

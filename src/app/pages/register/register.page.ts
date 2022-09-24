@@ -58,8 +58,9 @@ export class RegisterPage implements OnInit {
             Preferences.set({
               key: ConstantService.dbKey.userID,
               value: data.data.id,
+            }).then(()=>{
+              this.router.navigate(['home'], {replaceUrl: true});
             });
-            this.router.navigate(['home'], {replaceUrl: true});
           }else{
             this.toastSvc.show({
               message: data.message,

@@ -19,18 +19,14 @@
 
     <div class="shadow-dv">
     <div class="total-select-dv">
-      <ion-select placeholder="Please Select a Producer" class="producerselect">
-        <ion-select-option value="apples">Apples</ion-select-option>
-        <ion-select-option value="oranges">Oranges</ion-select-option>
-        <ion-select-option value="bananas">Bananas</ion-select-option>
+      <ion-select placeholder="Please Select a Producer" class="producerselect" [(ngModel)]="distributorData">
+        <ion-select-option *ngFor="let data of distributorList" [value]="data.id_distributor_user">{{data.nombre}}</ion-select-option>
       </ion-select>
     </div>
 
     <div class="total-select-dv" style="margin-top: 12px;">
-      <ion-select placeholder="Please Select a Product" class="producerselect">
-        <ion-select-option value="apples">Apples</ion-select-option>
-        <ion-select-option value="oranges">Oranges</ion-select-option>
-        <ion-select-option value="bananas">Bananas</ion-select-option>
+      <ion-select placeholder="Please Select a Product" class="producerselect" [(ngModel)]="productData">
+        <ion-select-option *ngFor="let data of productList" [value]="data.id">{{data.name}}</ion-select-option>
       </ion-select>
     </div>
 

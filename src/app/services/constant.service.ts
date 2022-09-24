@@ -13,7 +13,9 @@ export class ConstantService {
 
   static api: IApis = {
     userRegister : "usrCreateUsuario",
-    userLogin: "usrLoginUsuario"
+    userLogin: "usrLoginUsuario",
+    getDistributorList: "GeDistributorsNetworkByUserId",
+    getProductList: "prdGetProductByUserId"
   }
 
   static message: IMessages = { 

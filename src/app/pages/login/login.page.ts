@@ -45,8 +45,9 @@ export class LoginPage implements OnInit {
             Preferences.set({
               key: ConstantService.dbKey.userID,
               value: data.data[0].id_usuario,
+            }).then(()=>{
+              this.router.navigate(['home'], {replaceUrl: true});
             });
-            this.router.navigate(['home'], {replaceUrl: true});
           }else{
             this.toastSvc.show({
               message: data.message,
