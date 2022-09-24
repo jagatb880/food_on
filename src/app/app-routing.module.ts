@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { AuthGuardGuard } from './guards/auth-guard.guard';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'splash',
+    redirectTo: 'home',
     pathMatch: 'full'
   },
   {
@@ -21,6 +22,7 @@ const routes: Routes = [
   },
   {
     path: 'home',
+    canActivate: [AuthGuardGuard],
     loadChildren: () => import('./pages/home/home.module').then(m => m.HomePageModule)
   },
   {

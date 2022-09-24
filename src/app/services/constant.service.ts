@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { IApis } from '../interfaces/api';
+import { IDbKeyNames } from '../interfaces/db-key-names';
 import { IMessages } from '../interfaces/message';
 
 @Injectable({
@@ -32,5 +33,9 @@ export class ConstantService {
     info: 'Info',
     ok: 'Ok',
     cancel: 'Cancel',
+  }
+
+  static dbKey: IDbKeyNames = {
+    userID: 'userID'
   }
 }

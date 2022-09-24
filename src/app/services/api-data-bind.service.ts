@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { IUserRegister } from '../interfaces/user-register';
 import { AuthService } from './auth.service';
+import { Preferences } from '@capacitor/preferences';
+import { ConstantService } from './constant.service';
 
 @Injectable({
   providedIn: 'root'
@@ -8,6 +10,21 @@ import { AuthService } from './auth.service';
 export class ApiDataBindService {
 
   constructor(private authSvc: AuthService) { }
+
+  getUserInfo(){
+    let promise = new Promise < any > (async (resolve, reject) => {
+      await Preferences.get({ key: ConstantService.dbKey.userID }).then(userID=>{
+        if(userID != null){
+          resolve(userID.value);
+        }else{
+          resolve(null);
+        }
+      }).catch(error=>{
+        reject(error);
+      })
+    });
+    return promise;
+  }
 
   userRegister(userData: IUserRegister){
     let promise = new Promise < any > ((resolve, reject) => {

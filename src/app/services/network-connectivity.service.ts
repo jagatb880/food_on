@@ -17,6 +17,7 @@ export class NetworkConnectivityService {
       console.log('Network status changed', status);
     });
     const status = await Network.getStatus();
+    this.status = status.connected;
     console.log('Network status:', status);
     console.log('Network status:', this.status);
   }
