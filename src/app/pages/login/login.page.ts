@@ -1,7 +1,7 @@
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Preferences } from '@capacitor/preferences';
+import { Storage } from '@ionic/storage-angular';
 import { ILoginData } from 'src/app/interfaces/login-data';
 import { ApiDataBindService } from 'src/app/services/api-data-bind.service';
 import { ConstantService } from 'src/app/services/constant.service';
@@ -14,57 +14,64 @@ import { ToastService } from 'src/app/services/toast.service';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
-
   loginData: ILoginData;
-  constructor(private router: Router, private _location: Location, private toastSvc: ToastService,
-    private apiDataBindSvc: ApiDataBindService, private networkSvc: NetworkConnectivityService) { }
+  constructor(
+    private router: Router,
+    private _location: Location,
+    private toastSvc: ToastService,
+    private storage: Storage,
+    private apiDataBindSvc: ApiDataBindService,
+    private networkSvc: NetworkConnectivityService
+  ) {}
 
   ngOnInit() {
     this.loginData = {
-      login: "",
-      password: "",
-    }
+      login: '',
+      password: '',
+    };
   }
 
   login() {
-    if(this.networkSvc.status){
-      if(this.loginData.login == ""){
+    if (this.networkSvc.status) {
+      if (this.loginData.login == '') {
         this.toastSvc.show({
-              message: "Enter your Username",
-              type: "error",
-            });
-      }else if(this.loginData.password == ""){
-        this.toastSvc.show({
-          message: "Enter your Password",
-          type: "error",
+          message: 'Enter your Username',
+          type: 'error',
         });
-      }else{
-        this.apiDataBindSvc.loginData(this.loginData).then(data=>{
-          console.log(data);
-          if(data.status == 200){
-            Preferences.set({
-              key: ConstantService.dbKey.userID,
-              value: data.data[0].id_usuario,
-            }).then(()=>{
-              this.router.navigate(['home'], {replaceUrl: true});
-            });
-          }else{
+      } else if (this.loginData.password == '') {
+        this.toastSvc.show({
+          message: 'Enter your Password',
+          type: 'error',
+        });
+      } else {
+        this.apiDataBindSvc
+          .loginData(this.loginData)
+          .then(async (data) => {
+            console.log(data);
+            if (data.status == 200) {
+              await this.storage.set(
+                ConstantService.dbKey.userID,
+                data.data[0].id_usuario
+              );
+              await this.router.navigate(['home'], { replaceUrl: true });
+            } else {
+              this.toastSvc.show({
+                message: data.message,
+                type: 'error',
+              });
+            }
+          })
+          .catch((error) => {
             this.toastSvc.show({
-              message: data.message,
-              type: "error",
+              message: ConstantService.message.wentWrong,
+              type: 'error',
             });
-          }
-        }).catch(error=>{
-          this.toastSvc.show({
-            message: ConstantService.message.wentWrong,
-            type: "error",
           });
-        });
       }
-    }else{
+    } else {
       this.toastSvc.show({
         message: ConstantService.message.noInternetConnection,
-        type: "error",
+        type: 'error',
       });
     }
   }
@@ -72,5 +79,4 @@ export class LoginPage implements OnInit {
   goToBack() {
     this._location.back();
   }
-
 }

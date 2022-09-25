@@ -1,78 +1,148 @@
 <ion-header>
-  <ion-toolbar style="--background: #ffffff;">
+  <ion-toolbar style="--background: #ffffff">
     <ion-buttons slot="start">
-      <img style="width:32px;padding-left: 10%;" src="assets/images/burger_menu_ic.png">
+      <img
+        style="width: 32px; padding-left: 10%"
+        src="assets/images/burger_menu_ic.png"
+      />
     </ion-buttons>
     <ion-buttons slot="primary">
-      <img style="width:32px;padding-right: 10%;" src="assets/images/profile_menu_ic.png">
+      <img
+        style="width: 32px; padding-right: 10%"
+        src="assets/images/profile_menu_ic.png"
+      />
     </ion-buttons>
 
-    <ion-title style="font-size:35px;color: #232844;">FOOD ON</ion-title>
+    <ion-title style="font-size: 35px; color: #232844">FOOD ON</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content style="--background: #ffffff;">
-  <div style="padding: 12px 14px 26px 14px;">
-    <div style="text-align: center;">
+<ion-content style="--background: #ffffff">
+  <div style="padding: 12px 14px 26px 14px">
+    <div style="text-align: center">
       <span class="header">World Movers Inc - Distributor Profile</span>
     </div>
 
     <div class="shadow-dv">
       <div class="total-select-dv">
-        <ion-select placeholder="Please Select a Producer" class="producerselect" [(ngModel)]="distributorData">
-          <ion-select-option *ngFor="let data of distributorList" [value]="data.id_distributor_user">{{data.nombre}}
+        <ion-select
+          placeholder="Please Select a Producer"
+          class="producerselect"
+          [(ngModel)]="distributorData"
+        >
+          <ion-select-option
+            *ngFor="let data of distributorList"
+            [value]="data.id_distributor_user"
+            >{{data.nombre}}
           </ion-select-option>
         </ion-select>
       </div>
 
-      <div class="total-select-dv" style="margin-top: 12px;">
-        <ion-select placeholder="Please Select a Product" class="producerselect" [(ngModel)]="productData">
-          <ion-select-option *ngFor="let data of productList" [value]="data.id">{{data.name}}</ion-select-option>
+      <div class="total-select-dv" style="margin-top: 12px">
+        <ion-select
+          placeholder="Please Select a Product"
+          class="producerselect"
+          [(ngModel)]="productData"
+        >
+          <ion-select-option *ngFor="let data of productList" [value]="data.id"
+            >{{data.name}}</ion-select-option
+          >
         </ion-select>
       </div>
 
-      <div class="total-select-dv" style="margin-top: 12px;" *ngIf="map == true " >
-        <ion-select placeholder="Select a Year" class="producerselect">
-          <ion-select-option value="apples">Apples</ion-select-option>
-          <ion-select-option value="oranges">Oranges</ion-select-option>
-          <ion-select-option value="bananas">Bananas</ion-select-option>
-        </ion-select>
-      </div>
+      <ion-row style="margin-top: 12px" *ngIf="map == true ">
+        <ion-col size="6">
+          <ion-select placeholder="Select a Year" class="producerselect">
+            <ion-select-option value="apples">Apples</ion-select-option>
+            <ion-select-option value="oranges">Oranges</ion-select-option>
+            <ion-select-option value="bananas">Bananas</ion-select-option>
+          </ion-select>
+        </ion-col>
+        <ion-col size="6">
+          <ion-select placeholder="Select a Month" class="producerselect">
+            <ion-select-option value="apples">Apples</ion-select-option>
+            <ion-select-option value="oranges">Oranges</ion-select-option>
+            <ion-select-option value="bananas">Bananas</ion-select-option>
+          </ion-select>
+        </ion-col>
+      </ion-row>
 
-      <div class="total-select-dv" style="margin-top: 12px;" *ngIf="graphshow">
-        <ion-select placeholder="Select a Month" class="producerselect">
-          <ion-select-option value="apples">Apples</ion-select-option>
-          <ion-select-option value="oranges">Oranges</ion-select-option>
-          <ion-select-option value="bananas">Bananas</ion-select-option>
-        </ion-select>
+      <div style="margin-top: 12px" *ngIf="graphshow">
+        <ion-row>
+          <ion-col size="6">
+            <ion-input
+              disabled="true"
+              class="producerselect"
+              placeholder="Start Date"
+              ><img
+                src="assets/images/ic_date.png"
+                style="
+                  float: right;
+                  height: 18px;
+                  padding-right: 5px;
+                  padding-left: 10px;
+                "
+                (click)="openDatePicker()"
+            /></ion-input>
+          </ion-col>
+          <ion-col size="6">
+            <ion-input
+              disabled="true"
+              class="producerselect"
+              placeholder="End Date"
+              ><img
+                src="assets/images/ic_date.png"
+                style="
+                  float: right;
+                  height: 18px;
+                  padding-right: 5px;
+                  padding-left: 10px;
+                "
+            /></ion-input>
+          </ion-col>
+        </ion-row>
       </div>
-
     </div>
 
     <div class="shadowdv">
-      <div style="text-align: center;">
+      <div style="text-align: center">
         <span class="header" *ngIf="map ==true">Geographical Location</span>
-        <span class="header" *ngIf="secondtext == true">Amount of Product Sold</span>
+        <span class="header" *ngIf="secondtext == true"
+          >Amount of Product Sold</span
+        >
         <span class="header" *ngIf="thirdtext == true">Product Sale</span>
       </div>
       <ion-row>
         <ion-col size="6">
-          <img style="width:32px;padding-right: 10%;" src="assets/images/leftarow.png" *ngIf="secondgraph == true"
-            (click)="fastgraph()">
+          <img
+            style="width: 32px; padding-right: 10%"
+            src="assets/images/leftarow.png"
+            *ngIf="secondgraph == true"
+            (click)="fastgraph()"
+          />
         </ion-col>
-        <ion-col size="6" style="text-align: end;">
-          <img style="width: 19px;" src="assets/images/rightarow.png" (click)="rightarow()"
-            *ngIf="closerightarow == false">
+        <ion-col size="6" style="text-align: end">
+          <img
+            style="width: 19px"
+            src="assets/images/rightarow.png"
+            (click)="rightarow()"
+            *ngIf="closerightarow == false"
+          />
         </ion-col>
       </ion-row>
       <div *ngIf="map ==true">
-        <p style="color: red;">Here to show map view</p>
+        <p style="color: red">Here to show map view</p>
       </div>
       <div [hidden]="!graphshow">
         <canvas #lineCanvas></canvas>
       </div>
     </div>
-    <ion-segment (ionChange)="segmentChanged($event)" mode="ios" class="alldv" value="valid">
+    <ion-segment
+      (ionChange)="segmentChanged($event)"
+      mode="ios"
+      class="alldv"
+      value="valid"
+    >
       <ion-segment-button value="all" mode="ios" class="segment">
         <ion-label>All</ion-label>
       </ion-segment-button>
@@ -83,32 +153,29 @@
         <ion-label>Invalid</ion-label>
       </ion-segment-button>
     </ion-segment>
-
-
   </div>
-
 </ion-content>
 
 <ion-toolbar>
-  <ion-tabs style="background-color: white;">
+  <ion-tabs style="background-color: white">
     <ion-tab-bar slot="bottom">
       <ion-tab-button tab="schedule">
-        <img width="27" src="assets/images/dashboard_ic.png">
+        <img width="27" src="assets/images/dashboard_ic.png" />
         <ion-label class="tab-lable">DASHBOARD</ion-label>
       </ion-tab-button>
 
       <ion-tab-button tab="speakers" (click)="goToProduct()">
-        <img width="25" src="assets/images/products_ic.png">
+        <img width="25" src="assets/images/products_ic.png" />
         <ion-label class="tab-lable">PRODUCTS</ion-label>
       </ion-tab-button>
 
       <ion-tab-button tab="map" (click)="goToDistributor()">
-        <img width="25" src="assets/images/distributors_ic.png">
+        <img width="25" src="assets/images/distributors_ic.png" />
         <ion-label class="tab-lable">DISTRIBUTORS</ion-label>
       </ion-tab-button>
 
       <ion-tab-button tab="about" (click)="goToReceiveLot()">
-        <img width="25" src="assets/images/receive_lot_ic.png">
+        <img width="25" src="assets/images/receive_lot_ic.png" />
         <ion-label class="tab-lable">RECEIVE LOT</ion-label>
       </ion-tab-button>
     </ion-tab-bar>

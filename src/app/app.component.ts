@@ -4,6 +4,7 @@ import { App as CapacitorApp } from '@capacitor/app';
 import { Location } from '@angular/common';
 import { Platform } from '@ionic/angular';
 import { NetworkConnectivityService } from './services/network-connectivity.service';
+import { Storage } from '@ionic/storage-angular';
 
 @Component({
   selector: 'app-root',
@@ -11,22 +12,27 @@ import { NetworkConnectivityService } from './services/network-connectivity.serv
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-  constructor(private _location: Location, private platform: Platform, private networkSrv: NetworkConnectivityService) {
-    this.initializeApp()
+  constructor(
+    private _location: Location,
+    private platform: Platform,
+    private networkSrv: NetworkConnectivityService,
+    private storage: Storage
+  ) {
+    this.initializeApp();
   }
 
   async initializeApp() {
-    this.platform.ready().then(async() => {
+    this.platform.ready().then(async () => {
       this.networkSrv.listenNetwork();
       await SplashScreen.hide();
-      CapacitorApp.addListener('backButton', () =>
-      {
-        if (this._location.isCurrentPathEqualTo('/home') || this._location.isCurrentPathEqualTo('/producer-products'))
-        {
+      await this.storage.create();
+      CapacitorApp.addListener('backButton', () => {
+        if (
+          this._location.isCurrentPathEqualTo('/home') ||
+          this._location.isCurrentPathEqualTo('/producer-products')
+        ) {
           navigator['app'].exitApp();
-        } 
-        else
-        {
+        } else {
           this._location.back();
         }
       });

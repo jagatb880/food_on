@@ -27,7 +27,13 @@ ion-title {
   --placeholder-opacity: 1 !important;
   color: black;
   --placeholder-color: black;
-  padding-right: 11px;
+  padding-right: 11px;border: 1px solid #001e62;
+    border-radius: 8px;
+}
+
+.producerselect-right{
+  @extend .producerselect;
+  margin-left: 5px;
 }
 
 .total-select-dv {
@@ -35,6 +41,11 @@ ion-title {
   border-radius: 8px;
 }
 
+.total-select-dv-right {
+  border: 1px solid #001e62;
+  border-radius: 8px;
+  margin-left: 5px;
+}
 .shadow-dv {
   background: white;
   padding: 16px;

@@ -1,9 +1,12 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
-import { Preferences } from '@capacitor/preferences';
 import { Chart } from 'chart.js';
 import { ApiDataBindService } from 'src/app/services/api-data-bind.service';
 import { ConstantService } from 'src/app/services/constant.service';
+import { DatePickerPlugin } from '@capacitor-community/date-picker';
+import type { DatePickerTheme } from '@capacitor-community/date-picker';
+import { Storage } from '@ionic/storage-angular';
+const selectedTheme: DatePickerTheme = 'light';
 
 @Component({
   selector: 'app-home',
@@ -11,36 +14,40 @@ import { ConstantService } from 'src/app/services/constant.service';
   styleUrls: ['./home.page.scss'],
 })
 export class HomePage implements OnInit {
-  @ViewChild("lineCanvas") lineCanvas: ElementRef;
+  @ViewChild('lineCanvas') lineCanvas: ElementRef;
 
   lineChart: any;
   bars: any;
   colorArray: any;
   segmentModel = 'all';
   secondgraph = false;
-  map = true
-  third = false
+  map = true;
+  third = false;
   closerightarow = false;
-  graphshow = false
-  secondtext = false
+  graphshow = false;
+  secondtext = false;
   thirdtext = false;
   userID: any;
   distributorList: any;
   distributorData: any;
   productList: any;
   productData: any;
-  constructor(private router: Router, private apiDataBind: ApiDataBindService) { }
+  constructor(
+    private router: Router,
+    private storage: Storage,
+    private apiDataBind: ApiDataBindService
+  ) {}
 
   ngOnInit() {
-    this.distributorData = "";
+    this.distributorData = '';
     // this.lineChartMethod();
   }
 
-  ionViewWillEnter(){
-    Preferences.get({key:ConstantService.dbKey.userID}).then(async (userID)=>{
-      await this.getDistributorList(userID.value);
-      await this.getProductList(userID.value)
-    })
+  ionViewWillEnter() {
+    this.storage.get(ConstantService.dbKey.userID).then(async (userID) => {
+      await this.getDistributorList(userID);
+      await this.getProductList(userID);
+    });
   }
 
   segmentChanged(event) {
@@ -53,10 +60,10 @@ export class HomePage implements OnInit {
   // }
 
   lineChartMethod() {
-    this.third = true
+    this.third = true;
     this.thirdtext = false;
-    this.secondtext = true
-    this.graphshow = true
+    this.secondtext = true;
+    this.graphshow = true;
     this.lineChart = new Chart(this.lineCanvas?.nativeElement, {
       type: 'line',
       data: {
@@ -76,7 +83,7 @@ export class HomePage implements OnInit {
         datasets: [
           {
             label: '',
-            //  lineTension: 0.2, 
+            //  lineTension: 0.2,
             fill: false,
             backgroundColor: 'rgba(75,192,192,0.4)',
             borderColor: 'rgba(75,192,192,1)',
@@ -93,7 +100,9 @@ export class HomePage implements OnInit {
             pointHoverBorderWidth: 2,
             pointRadius: 1,
             pointHitRadius: 10,
-            data: [0, 2000, 2000, 4000, 4000, 6000, 6000, 8000, 8000, 10000, 0, 0],
+            data: [
+              0, 2000, 2000, 4000, 4000, 6000, 6000, 8000, 8000, 10000, 0, 0,
+            ],
             spanGaps: false,
           },
         ],
@@ -102,31 +111,29 @@ export class HomePage implements OnInit {
   }
   fastgraph() {
     if (this.third == true) {
-
-      this.graphshow = true
-      this.lineChartMethod()
-      this.third = false
-    }
-    else {
-      this.secondtext = false
-      this.thirdtext = false
-      this.graphshow = false
-      this.map = true
-      this.secondgraph = false
-      this.third = false
-      this.closerightarow = false
+      this.graphshow = true;
+      this.lineChartMethod();
+      this.third = false;
+    } else {
+      this.secondtext = false;
+      this.thirdtext = false;
+      this.graphshow = false;
+      this.map = true;
+      this.secondgraph = false;
+      this.third = false;
+      this.closerightarow = false;
     }
   }
 
   rightarow() {
-    this.graphshow = true
+    this.graphshow = true;
     this.map = false;
-    this.secondgraph = true
+    this.secondgraph = true;
     if (this.third == true && this.map == false) {
-      this.thirdtext = true
-      this.secondtext = false
+      this.thirdtext = true;
+      this.secondtext = false;
       this.closerightarow = true;
-      this.graphshow = true
+      this.graphshow = true;
       this.lineChart = new Chart(this.lineCanvas?.nativeElement, {
         type: 'line',
         data: {
@@ -146,7 +153,7 @@ export class HomePage implements OnInit {
           datasets: [
             {
               label: '',
-              //  lineTension: 0.2, 
+              //  lineTension: 0.2,
               fill: false,
               backgroundColor: 'rgba(75,192,192,0.4)',
               borderColor: 'rgba(75,192,192,1)',
@@ -169,40 +176,46 @@ export class HomePage implements OnInit {
           ],
         },
       });
+    } else {
+      this.lineChartMethod();
     }
-    else {
-
-      this.lineChartMethod()
-    }
-
   }
 
-  getDistributorList(userID){
-    this.apiDataBind.getDistributorList(userID).then(data=>{
+  getDistributorList(userID) {
+    this.apiDataBind.getDistributorList(userID).then((data) => {
       console.log(data);
-      if(data.status == 200){
-        this.distributorList = data.data
+      if (data.status == 200) {
+        this.distributorList = data.data;
       }
     });
   }
 
-  getProductList(userID){
-    this.apiDataBind.getProductList(userID).then(data=>{
+  getProductList(userID) {
+    this.apiDataBind.getProductList(userID).then((data) => {
       console.log(data);
-      if(data.status == 200){
-        this.productList = data.data
+      if (data.status == 200) {
+        this.productList = data.data;
       }
     });
   }
 
   goToProduct() {
-    this.router.navigate(['producer-products'], { replaceUrl: true })
+    this.router.navigate(['producer-products'], { replaceUrl: true });
   }
-  goToDistributor(){
-    this.router.navigate(['my-distributor'], { replaceUrl: true })
+  goToDistributor() {
+    this.router.navigate(['my-distributor'], { replaceUrl: true });
   }
-  goToReceiveLot(){
-    this.router.navigate(['receive-lot'])
+  goToReceiveLot() {
+    this.router.navigate(['receive-lot']);
   }
 
+  openDatePicker() {
+    DatePickerPlugin.present({
+      mode: 'date',
+      locale: 'pt_BR',
+      date: '13/07/2019',
+      theme: selectedTheme,
+      format: 'dd/MM/yyyy',
+    }).then((date) => alert(date.value));
+  }
 }
