@@ -38,3 +38,9 @@ ion-searchbar {
     .modal-wrapper {
     }
 }
+
+ion-popover {
+  &::part(content) {
+    min-width: 290px;
+  }
+}
