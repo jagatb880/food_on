@@ -18,6 +18,7 @@ export class HomePage implements OnInit {
 
   lineChart: any;
   bars: any;
+  date:any;
   colorArray: any;
   segmentModel = 'all';
   secondgraph = false;
@@ -32,6 +33,8 @@ export class HomePage implements OnInit {
   distributorData: any;
   productList: any;
   productData: any;
+  dateshow = false
+  yearValues = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30];
   constructor(
     private router: Router,
     private storage: Storage,
@@ -39,6 +42,7 @@ export class HomePage implements OnInit {
   ) {}
 
   ngOnInit() {
+    
     this.distributorData = '';
     // this.lineChartMethod();
   }
@@ -210,12 +214,13 @@ export class HomePage implements OnInit {
   }
 
   openDatePicker() {
-    DatePickerPlugin.present({
-      mode: 'date',
-      locale: 'pt_BR',
-      date: '13/07/2019',
-      theme: selectedTheme,
-      format: 'dd/MM/yyyy',
-    }).then((date) => alert(date.value));
+    this.dateshow = true
+    // DatePickerPlugin.present({
+    //   mode: 'date',
+    //   locale: 'pt_BR',
+    //   date: '13/07/2019',
+    //   theme: selectedTheme,
+    //   format: 'dd/MM/yyyy',
+    // }).then((date) => alert(date.value));
   }
 }
