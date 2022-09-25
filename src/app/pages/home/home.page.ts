@@ -18,8 +18,9 @@ export class HomePage implements OnInit {
 
   lineChart: any;
   bars: any;
-  date:any;
+  date: any;
   colorArray: any;
+  enddate : any
   segmentModel = 'all';
   secondgraph = false;
   map = true;
@@ -42,7 +43,10 @@ export class HomePage implements OnInit {
   ) {}
 
   ngOnInit() {
-    
+    var dta = new Date()
+    console.log(dta)
+    this.date = '2022-09-15T15:49:00+05:30'
+    this.enddate = '2022-09-09T15:53:00+05:30'
     this.distributorData = '';
     // this.lineChartMethod();
   }
@@ -223,4 +227,14 @@ export class HomePage implements OnInit {
     //   format: 'dd/MM/yyyy',
     // }).then((date) => alert(date.value));
   }
+
+  startdatevalue()
+  {
+    console.log(this.date)
+  }
+  enddatevalue()
+  {
+    console.log(this.enddate)
+  }
+
 }

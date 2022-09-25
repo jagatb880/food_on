@@ -1,16 +1,10 @@
 <ion-header>
   <ion-toolbar style="--background: #ffffff">
     <ion-buttons slot="start">
-      <img
-        style="width: 32px; padding-left: 10%"
-        src="assets/images/burger_menu_ic.png"
-      />
+      <img style="width: 32px; padding-left: 10%" src="assets/images/burger_menu_ic.png" />
     </ion-buttons>
     <ion-buttons slot="primary">
-      <img
-        style="width: 32px; padding-right: 10%"
-        src="assets/images/profile_menu_ic.png"
-      />
+      <img style="width: 32px; padding-right: 10%" src="assets/images/profile_menu_ic.png" />
     </ion-buttons>
 
     <ion-title style="font-size: 35px; color: #232844">FOOD ON</ion-title>
@@ -25,28 +19,15 @@
 
     <div class="shadow-dv">
       <div class="total-select-dv">
-        <ion-select
-          placeholder="Please Select a Producer"
-          class="producerselect"
-          [(ngModel)]="distributorData"
-        >
-          <ion-select-option
-            *ngFor="let data of distributorList"
-            [value]="data.id_distributor_user"
-            >{{data.nombre}}
+        <ion-select placeholder="Please Select a Producer" class="producerselect" [(ngModel)]="distributorData">
+          <ion-select-option *ngFor="let data of distributorList" [value]="data.id_distributor_user">{{data.nombre}}
           </ion-select-option>
         </ion-select>
       </div>
 
       <div class="total-select-dv" style="margin-top: 12px">
-        <ion-select
-          placeholder="Please Select a Product"
-          class="producerselect"
-          [(ngModel)]="productData"
-        >
-          <ion-select-option *ngFor="let data of productList" [value]="data.id"
-            >{{data.name}}</ion-select-option
-          >
+        <ion-select placeholder="Please Select a Product" class="producerselect" [(ngModel)]="productData">
+          <ion-select-option *ngFor="let data of productList" [value]="data.id">{{data.name}}</ion-select-option>
         </ion-select>
       </div>
 
@@ -70,42 +51,23 @@
       <div style="margin-top: 12px" *ngIf="graphshow">
         <ion-row>
           <ion-col size="6">
-            <ion-input
-              disabled="true"
-              value="{{ date | date: 'yyyy/dd/MM' }}"
-              id="date"
-              class="producerselect"
-              placeholder="End Date"
-            ></ion-input>
+            <ion-input disabled="true" value="{{ date | date: 'yyyy/dd/MM' }}" id="date" class="producerselect"
+              placeholder="Start Date"></ion-input>
           </ion-col>
+
           <ion-col size="6">
-            <ion-input
-              disabled="true"
-              class="producerselect"
-              placeholder="End Date"
-              ><img
-                src="assets/images/ic_date.png"
-                style="
-                  float: right;
-                  height: 18px;
-                  padding-right: 5px;
-                  padding-left: 10px;
-                "
-            /></ion-input>
+            <ion-input disabled="true" value="{{ enddate | date: 'yyyy/dd/MM' }}" id="enddate" class="producerselect"
+              placeholder="End Date"></ion-input>
+            <ion-popover trigger="enddate" size="medium" show-backdrop="false" [dismissOnSelect]="true">
+              <ng-template>
+                <ion-datetime presentation="enddate" [(ngModel)]="enddate" (ionChange) = "enddatevalue()"></ion-datetime>
+              </ng-template>
+            </ion-popover>
           </ion-col>
         </ion-row>
-        <ion-popover
-          trigger="date"
-          size="cover"
-          show-backdrop="false"
-          [dismissOnSelect]="true"
-        >
+        <ion-popover trigger="date" size="cover" show-backdrop="false" [dismissOnSelect]="true">
           <ng-template>
-            <ion-datetime
-              presentation="date"
-              [(ngModel)]="date"
-              locale="sl-SI"
-            ></ion-datetime>
+            <ion-datetime presentation="date" [(ngModel)]="date" locale="sl-SI" (ionChange)="startdatevalue()"></ion-datetime>
           </ng-template>
         </ion-popover>
       </div>
@@ -114,27 +76,17 @@
     <div class="shadowdv">
       <div style="text-align: center">
         <span class="header" *ngIf="map ==true">Geographical Location</span>
-        <span class="header" *ngIf="secondtext == true"
-          >Amount of Product Sold</span
-        >
+        <span class="header" *ngIf="secondtext == true">Amount of Product Sold</span>
         <span class="header" *ngIf="thirdtext == true">Product Sale</span>
       </div>
       <ion-row>
         <ion-col size="6">
-          <img
-            style="width: 32px; padding-right: 10%"
-            src="assets/images/leftarow.png"
-            *ngIf="secondgraph == true"
-            (click)="fastgraph()"
-          />
+          <img style="width: 32px; padding-right: 10%" src="assets/images/leftarow.png" *ngIf="secondgraph == true"
+            (click)="fastgraph()" />
         </ion-col>
         <ion-col size="6" style="text-align: end">
-          <img
-            style="width: 19px"
-            src="assets/images/rightarow.png"
-            (click)="rightarow()"
-            *ngIf="closerightarow == false"
-          />
+          <img style="width: 19px" src="assets/images/rightarow.png" (click)="rightarow()"
+            *ngIf="closerightarow == false" />
         </ion-col>
       </ion-row>
       <div *ngIf="map ==true">
@@ -144,12 +96,7 @@
         <canvas #lineCanvas></canvas>
       </div>
     </div>
-    <ion-segment
-      (ionChange)="segmentChanged($event)"
-      mode="ios"
-      class="alldv"
-      value="valid"
-    >
+    <ion-segment (ionChange)="segmentChanged($event)" mode="ios" class="alldv" value="valid">
       <ion-segment-button value="all" mode="ios" class="segment">
         <ion-label>All</ion-label>
       </ion-segment-button>
