@@ -32,8 +32,10 @@ export class HomePage implements OnInit {
   productList: any;
   productData: any;
   dateshow = false;
+  thirdgraph = false;
   year = new Date().getFullYear();
   yearRange = [];
+  lastgrph = false
   selectedYear: any;
   yearValues = [
     1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21,
@@ -75,8 +77,10 @@ export class HomePage implements OnInit {
   // }
 
   lineChartMethod() {
+    // alert('2nd')
     this.third = true;
     this.thirdtext = false;
+    this.lastgrph = true
     this.secondtext = true;
     this.graphshow = true;
     this.lineChart = new Chart(this.lineCanvas?.nativeElement, {
@@ -125,11 +129,14 @@ export class HomePage implements OnInit {
     });
   }
   fastgraph() {
-    if (this.third == true) {
+    if (this.thirdgraph == true) {
       this.graphshow = true;
+      this.thirdgraph = false
       this.lineChartMethod();
+      // this.thirdgrapg()
       this.third = false;
-    } else {
+    } 
+    else {
       this.secondtext = false;
       this.thirdtext = false;
       this.graphshow = false;
@@ -149,53 +156,59 @@ export class HomePage implements OnInit {
       this.secondtext = false;
       this.closerightarow = true;
       this.graphshow = true;
-      this.lineChart = new Chart(this.lineCanvas?.nativeElement, {
-        type: 'line',
-        data: {
-          labels: [
-            'JAN',
-            'FEB',
-            'MAR',
-            'APR',
-            'MAY',
-            'JUN',
-            'JUL',
-            'AUG',
-            'SEP',
-            'NOV',
-            'DEC',
-          ],
-          datasets: [
-            {
-              label: '',
-              //  lineTension: 0.2,
-              fill: false,
-              backgroundColor: 'rgba(75,192,192,0.4)',
-              borderColor: 'rgba(75,192,192,1)',
-              borderCapStyle: 'butt',
-              borderDash: [],
-              borderDashOffset: 0.0,
-              borderJoinStyle: 'miter',
-              pointBorderColor: 'rgba(75,192,192,1)',
-              pointBackgroundColor: '#fff',
-              pointBorderWidth: 1,
-              pointHoverRadius: 5,
-              pointHoverBackgroundColor: 'rgba(75,192,192,1)',
-              pointHoverBorderColor: 'rgba(220,220,220,1)',
-              pointHoverBorderWidth: 2,
-              pointRadius: 1,
-              pointHitRadius: 10,
-              data: [0, 5, 10, 11, 4000, 6000, 6000, 8000, 8000, 10000, 0, 0],
-              spanGaps: false,
-            },
-          ],
-        },
-      });
+      // alert('3rd')
+      this.thirdgraph = true
+     this.thirdgrapg()
     } else {
       this.lineChartMethod();
     }
   }
 
+  thirdgrapg()
+  {
+    this.lineChart = new Chart(this.lineCanvas?.nativeElement, {
+      type: 'line',
+      data: {
+        labels: [
+          'JAN',
+          'FEB',
+          'MAR',
+          'APR',
+          'MAY',
+          'JUN',
+          'JUL',
+          'AUG',
+          'SEP',
+          'NOV',
+          'DEC',
+        ],
+        datasets: [
+          {
+            label: '',
+            //  lineTension: 0.2,
+            fill: false,
+            backgroundColor: 'rgba(75,192,192,0.4)',
+            borderColor: 'rgba(75,192,192,1)',
+            borderCapStyle: 'butt',
+            borderDash: [],
+            borderDashOffset: 0.0,
+            borderJoinStyle: 'miter',
+            pointBorderColor: 'rgba(75,192,192,1)',
+            pointBackgroundColor: '#fff',
+            pointBorderWidth: 1,
+            pointHoverRadius: 5,
+            pointHoverBackgroundColor: 'rgba(75,192,192,1)',
+            pointHoverBorderColor: 'rgba(220,220,220,1)',
+            pointHoverBorderWidth: 2,
+            pointRadius: 1,
+            pointHitRadius: 10,
+            data: [0, 5, 10, 11, 4000, 6000, 6000, 8000, 8000, 10000, 0, 0],
+            spanGaps: false,
+          },
+        ],
+      },
+    });
+  }
   getDistributorList(userID) {
     this.apiDataBind.getDistributorList(userID).then((data) => {
       console.log(data);
