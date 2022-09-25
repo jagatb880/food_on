@@ -4,11 +4,10 @@ import { ConstantService } from './constant.service';
 import { HttpService } from './http.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
-
-  constructor(public http: HttpService) { }
+  constructor(public http: HttpService) {}
 
   userRegister(body): Observable<any> {
     return this.http.post(ConstantService.api.userRegister, body);
@@ -24,5 +23,12 @@ export class AuthService {
 
   getProductList(id): Observable<any> {
     return this.http.put(ConstantService.api.getProductList, id);
+  }
+
+  getDataForLineChart(body): Observable<any> {
+    return this.http.post(
+      ConstantService.api.getTotalAmountByUserIDProdID,
+      body
+    );
   }
 }

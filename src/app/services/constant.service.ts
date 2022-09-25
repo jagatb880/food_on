@@ -4,29 +4,29 @@ import { IDbKeyNames } from '../interfaces/db-key-names';
 import { IMessages } from '../interfaces/message';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ConstantService {
-
-  static baseUrl : string = 'http://tagtrace.ca:4000/';
-  constructor() { }
+  static baseUrl: string = 'http://tagtrace.ca:4000/';
+  constructor() {}
 
   static api: IApis = {
-    userRegister : "usrCreateUsuario",
-    userLogin: "usrLoginUsuario",
-    getDistributorList: "GeDistributorsNetworkByUserId",
-    getProductList: "prdGetProductByUserId"
-  }
+    userRegister: 'usrCreateUsuario',
+    userLogin: 'usrLoginUsuario',
+    getDistributorList: 'GeDistributorsNetworkByUserId',
+    getProductList: 'prdGetProductByUserId',
+    getTotalAmountByUserIDProdID: 'GetTotalAmountByUserIDProdID',
+  };
 
-  static message: IMessages = { 
+  static message: IMessages = {
     checkInternetConnection: 'Please check your internet connection.',
     noInternetConnection: 'No internet connection',
     internetOrLocationOff: 'Internet or GPS Location is off.',
-    serverError:"Error connecting to server ! Please try after some time.",
+    serverError: 'Error connecting to server ! Please try after some time.',
     networkError: 'Server error.',
-    pleaseWait: 'Please wait..', 
+    pleaseWait: 'Please wait..',
     validUserName: 'Please enter username.',
-    validPassword:'Please enter Password.',
+    validPassword: 'Please enter Password.',
     authentication: 'Authenticating user, please wait...',
     wentWrong: 'Something went wrong, try after some times.',
     somethingWentWrong: 'Something went Wrong!',
@@ -35,9 +35,9 @@ export class ConstantService {
     info: 'Info',
     ok: 'Ok',
     cancel: 'Cancel',
-  }
+  };
 
   static dbKey: IDbKeyNames = {
-    userID: 'userID'
-  }
+    userID: 'userID',
+  };
 }

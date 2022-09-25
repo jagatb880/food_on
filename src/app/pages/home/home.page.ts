@@ -3,10 +3,7 @@ import { Router } from '@angular/router';
 import { Chart } from 'chart.js';
 import { ApiDataBindService } from 'src/app/services/api-data-bind.service';
 import { ConstantService } from 'src/app/services/constant.service';
-import { DatePickerPlugin } from '@capacitor-community/date-picker';
-import type { DatePickerTheme } from '@capacitor-community/date-picker';
 import { Storage } from '@ionic/storage-angular';
-const selectedTheme: DatePickerTheme = 'light';
 
 @Component({
   selector: 'app-home',
@@ -20,7 +17,7 @@ export class HomePage implements OnInit {
   bars: any;
   date: any;
   colorArray: any;
-  enddate : any
+  enddate: any;
   segmentModel = 'all';
   secondgraph = false;
   map = true;
@@ -34,8 +31,14 @@ export class HomePage implements OnInit {
   distributorData: any;
   productList: any;
   productData: any;
-  dateshow = false
-  yearValues = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30];
+  dateshow = false;
+  year = new Date().getFullYear();
+  yearRange = [];
+  selectedYear: any;
+  yearValues = [
+    1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21,
+    22, 23, 24, 25, 26, 27, 28, 29, 30,
+  ];
   constructor(
     private router: Router,
     private storage: Storage,
@@ -43,11 +46,15 @@ export class HomePage implements OnInit {
   ) {}
 
   ngOnInit() {
-    var dta = new Date()
-    console.log(dta)
-    this.date = '2022-09-15T15:49:00+05:30'
-    this.enddate = '2022-09-09T15:53:00+05:30'
+    var dta = new Date();
+    console.log(dta);
+    this.date = new Date().toISOString();
+    this.enddate = new Date().toISOString();
     this.distributorData = '';
+    this.yearRange.push(this.year);
+    for (var i = 1; i < 20; i++) {
+      this.yearRange.push(this.year - i);
+    }
     // this.lineChartMethod();
   }
 
@@ -218,7 +225,7 @@ export class HomePage implements OnInit {
   }
 
   openDatePicker() {
-    this.dateshow = true
+    this.dateshow = true;
     // DatePickerPlugin.present({
     //   mode: 'date',
     //   locale: 'pt_BR',
@@ -228,13 +235,41 @@ export class HomePage implements OnInit {
     // }).then((date) => alert(date.value));
   }
 
-  startdatevalue()
-  {
-    console.log(this.date)
+  startdatevalue() {
+    console.log(this.date);
   }
-  enddatevalue()
-  {
-    console.log(this.enddate)
+  enddatevalue() {
+    console.log(this.enddate);
   }
 
+  ckeck() {
+    let qrparams = {
+      id_user_received: this.distributorData,
+      id_product: this.productData,
+      inidate: this.convertDate(this.date),
+      finaldate: this.convertDate(this.enddate),
+    };
+    // let qrparams = {
+    //   id_user_received: 10,
+    //   id_product: 20,
+    //   inidate: '2022/01/01',
+    //   finaldate: '2022/12/31',
+    // };
+    this.apiDataBind.getDataForLineChart(qrparams).then((data) => {
+      debugger;
+      console.log(data);
+    });
+  }
+
+  convertDate(date) {
+    let isoDate = new Date(date);
+    let newDate = isoDate.toISOString().substring(0, 10);
+    let formatedDate =
+      newDate.split('-')[0] +
+      '/' +
+      newDate.split('-')[1] +
+      '/' +
+      newDate.split('-')[2];
+    return formatedDate;
+  }
 }
