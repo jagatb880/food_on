@@ -50,7 +50,7 @@
         </ion-select>
       </div>
 
-      <ion-row style="margin-top: 12px" *ngIf="map == true ">
+      <ion-row style="margin-top: 12px" [hidden]="!mapSec">
         <ion-col size="6">
           <ion-select
             placeholder="Select a Year"
@@ -126,7 +126,7 @@
 
     <div class="shadowdv">
       <div style="text-align: center">
-        <span class="header" *ngIf="map ==true">Geographical Location</span>
+        <span class="header" [hidden]="!mapSec">Geographical Location</span>
         <span class="header" *ngIf="secondtext == true"
           >Amount of Product Sold</span
         >
@@ -150,8 +150,9 @@
           />
         </ion-col>
       </ion-row>
-      <div *ngIf="map ==true">
-        <p style="color: red">Here to show map view</p>
+      <div [hidden]="!mapSec">
+        <!-- <p style="color: red">Here to show map view</p> -->
+        <capacitor-google-map #map></capacitor-google-map>
       </div>
       <div [hidden]="!graphshow">
         <canvas #lineCanvas></canvas>

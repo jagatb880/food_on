@@ -4,6 +4,8 @@ import { Chart } from 'chart.js';
 import { ApiDataBindService } from 'src/app/services/api-data-bind.service';
 import { ConstantService } from 'src/app/services/constant.service';
 import { Storage } from '@ionic/storage-angular';
+import { GoogleMap } from '@capacitor/google-maps';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-home',
@@ -12,6 +14,8 @@ import { Storage } from '@ionic/storage-angular';
 })
 export class HomePage implements OnInit {
   @ViewChild('lineCanvas') lineCanvas: ElementRef;
+  @ViewChild('map') mapView: ElementRef;
+  gMap: GoogleMap;
 
   lineChart: any;
   bars: any;
@@ -20,7 +24,7 @@ export class HomePage implements OnInit {
   enddate: any;
   segmentModel = 'all';
   secondgraph = false;
-  map = true;
+  mapSec = true;
   third = false;
   closerightarow = false;
   graphshow = false;
@@ -35,7 +39,7 @@ export class HomePage implements OnInit {
   thirdgraph = false;
   year = new Date().getFullYear();
   yearRange = [];
-  lastgrph = false
+  lastgrph = false;
   selectedYear: any;
   yearValues = [
     1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21,
@@ -64,6 +68,42 @@ export class HomePage implements OnInit {
     this.storage.get(ConstantService.dbKey.userID).then(async (userID) => {
       await this.getDistributorList(userID);
       await this.getProductList(userID);
+      // this.createMap();
+    });
+  }
+
+  ionViewDidEnter() {
+    this.createMap();
+  }
+
+  async createMap() {
+    this.gMap = await GoogleMap.create({
+      id: 'my-map', // Unique identifier for this map instance
+      element: this.mapView.nativeElement, // reference to the capacitor-google-map element
+      apiKey: environment.mapKey,
+      forceCreate: true, // Your Google Maps API Key
+      config: {
+        center: {
+          // The initial position to be rendered by the map
+          lat: 33.6,
+          lng: -117.9,
+        },
+        zoom: 8, // The initial zoom level to be rendered by the map
+      },
+    });
+
+    const markerId = await this.gMap.addMarker({
+      coordinate: {
+        lat: 33.6,
+        lng: -117.9,
+      },
+    });
+
+    await this.gMap.setCamera({
+      coordinate: {
+        lat: 33.6,
+        lng: -117.9,
+      },
     });
   }
 
@@ -80,7 +120,7 @@ export class HomePage implements OnInit {
     // alert('2nd')
     this.third = true;
     this.thirdtext = false;
-    this.lastgrph = true
+    this.lastgrph = true;
     this.secondtext = true;
     this.graphshow = true;
     this.lineChart = new Chart(this.lineCanvas?.nativeElement, {
@@ -131,16 +171,16 @@ export class HomePage implements OnInit {
   fastgraph() {
     if (this.thirdgraph == true) {
       this.graphshow = true;
-      this.thirdgraph = false
+      this.thirdgraph = false;
       this.lineChartMethod();
       // this.thirdgrapg()
       this.third = false;
-    } 
-    else {
+      this.mapSec = false;
+    } else {
       this.secondtext = false;
       this.thirdtext = false;
       this.graphshow = false;
-      this.map = true;
+      this.mapSec = true;
       this.secondgraph = false;
       this.third = false;
       this.closerightarow = false;
@@ -149,23 +189,22 @@ export class HomePage implements OnInit {
 
   rightarow() {
     this.graphshow = true;
-    this.map = false;
+    this.mapSec = false;
     this.secondgraph = true;
-    if (this.third == true && this.map == false) {
+    if (this.third == true && this.mapSec == false) {
       this.thirdtext = true;
       this.secondtext = false;
       this.closerightarow = true;
       this.graphshow = true;
       // alert('3rd')
-      this.thirdgraph = true
-     this.thirdgrapg()
+      this.thirdgraph = true;
+      this.thirdgrapg();
     } else {
       this.lineChartMethod();
     }
   }
 
-  thirdgrapg()
-  {
+  thirdgrapg() {
     this.lineChart = new Chart(this.lineCanvas?.nativeElement, {
       type: 'line',
       data: {
