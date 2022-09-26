@@ -28,6 +28,8 @@
         cancelButtonText="Custom Cancel"
         class="sechbar"
         placeholder="Search products"
+        (ionChange)="search()"
+        [(ngModel)]="searchText"
       ></ion-searchbar>
       <ion-row>
         <ion-col size="4" (click)="goToNext()">
@@ -37,8 +39,10 @@
           </div>
         </ion-col>
         <ion-col size="4" *ngFor="let data of datas">
-          <div class="aldvvv" style="height: 34vw">
+          <div class="aldvvv" style="height: 34vw;text-align: center;">
+            <ion-avatar style="padding-left: 17px;width: 100%;padding-right: 17px;">
             <img src="{{data.image}}" style="height: 57px" />
+          </ion-avatar>
             <div class="organic">{{data.name}}</div>
           </div>
         </ion-col>

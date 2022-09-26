@@ -1,4 +1,4 @@
-import * as internal from 'stream';
+// import * as internal from 'stream';
 
 export interface IMyProductLotDetails {
   id_production_lot: number;
