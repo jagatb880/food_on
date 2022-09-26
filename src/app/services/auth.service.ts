@@ -31,4 +31,16 @@ export class AuthService {
       body
     );
   }
+
+  getMyProductLotByProductID(id): Observable<any> {
+    return this.http.put(ConstantService.api.getMyProductLotByProductID, id);
+  }
+
+  getMyProductLotDetails(body): Observable<any> {
+    return this.http.post(ConstantService.api.getMyProductLotDetails, body);
+  }
+
+  getQRCodeOperByProdLotId(body): Observable<any> {
+    return this.http.post(ConstantService.api.getQRCodeOperByProdLotId, body);
+  }
 }

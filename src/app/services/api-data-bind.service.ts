@@ -4,6 +4,8 @@ import { AuthService } from './auth.service';
 import { ConstantService } from './constant.service';
 import { ILoginData } from '../interfaces/login-data';
 import { Storage } from '@ionic/storage-angular';
+import { IMyProductLotDetails } from '../interfaces/my-product-lot-details';
+import { IQrCodeOperation } from '../interfaces/qr-code-operation';
 
 @Injectable({
   providedIn: 'root',
@@ -105,6 +107,61 @@ export class ApiDataBindService {
     let body = { qrparams };
     let promise = new Promise<any>((resolve, reject) => {
       this.authSvc.getDataForLineChart(body).subscribe(
+        (res) => {
+          resolve(res);
+        },
+        (err) => {
+          console.log(err);
+          reject(err);
+        }
+      );
+    });
+    return promise;
+  }
+
+  getMyProductLotByProductID(id) {
+    let promise = new Promise<any>((resolve, reject) => {
+      this.authSvc.getMyProductLotByProductID(id).subscribe(
+        (res) => {
+          resolve(res);
+        },
+        (err) => {
+          console.log(err);
+          reject(err);
+        }
+      );
+    });
+    return promise;
+  }
+
+  getMyProductLotDetails(data: IMyProductLotDetails) {
+    let promise = new Promise<any>((resolve, reject) => {
+      let params = {
+        id_production_lot: data.id_production_lot,
+        id_user: data.id_user,
+      };
+      let body = { params };
+      this.authSvc.getMyProductLotDetails(body).subscribe(
+        (res) => {
+          resolve(res);
+        },
+        (err) => {
+          console.log(err);
+          reject(err);
+        }
+      );
+    });
+    return promise;
+  }
+
+  getQRCodeOperByProdLotId(data: IQrCodeOperation) {
+    let promise = new Promise<any>((resolve, reject) => {
+      let params = {
+        id_production_lot: data.id_production_lot,
+        id_user_received: data.id_user_received,
+      };
+      let body = { params };
+      this.authSvc.getQRCodeOperByProdLotId(body).subscribe(
         (res) => {
           resolve(res);
         },

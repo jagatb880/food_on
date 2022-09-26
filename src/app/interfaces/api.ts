@@ -4,4 +4,7 @@ export interface IApis {
   getDistributorList: string;
   getProductList: string;
   getTotalAmountByUserIDProdID: string;
+  getMyProductLotByProductID: string;
+  getMyProductLotDetails: string;
+  getQRCodeOperByProdLotId: string;
 }

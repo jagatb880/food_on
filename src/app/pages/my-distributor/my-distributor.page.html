@@ -1,29 +1,39 @@
 <ion-header>
-  <ion-toolbar style="--background: #ffffff;">
+  <ion-toolbar style="--background: #ffffff">
     <ion-buttons slot="start">
-      <img style="width:32px;padding-left: 10%;" src="assets/images/burger_menu_ic.png">
+      <img
+        style="width: 32px; padding-left: 10%"
+        src="assets/images/burger_menu_ic.png"
+      />
     </ion-buttons>
     <ion-buttons slot="primary">
-      <img style="width:32px;padding-right: 10%;" src="assets/images/profile_menu_ic.png">
+      <img
+        style="width: 32px; padding-right: 10%"
+        src="assets/images/profile_menu_ic.png"
+      />
     </ion-buttons>
 
-    <ion-title style="font-size:35px;color: #232844;">FOOD ON</ion-title>
+    <ion-title style="font-size: 35px; color: #232844">FOOD ON</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content style="--background: #ffffff;">
-  <div style="padding: 12px 14px 26px 14px;">
-    <div style="text-align: center;">
+<ion-content style="--background: #ffffff">
+  <div style="padding: 12px 14px 26px 14px">
+    <div style="text-align: center">
       <span class="header">My Distributor</span>
     </div>
     <div class="shadowdv">
       <div class="fastboxdv" (click)="sendInvitation()">
-        <img src="assets/images/plusssss.png" style="height: 20px;">
+        <img src="assets/images/plusssss.png" style="height: 20px" />
         <p class="send-invite">Send Invitation To New Distributor</p>
       </div>
 
-      <ion-searchbar showCancelButton="focus" cancelButtonText="Custom Cancel" class="sechbar"
-      placeholder="Search products"></ion-searchbar>
+      <ion-searchbar
+        showCancelButton="focus"
+        cancelButtonText="Custom Cancel"
+        class="sechbar"
+        placeholder="Search products"
+      ></ion-searchbar>
 
       <ion-row class="last-row">
         <ion-col size="7">
@@ -34,45 +44,47 @@
         </ion-col>
       </ion-row>
 
-      <div style="
-      border-bottom-left-radius: 13px;
-      border-bottom-right-radius: 13px;">
+      <div
+        style="
+          border-bottom-left-radius: 13px;
+          border-bottom-right-radius: 13px;
+        "
+      >
         <ion-row *ngFor="let key of distrubutionarray" class="value_deta">
-          <ion-col size="7" style="display: flex;
-          align-items: center;">
+          <ion-col size="7" style="display: flex; align-items: center">
             <p class="name-text">{{key.name}}</p>
           </ion-col>
           <ion-col size="5">
-            <ion-button class="button" [ngStyle]="{'--background':key.color}">{{key.invitation}}</ion-button>
+            <ion-button class="button" [ngStyle]="{'--background':key.color}"
+              >{{key.invitation}}</ion-button
+            >
           </ion-col>
         </ion-row>
       </div>
-     
     </div>
   </div>
-
 </ion-content>
 
 <ion-toolbar>
-  <ion-tabs style="background-color: white;">
+  <ion-tabs style="background-color: white">
     <ion-tab-bar slot="bottom">
-      <ion-tab-button tab="schedule" (click)="goToHome()">
-        <img width="27" src="assets/images/dashboard_ic.png">
+      <ion-tab-button (click)="goToHome()">
+        <img width="27" src="assets/images/dashboard_ic.png" />
         <ion-label class="tab-lable">DASHBOARD</ion-label>
       </ion-tab-button>
 
-      <ion-tab-button tab="speakers" (click)="goToProduct()">
-        <img width="25" src="assets/images/products_ic.png">
+      <ion-tab-button (click)="goToProduct()">
+        <img width="25" src="assets/images/products_ic.png" />
         <ion-label class="tab-lable">PRODUCTS</ion-label>
       </ion-tab-button>
 
-      <ion-tab-button tab="map">
-        <img width="25" src="assets/images/distributors_ic.png">
+      <ion-tab-button>
+        <img width="25" src="assets/images/distributors_ic.png" />
         <ion-label class="tab-lable">DISTRIBUTORS</ion-label>
       </ion-tab-button>
 
-      <ion-tab-button tab="about" (click)="goToReceiveLot()">
-        <img width="25" src="assets/images/receive_lot_ic.png">
+      <ion-tab-button (click)="goToReceiveLot()">
+        <img width="25" src="assets/images/receive_lot_ic.png" />
         <ion-label class="tab-lable">RECEIVE LOT</ion-label>
       </ion-tab-button>
     </ion-tab-bar>

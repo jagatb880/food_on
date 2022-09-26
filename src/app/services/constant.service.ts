@@ -16,6 +16,9 @@ export class ConstantService {
     getDistributorList: 'GeDistributorsNetworkByUserId',
     getProductList: 'prdGetProductByUserId',
     getTotalAmountByUserIDProdID: 'GetTotalAmountByUserIDProdID',
+    getMyProductLotByProductID: 'prdGetProductionLotByProductId',
+    getMyProductLotDetails: 'prdGetProductionLotByProdLotIdUserId',
+    getQRCodeOperByProdLotId: 'GetQRCodeOperByProdLotId',
   };
 
   static message: IMessages = {
