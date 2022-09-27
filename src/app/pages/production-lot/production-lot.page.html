@@ -1,75 +1,143 @@
 <ion-header>
-  <ion-toolbar style="--background: #ffffff;">
+  <ion-toolbar style="--background: #ffffff">
     <ion-buttons slot="start">
-      <img style="width:32px;padding-left: 10%;" src="assets/images/back_a.png" (click)="goToBack()">
+      <img
+        style="width: 32px; padding-left: 10%"
+        src="assets/images/back_a.png"
+        (click)="goToBack()"
+      />
     </ion-buttons>
     <ion-buttons slot="primary">
-      <img style="width:32px;padding-right: 10%;" src="assets/images/profile_menu_ic.png">
+      <img
+        style="width: 32px; padding-right: 10%"
+        src="assets/images/profile_menu_ic.png"
+      />
     </ion-buttons>
 
-    <ion-title style="font-size:35px;color: #232844;">FOOD ON</ion-title>
+    <ion-title style="font-size: 35px; color: #232844">FOOD ON</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content style="--background: #ffffff;">
-  <div style="padding: 12px 12px 26px 12px;">
-    <div style="text-align: center;">
+<ion-content style="--background: #ffffff">
+  <div style="padding: 12px 12px 26px 12px">
+    <div style="text-align: center">
       <span class="header">My Products Lots</span>
     </div>
     <div class="shadowdv">
       <div class="create-product-lot">
-        <img src="assets/images/ic_cancel.png" style="height: 24px;">
-        <span style="margin: 0;font-family: 'Nunito-SemiBold';color: #ffffff;padding-left: 5px;font-size: 14px;
-      padding-top: 3px;">Create New Production Lot</span>
+        <img src="assets/images/ic_cancel.png" style="height: 24px" />
+        <span
+          style="
+            margin: 0;
+            font-family: 'Nunito-SemiBold';
+            color: #ffffff;
+            padding-left: 5px;
+            font-size: 14px;
+            padding-top: 3px;
+          "
+          >Create New Production Lot</span
+        >
       </div>
-      <div class="header" >Product Name</div>
-      <div class="dvvvvvvv">
-        Organic mango
-      </div>
-      <div *ngFor="let data of datas"
-        style="margin-top: 12px; background: white;border-radius: 10px;box-shadow: 0 4px 8px 0 rgb(0 0 0 / 9%), 0 6px 9px 0 rgb(0 0 0 / 9%);">
-        <ion-row style="padding: 5px;">
+      <div class="header">Product Name</div>
+      <div class="dvvvvvvv">Organic mango</div>
+      <div
+        *ngFor="let data of datas"
+        style="
+          margin-top: 12px;
+          background: white;
+          border-radius: 10px;
+          box-shadow: 0 4px 8px 0 rgb(0 0 0 / 9%), 0 6px 9px 0 rgb(0 0 0 / 9%);
+        "
+      >
+        <ion-row style="padding: 5px">
           <ion-col size="6">
-            <div style="display: flex;">
-              <img src="assets/images/calender.png" style="height: 26px;">
-              <p class="left-heading">
-                {{data.date}}</p>
+            <div style="display: flex">
+              <img src="assets/images/calender.png" style="height: 26px" />
+              <p class="left-heading">{{convertDate(data.production_date)}}</p>
             </div>
-            <div style="display: flex;margin-top: 10px;">
-              <img src="assets/images/usacurrency.png" style="height: 26px;">
-              <p class="left-heading">
-                ${{data.price}}</p>
+            <div style="display: flex; margin-top: 10px">
+              <img src="assets/images/usacurrency.png" style="height: 26px" />
+              <p class="left-heading">$</p>
             </div>
           </ion-col>
-          <ion-col size="6" style="padding-top: 7px;padding-left: 10px;">
-            <p class="right-heading">Lot Code : <span
-                style="font-family: none;"> {{data.letcode}}</span> </p>
-            <p class="right-heading">Amount : <span
-                style="font-family: none;"> {{data.amount}}</span> </p>
-            <p class="right-heading">Level :<span
-                style="font-family: none;"> {{data.level}}</span> </p>
+          <ion-col size="6" style="padding-top: 7px; padding-left: 10px">
+            <p class="right-heading">
+              Lot Code :
+              <span style="font-family: none"> {{data.qr_code_lot}}</span>
+            </p>
+            <p class="right-heading">
+              Amount : <span style="font-family: none"> </span>
+            </p>
+            <p class="right-heading">
+              Level :<span style="font-family: none"> </span>
+            </p>
           </ion-col>
         </ion-row>
         <ion-row>
-          <ion-col size="4" style="background: #001e62;height: 38px;border-bottom-left-radius: 11px;"
-            (click)="viewDetails()">
-            <div style="display: flex;padding-left: 6px;padding-top: 3px;">
-              <img src="assets/images/details_icon.png" style="height: 20px;">
-              <p style="margin: 0;font-family: 'Nunito-SemiBold';color: #ffffff;padding-left: 5px;font-size: 14px;
-            padding-top: 1px;">DETAILS</p>
+          <ion-col
+            size="4"
+            style="
+              background: #001e62;
+              height: 38px;
+              border-bottom-left-radius: 11px;
+            "
+            (click)="viewDetails()"
+          >
+            <div style="display: flex; padding-left: 6px; padding-top: 3px">
+              <img src="assets/images/details_icon.png" style="height: 20px" />
+              <p
+                style="
+                  margin: 0;
+                  font-family: 'Nunito-SemiBold';
+                  color: #ffffff;
+                  padding-left: 5px;
+                  font-size: 14px;
+                  padding-top: 1px;
+                "
+              >
+                DETAILS
+              </p>
             </div>
           </ion-col>
-          <ion-col size="4" style="background: #f7f7f7;height: 38px;">
-            <div style="display: flex;padding-left: 6px;padding-top: 3px;">
-              <img src="assets/images/barcodeicon.png" style="height: 19px;">
-              <p style="margin: 0;color: #000000;padding-left: 5px;font-size: 13px;padding-top: 2px;font-family: 'Nunito-SemiBold';">QR CODE</p>
+          <ion-col size="4" style="background: #f7f7f7; height: 38px">
+            <div style="display: flex; padding-left: 6px; padding-top: 3px">
+              <img src="assets/images/barcodeicon.png" style="height: 19px" />
+              <p
+                style="
+                  margin: 0;
+                  color: #000000;
+                  padding-left: 5px;
+                  font-size: 13px;
+                  padding-top: 2px;
+                  font-family: 'Nunito-SemiBold';
+                "
+              >
+                QR CODE
+              </p>
             </div>
           </ion-col>
-          <ion-col size="4" style="background: #87aa3d;height: 38px;border-bottom-right-radius: 11px;">
-            <div style="display: flex;padding-left: 6px;padding-top: 3px;">
-              <img src="assets/images/trace_icon.png" style="height: 20px;">
-              <p style="margin: 0;font-family: 'Nunito-SemiBold';color: #ffffff;padding-left: 5px;font-size: 14px;
-            padding-top: 1px;">TRACE</p>
+          <ion-col
+            size="4"
+            style="
+              background: #87aa3d;
+              height: 38px;
+              border-bottom-right-radius: 11px;
+            "
+          >
+            <div style="display: flex; padding-left: 6px; padding-top: 3px">
+              <img src="assets/images/trace_icon.png" style="height: 20px" />
+              <p
+                style="
+                  margin: 0;
+                  font-family: 'Nunito-SemiBold';
+                  color: #ffffff;
+                  padding-left: 5px;
+                  font-size: 14px;
+                  padding-top: 1px;
+                "
+              >
+                TRACE
+              </p>
             </div>
           </ion-col>
         </ion-row>

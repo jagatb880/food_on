@@ -1,7 +1,6 @@
 import { Location } from '@angular/common';
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { Router } from '@angular/router';
-
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-product-details',
@@ -9,29 +8,31 @@ import { Router } from '@angular/router';
   styleUrls: ['./product-details.page.scss'],
 })
 export class ProductDetailsPage implements OnInit {
-  constructor(private _location: Location, private router: Router) {
+  productId: any;
+  constructor(
+    private _location: Location,
+    private router: Router,
+    private activeRouter: ActivatedRoute
+  ) {
+    this.productId = this.activeRouter.snapshot.paramMap.get('productId');
+    console.log(this.productId);
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   goToBack() {
     this._location.back();
   }
 
   productLots() {
-    this.router.navigate(['production-lot']);
+    this.router.navigate(['production-lot', { productId: this.productId }], {
+      skipLocationChange: true,
+    });
   }
 
-  save() {
+  save() {}
 
-  }
+  viewphoto() {}
 
-  viewphoto() {
-  }
-
-  edit() {
-
-  }
-
+  edit() {}
 }

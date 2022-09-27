@@ -1,6 +1,7 @@
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ApiDataBindService } from 'src/app/services/api-data-bind.service';
 
 @Component({
   selector: 'app-production-lot',
@@ -8,34 +9,36 @@ import { Router } from '@angular/router';
   styleUrls: ['./production-lot.page.scss'],
 })
 export class ProductionLotPage implements OnInit {
-
   datas: any[];
-  constructor(private _location: Location, private router: Router) { }
+  productId: any;
+
+  constructor(
+    private _location: Location,
+    private router: Router,
+    private activeRouter: ActivatedRoute,
+    private apiDataBind: ApiDataBindService
+  ) {
+    this.productId = this.activeRouter.snapshot.paramMap.get('productId');
+    console.log(this.productId);
+  }
 
   ngOnInit() {
-    this.datas = [
-      {
-        "date": "08-Aug-2022",
-        "price": "210.00",
-        "letcode": "65910",
-        "amount": "14.50",
-        "level": "01",
-      },
-      {
-        "date": "08-Aug-2022",
-        "price": "210.00",
-        "letcode": "65910",
-        "amount": "14.50",
-        "level": "01",
-      },
-      {
-        "date": "08-Aug-2022",
-        "price": "210.00",
-        "letcode": "65910",
-        "amount": "14.50",
-        "level": "01",
-      }
-    ];
+    this.datas = [];
+  }
+
+  ionViewWillEnter() {
+    if (this.productId != null) this.getProductLotData();
+  }
+
+  getProductLotData() {
+    this.apiDataBind
+      .getMyProductLotByProductID(this.productId)
+      .then((productLotDatas) => {
+        if (productLotDatas.status == 200) {
+          console.log(productLotDatas);
+          this.datas = productLotDatas.data;
+        }
+      });
   }
 
   goToBack() {
@@ -46,4 +49,15 @@ export class ProductionLotPage implements OnInit {
     this.router.navigate(['view-details']);
   }
 
+  convertDate(date) {
+    let isoDate = new Date(date);
+    let newDate = isoDate.toISOString().substring(0, 10);
+    let formatedDate =
+      newDate.split('-')[2] +
+      '/' +
+      newDate.split('-')[1] +
+      '/' +
+      newDate.split('-')[0];
+    return formatedDate;
+  }
 }

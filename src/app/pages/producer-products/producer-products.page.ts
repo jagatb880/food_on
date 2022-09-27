@@ -10,16 +10,17 @@ import { Storage } from '@ionic/storage-angular';
   styleUrls: ['./producer-products.page.scss'],
 })
 export class ProducerProductsPage implements OnInit {
-
   datas: any[];
   productList: any[];
   searchText: any;
-  constructor(private _location: Location, private router: Router, private storage: Storage,
-    private apiDataBind: ApiDataBindService) { }
+  constructor(
+    private _location: Location,
+    private router: Router,
+    private storage: Storage,
+    private apiDataBind: ApiDataBindService
+  ) {}
 
-  ngOnInit() {
-  
-  }
+  ngOnInit() {}
   ionViewWillEnter() {
     this.storage.get(ConstantService.dbKey.userID).then(async (userID) => {
       await this.getProductList(userID);
@@ -31,40 +32,40 @@ export class ProducerProductsPage implements OnInit {
   }
 
   goToDistributor() {
-    this.router.navigate(['my-distributor'], { replaceUrl: true })
+    this.router.navigate(['my-distributor'], { replaceUrl: true });
   }
 
-  goToNext() {
-    this.router.navigate(['product-details']);
+  goToNext(data) {
+    this.router.navigate(['product-details', { productId: data.id }], {
+      skipLocationChange: true,
+    });
   }
 
   goToReceiveLot() {
-    this.router.navigate(['receive-lot'])
+    this.router.navigate(['receive-lot']);
   }
   getProductList(userID) {
     this.apiDataBind.getProductList(userID).then((data) => {
       console.log(data);
       if (data.status == 200) {
         this.productList = data.data;
-        this.datas = this.productList
-        console.log(this.productList)
+        this.datas = this.productList;
+        console.log(this.productList);
       }
     });
   }
 
   search() {
-    console.log(this.searchText)
-    if (this.searchText == '') 
-    { 
-      this.datas = []
-      this.datas = this.productList
-     }
-    else {
+    console.log(this.searchText);
+    if (this.searchText == '') {
+      this.datas = [];
+      this.datas = this.productList;
+    } else {
       // let data = this.countryObj
-      this.datas = this.productList.filter(item => item.name.toLowerCase().startsWith(this.searchText))
-      console.log(this.datas)
+      this.datas = this.productList.filter((item) =>
+        item.name.toLowerCase().startsWith(this.searchText)
+      );
+      console.log(this.datas);
     }
   }
-
-
 }

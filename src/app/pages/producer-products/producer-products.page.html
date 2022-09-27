@@ -32,14 +32,18 @@
         [(ngModel)]="searchText"
       ></ion-searchbar>
       <ion-row>
-        <ion-col size="4" (click)="goToNext()">
+        <ion-col size="4" (click)="goToNext(null)">
           <div class="addnew" style="height: 34vw">
             <img src="assets/images/add_circle.png" style="height: 35px" />
             <div class="addnewproduct">ADD NEW PRODUCT</div>
           </div>
         </ion-col>
         <ion-col size="4" *ngFor="let data of datas">
-          <div class="aldvvv" style="height: 34vw; text-align: center">
+          <div
+            class="aldvvv"
+            style="height: 34vw; text-align: center"
+            (click)="goToNext(data)"
+          >
             <ion-avatar
               style="padding-left: 5vw; width: 100%; padding-right: 5vw"
             >
