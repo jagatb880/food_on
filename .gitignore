@@ -15,6 +15,7 @@ Podfile.lock
 Build/*
 build/
 Index/
+src/environments
 .*.sw*
 android-template.iml
 !/build/.npmkeep
