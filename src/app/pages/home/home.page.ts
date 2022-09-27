@@ -45,6 +45,10 @@ export class HomePage implements OnInit {
     1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21,
     22, 23, 24, 25, 26, 27, 28, 29, 30,
   ];
+  chartdeta: any;
+  charttotalamount: any[];
+  charttotalsale: any[];
+  chartmonth: any[];
   constructor(
     private router: Router,
     private storage: Storage,
@@ -126,19 +130,7 @@ export class HomePage implements OnInit {
     this.lineChart = new Chart(this.lineCanvas?.nativeElement, {
       type: 'line',
       data: {
-        labels: [
-          'JAN',
-          'FEB',
-          'MAR',
-          'APR',
-          'MAY',
-          'JUN',
-          'JUL',
-          'AUG',
-          'SEP',
-          'NOV',
-          'DEC',
-        ],
+        labels: this.chartmonth,
         datasets: [
           {
             label: '',
@@ -159,9 +151,7 @@ export class HomePage implements OnInit {
             pointHoverBorderWidth: 2,
             pointRadius: 1,
             pointHitRadius: 10,
-            data: [
-              0, 2000, 2000, 4000, 4000, 6000, 6000, 8000, 8000, 10000, 0, 0,
-            ],
+            data: this.charttotalamount,
             spanGaps: false,
           },
         ],
@@ -208,19 +198,7 @@ export class HomePage implements OnInit {
     this.lineChart = new Chart(this.lineCanvas?.nativeElement, {
       type: 'line',
       data: {
-        labels: [
-          'JAN',
-          'FEB',
-          'MAR',
-          'APR',
-          'MAY',
-          'JUN',
-          'JUL',
-          'AUG',
-          'SEP',
-          'NOV',
-          'DEC',
-        ],
+        labels: this.chartmonth ,
         datasets: [
           {
             label: '',
@@ -241,7 +219,7 @@ export class HomePage implements OnInit {
             pointHoverBorderWidth: 2,
             pointRadius: 1,
             pointHitRadius: 10,
-            data: [0, 5, 10, 11, 4000, 6000, 6000, 8000, 8000, 10000, 0, 0],
+            data: this.charttotalsale,
             spanGaps: false,
           },
         ],
@@ -308,8 +286,21 @@ export class HomePage implements OnInit {
     //   finaldate: '2022/12/31',
     // };
     this.apiDataBind.getDataForLineChart(qrparams).then((data) => {
-      debugger;
       console.log(data);
+      this.chartdeta = data.data;
+      this.charttotalamount = [];
+      this.charttotalsale = [];
+      this.chartmonth = [];
+      for(var i = 0; i<this.chartdeta.length;i++)
+      {
+        if(this.chartdeta[i])
+        {
+          this.charttotalamount.push(this.chartdeta[i].total_amount)
+          this.charttotalsale.push(this.chartdeta[i].total_sale)
+          this.chartmonth.push(this.chartdeta[i].month_sent)
+          console.log(this.charttotalamount)
+        }
+      }
     });
   }
 
