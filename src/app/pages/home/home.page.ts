@@ -120,13 +120,8 @@ export class HomePage implements OnInit {
   //   this.lineChartMethod();
   // }
 
-  lineChartMethod() {
-    // alert('2nd')
-    this.third = true;
-    this.thirdtext = false;
-    this.lastgrph = true;
-    this.secondtext = true;
-    this.graphshow = true;
+  secondchart()
+  {
     this.lineChart = new Chart(this.lineCanvas?.nativeElement, {
       type: 'line',
       data: {
@@ -158,6 +153,15 @@ export class HomePage implements OnInit {
       },
     });
   }
+  lineChartMethod() {
+    // alert('2nd')
+    this.third = true;
+    this.thirdtext = false;
+    this.lastgrph = true;
+    this.secondtext = true;
+    this.graphshow = true;
+    this.secondchart()
+  }
   fastgraph() {
     if (this.thirdgraph == true) {
       this.graphshow = true;
@@ -166,6 +170,7 @@ export class HomePage implements OnInit {
       // this.thirdgrapg()
       this.third = false;
       this.mapSec = false;
+      this.closerightarow = false
     } else {
       this.secondtext = false;
       this.thirdtext = false;
@@ -240,6 +245,7 @@ export class HomePage implements OnInit {
       console.log(data);
       if (data.status == 200) {
         this.productList = data.data;
+        
       }
     });
   }
@@ -299,6 +305,8 @@ export class HomePage implements OnInit {
           this.charttotalsale.push(this.chartdeta[i].total_sale)
           this.chartmonth.push(this.chartdeta[i].month_sent)
           console.log(this.charttotalamount)
+          this.secondchart()
+        this.thirdgrapg()
         }
       }
     });
