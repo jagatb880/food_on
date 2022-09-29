@@ -4,8 +4,11 @@ import { Chart } from 'chart.js';
 import { ApiDataBindService } from 'src/app/services/api-data-bind.service';
 import { ConstantService } from 'src/app/services/constant.service';
 import { Storage } from '@ionic/storage-angular';
-import { GoogleMap } from '@capacitor/google-maps';
+import { GoogleMap, Marker } from '@capacitor/google-maps';
 import { environment } from 'src/environments/environment';
+import { ToastService } from 'src/app/services/toast.service';
+import { LatLngBounds } from '@capacitor/google-maps/dist/typings/definitions';
+declare var google: any;
 
 @Component({
   selector: 'app-home',
@@ -41,17 +44,19 @@ export class HomePage implements OnInit {
   yearRange = [];
   lastgrph = false;
   selectedYear: any;
-  yearValues = [
-    1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21,
-    22, 23, 24, 25, 26, 27, 28, 29, 30,
-  ];
+  selectedMonth: any;
   chartdeta: any;
   charttotalamount: any[];
   charttotalsale: any[];
   chartmonth: any[];
+  monthList: any[];
+  qrcodeCoordinates: any[];
+  actualCoordinates: any[];
+  markers: any[];
   constructor(
     private router: Router,
     private storage: Storage,
+    private toastSvc: ToastService,
     private apiDataBind: ApiDataBindService
   ) {}
 
@@ -61,10 +66,63 @@ export class HomePage implements OnInit {
     this.date = new Date().toISOString();
     this.enddate = new Date().toISOString();
     this.distributorData = '';
+    this.productData = '';
+    this.selectedYear = '';
+    this.selectedMonth = '';
     this.yearRange.push(this.year);
     for (var i = 1; i < 20; i++) {
       this.yearRange.push(this.year - i);
     }
+    this.monthList = [
+      {
+        month: 'January',
+        monthId: 1,
+      },
+      {
+        month: 'February',
+        monthId: 2,
+      },
+      {
+        month: 'March',
+        monthId: 3,
+      },
+      {
+        month: 'April',
+        monthId: 4,
+      },
+      {
+        month: 'May',
+        monthId: 5,
+      },
+      {
+        month: 'Jun',
+        monthId: 6,
+      },
+      {
+        month: 'July',
+        monthId: 7,
+      },
+      {
+        month: 'August',
+        monthId: 8,
+      },
+      {
+        month: 'September',
+        monthId: 9,
+      },
+      {
+        month: 'October',
+        monthId: 10,
+      },
+      {
+        month: 'November',
+        monthId: 11,
+      },
+      {
+        month: 'December',
+        monthId: 12,
+      },
+    ];
     // this.lineChartMethod();
   }
 
@@ -96,19 +154,19 @@ export class HomePage implements OnInit {
       },
     });
 
-    const markerId = await this.gMap.addMarker({
-      coordinate: {
-        lat: 33.6,
-        lng: -117.9,
-      },
-    });
+    // const markerId = await this.gMap.addMarker({
+    //   coordinate: {
+    //     lat: 7.083205,
+    //     lng: -73.154096,
+    //   },
+    // });
 
-    await this.gMap.setCamera({
-      coordinate: {
-        lat: 33.6,
-        lng: -117.9,
-      },
-    });
+    // await this.gMap.setCamera({
+    //   coordinate: {
+    //     lat: 7.083205,
+    //     lng: -73.154096,
+    //   },
+    // });
   }
 
   segmentChanged(event) {
@@ -116,12 +174,8 @@ export class HomePage implements OnInit {
 
     console.log(event);
   }
-  // ionViewDidEnter() {
-  //   this.lineChartMethod();
-  // }
 
-  secondchart()
-  {
+  secondchart() {
     this.lineChart = new Chart(this.lineCanvas?.nativeElement, {
       type: 'line',
       data: {
@@ -160,7 +214,7 @@ export class HomePage implements OnInit {
     this.lastgrph = true;
     this.secondtext = true;
     this.graphshow = true;
-    this.secondchart()
+    this.secondchart();
   }
   fastgraph() {
     if (this.thirdgraph == true) {
@@ -170,7 +224,7 @@ export class HomePage implements OnInit {
       // this.thirdgrapg()
       this.third = false;
       this.mapSec = false;
-      this.closerightarow = false
+      this.closerightarow = false;
     } else {
       this.secondtext = false;
       this.thirdtext = false;
@@ -203,7 +257,7 @@ export class HomePage implements OnInit {
     this.lineChart = new Chart(this.lineCanvas?.nativeElement, {
       type: 'line',
       data: {
-        labels: this.chartmonth ,
+        labels: this.chartmonth,
         datasets: [
           {
             label: '',
@@ -245,7 +299,6 @@ export class HomePage implements OnInit {
       console.log(data);
       if (data.status == 200) {
         this.productList = data.data;
-        
       }
     });
   }
@@ -278,37 +331,141 @@ export class HomePage implements OnInit {
     console.log(this.enddate);
   }
 
-  ckeck() {
-    let qrparams = {
-      id_user_received: this.distributorData,
-      id_product: this.productData,
-      inidate: this.convertDate(this.date),
-      finaldate: this.convertDate(this.enddate),
-    };
-    // let qrparams = {
-    //   id_user_received: 10,
-    //   id_product: 20,
-    //   inidate: '2022/01/01',
-    //   finaldate: '2022/12/31',
-    // };
-    this.apiDataBind.getDataForLineChart(qrparams).then((data) => {
-      console.log(data);
-      this.chartdeta = data.data;
-      this.charttotalamount = [];
-      this.charttotalsale = [];
-      this.chartmonth = [];
-      for(var i = 0; i<this.chartdeta.length;i++)
-      {
-        if(this.chartdeta[i])
-        {
-          this.charttotalamount.push(this.chartdeta[i].total_amount)
-          this.charttotalsale.push(this.chartdeta[i].total_sale)
-          this.chartmonth.push(this.chartdeta[i].month_sent)
-          console.log(this.charttotalamount)
-          this.secondchart()
-        this.thirdgrapg()
-        }
+  check() {
+    if (this.mapSec) {
+      if (this.distributorData == '') {
+        this.toastSvc.show({
+          message: 'Select one producer',
+          type: 'error',
+        });
+      } else if (this.productData == '') {
+        this.toastSvc.show({
+          message: 'Select one product',
+          type: 'error',
+        });
+      } else if (this.selectedYear == '') {
+        this.toastSvc.show({
+          message: 'Select the year',
+          type: 'error',
+        });
+      } else if (this.selectedMonth == '') {
+        this.toastSvc.show({
+          message: 'Select the month',
+          type: 'error',
+        });
+      } else {
+        this.qrcodeCoordinates = [];
+        this.actualCoordinates = [];
+        this.apiDataBind
+          .getMyProductLotByProductID(this.productData)
+          .then((resultData) => {
+            if (resultData.status == 200 && resultData.data != null) {
+              for (let i = 0; i < resultData.data.length; i++) {
+                if (resultData.data[i].qrcode_coordinates.length > 0) {
+                  for (
+                    let j = 0;
+                    j < resultData.data[i].qrcode_coordinates.length;
+                    j++
+                  ) {
+                    resultData.data[i].qrcode_coordinates[j].register_date =
+                      this.convertDate(
+                        resultData.data[i].qrcode_coordinates[j].register_date
+                      );
+                    this.qrcodeCoordinates.push(
+                      resultData.data[i].qrcode_coordinates[j]
+                    );
+                  }
+                }
+              }
+              for (let i = 0; i < this.qrcodeCoordinates.length; i++) {
+                if (
+                  this.qrcodeCoordinates[i].register_date.split('/')[0] ==
+                    this.selectedYear &&
+                  this.qrcodeCoordinates[i].register_date.split('/')[1] ==
+                    this.selectedMonth
+                ) {
+                  this.actualCoordinates.push(this.qrcodeCoordinates[i]);
+                }
+              }
+              console.log(this.actualCoordinates);
+              if (this.actualCoordinates.length == 0) {
+                this.toastSvc.show({
+                  message: 'No Match Data Found',
+                  type: 'error',
+                });
+              } else {
+                this.drawMarkersOnMap();
+              }
+            } else {
+              this.toastSvc.show({
+                message: 'No Data Found',
+                type: 'error',
+              });
+            }
+          });
       }
+    } else {
+      let qrparams = {
+        id_user_received: this.distributorData,
+        id_product: this.productData,
+        inidate: this.convertDate(this.date),
+        finaldate: this.convertDate(this.enddate),
+      };
+      // let qrparams = {
+      //   id_user_received: 10,
+      //   id_product: 20,
+      //   inidate: '2022/01/01',
+      //   finaldate: '2022/12/31',
+      // };
+      this.apiDataBind.getDataForLineChart(qrparams).then((data) => {
+        console.log(data);
+        this.chartdeta = data.data;
+        this.charttotalamount = [];
+        this.charttotalsale = [];
+        this.chartmonth = [];
+        for (var i = 0; i < this.chartdeta.length; i++) {
+          if (this.chartdeta[i]) {
+            this.charttotalamount.push(this.chartdeta[i].total_amount);
+            this.charttotalsale.push(this.chartdeta[i].total_sale);
+            this.chartmonth.push(this.chartdeta[i].month_sent);
+            console.log(this.charttotalamount);
+            this.secondchart();
+            this.thirdgrapg();
+          }
+        }
+      });
+    }
+  }
+
+  drawMarkersOnMap() {
+    this.markers = [];
+    for (let i = 0; i < this.actualCoordinates.length; i++) {
+      let coordinate = {
+        lat: Number(this.actualCoordinates[i].n_coord),
+        lng: Number(this.actualCoordinates[i].w_coord),
+      };
+      // let LatLong = { coordinate };
+      this.markers.push(coordinate);
+      console.log(this.markers);
+    }
+    for (let i = 0; i < this.markers.length; i++) {
+      const markerId = this.gMap.addMarker({
+        coordinate: {
+          lat: this.markers[i].lat,
+          lng: this.markers[i].lng,
+        },
+      });
+    }
+    this.gMap.setCamera({
+      zoom: 8,
+      coordinate: {
+        lat: this.markers[0].lat,
+        lng: this.markers[0].lng,
+      },
+    });
+
+    this.gMap.getMapBounds().then((data) => {
+      console.log(data);
     });
   }
 

@@ -63,10 +63,16 @@
           </ion-select>
         </ion-col>
         <ion-col size="6">
-          <ion-select placeholder="Select a Month" class="producerselect">
-            <ion-select-option value="apples">Apples</ion-select-option>
-            <ion-select-option value="oranges">Oranges</ion-select-option>
-            <ion-select-option value="bananas">Bananas</ion-select-option>
+          <ion-select
+            placeholder="Select a Month"
+            class="producerselect"
+            [(ngModel)]="selectedMonth"
+          >
+            <ion-select-option
+              *ngFor="let data of monthList"
+              [value]="data.monthId"
+              >{{data.month}}</ion-select-option
+            >
           </ion-select>
         </ion-col>
       </ion-row>
@@ -119,7 +125,7 @@
           </ng-template>
         </ion-popover>
       </div>
-      <ion-button color="primary" style="width: 100%" (click)="ckeck()"
+      <ion-button color="primary" style="width: 100%" (click)="check()"
         >Check</ion-button
       >
     </div>
@@ -141,17 +147,19 @@
             (click)="fastgraph()"
           />
         </ion-col>
-        <ion-col size="6" style="text-align: end">
+        <ion-col
+          size="6"
+          style="text-align: end; z-index: 999"
+          (click)="rightarow()"
+        >
           <img
             style="width: 19px"
             src="assets/images/rightarow.png"
-            (click)="rightarow()"
             *ngIf="closerightarow == false"
           />
         </ion-col>
       </ion-row>
       <div [hidden]="!mapSec">
-        <!-- <p style="color: red">Here to show map view</p> -->
         <capacitor-google-map #map></capacitor-google-map>
       </div>
       <div [hidden]="!graphshow">
