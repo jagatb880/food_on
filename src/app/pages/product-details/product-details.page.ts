@@ -25,9 +25,10 @@ export class ProductDetailsPage implements OnInit {
   }
 
   productLots() {
-    this.router.navigate(['production-lot', { productId: this.productId }], {
-      skipLocationChange: true,
-    });
+    this.router.navigate([
+      'production-lot',
+      { productId: this.productId.params.id },
+    ]);
   }
 
   save() {}

@@ -36,9 +36,7 @@ export class ProducerProductsPage implements OnInit {
   }
 
   goToNext(data) {
-    this.router.navigate(['product-details',data], {
-      skipLocationChange: true,
-    });
+    this.router.navigate(['product-details', data]);
   }
 
   goToReceiveLot() {

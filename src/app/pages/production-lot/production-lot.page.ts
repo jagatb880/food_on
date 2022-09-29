@@ -2,6 +2,7 @@ import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiDataBindService } from 'src/app/services/api-data-bind.service';
+import { Dialog } from '@capacitor/dialog';
 
 @Component({
   selector: 'app-production-lot',
@@ -36,7 +37,11 @@ export class ProductionLotPage implements OnInit {
       .then((productLotDatas) => {
         if (productLotDatas.status == 200) {
           console.log(productLotDatas);
-          this.datas = productLotDatas.data;
+          if (productLotDatas.data != null) {
+            this.datas = productLotDatas.data;
+          } else {
+            this.showConfirm();
+          }
         }
       });
   }
@@ -60,4 +65,13 @@ export class ProductionLotPage implements OnInit {
       newDate.split('-')[0];
     return formatedDate;
   }
+
+  showConfirm = async () => {
+    const { value } = await Dialog.confirm({
+      title: 'Confirm',
+      message: `Are you sure you'd like to press the red button?`,
+    });
+
+    console.log('Confirmed:', value);
+  };
 }

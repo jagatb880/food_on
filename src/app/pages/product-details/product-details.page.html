@@ -1,59 +1,70 @@
 <ion-header>
-  <ion-toolbar style="--background: #ffffff;">
+  <ion-toolbar style="--background: #ffffff">
     <ion-buttons slot="start">
-      <img style="width:32px;padding-left: 10%;" src="assets/images/back_a.png" (click)="goToBack()">
+      <img
+        style="width: 32px; padding-left: 10%"
+        src="assets/images/back_a.png"
+        (click)="goToBack()"
+      />
     </ion-buttons>
     <ion-buttons slot="primary">
-      <img style="width:32px;padding-right: 10%;" src="assets/images/profile_menu_ic.png">
+      <img
+        style="width: 32px; padding-right: 10%"
+        src="assets/images/profile_menu_ic.png"
+      />
     </ion-buttons>
-    <ion-title style="font-size:35px;color: #232844;">FOOD ON</ion-title>
+    <ion-title style="font-size: 35px; color: #232844">FOOD ON</ion-title>
   </ion-toolbar>
 </ion-header>
-<ion-content style="--background: #ffffff;">
-  <div style="padding: 12px 14px 26px 14px;">
-    <div style="text-align: center;">
+<ion-content style="--background: #ffffff">
+  <div style="padding: 12px 14px 26px 14px">
+    <div style="text-align: center">
       <span class="header">My Products Details</span>
     </div>
     <div class="shadowdv">
       <span class="header">Product Name</span>
-      <ion-row  class="prductnamerw">
-        <ion-col size="8" style="padding-top: 7px;padding-left: 10px;">
-          <span style="color: #333333;font-size: 16px;">{{productId.params.name}}</span>
+      <ion-row class="prductnamerw">
+        <ion-col size="8" style="padding-top: 7px; padding-left: 10px">
+          <span style="color: #333333; font-size: 14px"
+            >{{productId.params.name}}</span
+          >
         </ion-col>
-        <ion-col size="4" style="padding-top: 0;padding-bottom: 0;text-align: -webkit-right;" (click)="viewphoto()">
+        <ion-col
+          size="4"
+          style="padding-top: 0; padding-bottom: 0; text-align: -webkit-right"
+          (click)="viewphoto()"
+        >
           <div class="viewphoto">View Photo</div>
         </ion-col>
       </ion-row>
-      <ion-row style="padding-bottom: 17px;">
-        <ion-col size="6" style="padding-left: 0;">
+      <ion-row style="padding-bottom: 17px">
+        <ion-col size="6" style="padding-left: 0">
           <div class="mainbox">
-            <img src="assets/images/camera.png" class="cameraimage_img">
+            <img src="assets/images/camera.png" class="cameraimage_img" />
             <p class="takeimg">Take Photo</p>
           </div>
         </ion-col>
-        <ion-col size="6" style="text-align: end;" >
-          <div class="mainbox" style="margin-left: auto;">
-            <img src="assets/images/galery.png" class="cameraimage_img">
+        <ion-col size="6" style="text-align: end">
+          <div class="mainbox" style="margin-left: auto">
+            <img src="assets/images/galery.png" class="cameraimage_img" />
             <p class="takeimg">Open Photo</p>
           </div>
         </ion-col>
       </ion-row>
 
       <span class="header">Product Description</span>
-      <div class="domydeta">
-       {{productId.params.description}}
-      </div>
+      <div class="domydeta">{{productId.params.description}}</div>
 
       <span class="header">Product Video</span>
-      <div class="domydeta">
-        {{productId.params.video}}
-      </div>
-      <div style="text-align: center;">
-        <ion-button class="save-button" fill="outline" (click)="save()"><img src="assets/images/save.png" class="goglelogin">SAVE
+      <div class="domydeta">{{productId.params.video}}</div>
+      <div style="text-align: center">
+        <ion-button class="save-button" fill="outline" (click)="save()"
+          ><img src="assets/images/save.png" class="goglelogin" />SAVE
         </ion-button>
       </div>
-      <div style="text-align: center;margin-bottom: 7%;">
-        <ion-button class="edit-button" fill="outline" (click)="edit()"><img src="assets/images/ic_create.png" class="goglelogin">EDIT
+      <div style="text-align: center; margin-bottom: 7%">
+        <ion-button class="edit-button" fill="outline" (click)="edit()"
+          ><img src="assets/images/ic_create.png" class="goglelogin" />EDIT
         </ion-button>
       </div>
     </div>
@@ -61,10 +72,10 @@
   <!-- <canvas #lineCanvas style="height:10vh; width:20vw"></canvas> -->
 </ion-content>
 <ion-toolbar>
-  <ion-tabs style="background-color: white;">
+  <ion-tabs style="background-color: white">
     <ion-tab-bar slot="bottom">
       <ion-tab-button tab="schedule" (click)="productLots()">
-        <img width="27" src="assets/images/production_lots_ic.png">
+        <img width="27" src="assets/images/production_lots_ic.png" />
         <ion-label class="tab-lable">PRODUCTION LOTS</ion-label>
       </ion-tab-button>
     </ion-tab-bar>

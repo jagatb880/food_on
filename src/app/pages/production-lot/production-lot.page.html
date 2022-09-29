@@ -53,7 +53,7 @@
           <ion-col size="6">
             <div style="display: flex">
               <img src="assets/images/calender.png" style="height: 26px" />
-              <p class="left-heading">{{convertDate(data.production_date)}}</p>
+              <p class="left-heading">{{convertDate(data.register_date)}}</p>
             </div>
             <div style="display: flex; margin-top: 10px">
               <img src="assets/images/usacurrency.png" style="height: 26px" />
@@ -61,16 +61,23 @@
             </div>
           </ion-col>
           <ion-col size="6" style="padding-top: 7px; padding-left: 10px">
-            <p class="right-heading">
+            <div style="display: flex">
+              <p class="right-heading">
+                Lot Code : <span style="font-family: none"> {{data.id}}</span>
+              </p>
+            </div>
+            <div style="display: flex; margin-top: 10px">
+              <p class="right-heading">
+                Amount : <span style="font-family: none"> </span>
+              </p>
+            </div>
+            <!-- <p class="right-heading">
               Lot Code :
-              <span style="font-family: none"> {{data.qr_code_lot}}</span>
+              <span style="font-family: none"> {{data.id}}</span>
             </p>
             <p class="right-heading">
               Amount : <span style="font-family: none"> </span>
-            </p>
-            <p class="right-heading">
-              Level :<span style="font-family: none"> </span>
-            </p>
+            </p> -->
           </ion-col>
         </ion-row>
         <ion-row>
