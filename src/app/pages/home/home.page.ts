@@ -8,6 +8,7 @@ import { GoogleMap, Marker } from '@capacitor/google-maps';
 import { environment } from 'src/environments/environment';
 import { ToastService } from 'src/app/services/toast.service';
 import { LatLngBounds } from '@capacitor/google-maps/dist/typings/definitions';
+import { NetworkConnectivityService } from 'src/app/services/network-connectivity.service';
 declare var google: any;
 
 @Component({
@@ -57,6 +58,7 @@ export class HomePage implements OnInit {
     private router: Router,
     private storage: Storage,
     private toastSvc: ToastService,
+    private networkSvc: NetworkConnectivityService,
     private apiDataBind: ApiDataBindService
   ) {}
 
@@ -332,107 +334,126 @@ export class HomePage implements OnInit {
   }
 
   check() {
-    if (this.mapSec) {
-      if (this.distributorData == '') {
-        this.toastSvc.show({
-          message: 'Select one producer',
-          type: 'error',
-        });
-      } else if (this.productData == '') {
-        this.toastSvc.show({
-          message: 'Select one product',
-          type: 'error',
-        });
-      } else if (this.selectedYear == '') {
-        this.toastSvc.show({
-          message: 'Select the year',
-          type: 'error',
-        });
-      } else if (this.selectedMonth == '') {
-        this.toastSvc.show({
-          message: 'Select the month',
-          type: 'error',
-        });
-      } else {
-        this.qrcodeCoordinates = [];
-        this.actualCoordinates = [];
-        this.apiDataBind
-          .getMyProductLotByProductID(this.productData)
-          .then((resultData) => {
-            if (resultData.status == 200 && resultData.data != null) {
-              for (let i = 0; i < resultData.data.length; i++) {
-                if (resultData.data[i].qrcode_coordinates.length > 0) {
-                  for (
-                    let j = 0;
-                    j < resultData.data[i].qrcode_coordinates.length;
-                    j++
-                  ) {
-                    resultData.data[i].qrcode_coordinates[j].register_date =
-                      this.convertDate(
-                        resultData.data[i].qrcode_coordinates[j].register_date
+    if (this.networkSvc.status) {
+      if (this.mapSec) {
+        if (this.distributorData == '') {
+          this.toastSvc.show({
+            message: 'Select one producer',
+            type: 'error',
+          });
+        } else if (this.productData == '') {
+          this.toastSvc.show({
+            message: 'Select one product',
+            type: 'error',
+          });
+        } else if (this.selectedYear == '') {
+          this.toastSvc.show({
+            message: 'Select the year',
+            type: 'error',
+          });
+        } else if (this.selectedMonth == '') {
+          this.toastSvc.show({
+            message: 'Select the month',
+            type: 'error',
+          });
+        } else {
+          this.qrcodeCoordinates = [];
+          this.actualCoordinates = [];
+          this.apiDataBind
+            .getMyProductLotByProductID(this.productData)
+            .then((resultData) => {
+              if (resultData.status == 200 && resultData.data != null) {
+                for (let i = 0; i < resultData.data.length; i++) {
+                  if (resultData.data[i].qrcode_coordinates.length > 0) {
+                    for (
+                      let j = 0;
+                      j < resultData.data[i].qrcode_coordinates.length;
+                      j++
+                    ) {
+                      resultData.data[i].qrcode_coordinates[j].register_date =
+                        this.convertDate(
+                          resultData.data[i].qrcode_coordinates[j].register_date
+                        );
+                      this.qrcodeCoordinates.push(
+                        resultData.data[i].qrcode_coordinates[j]
                       );
-                    this.qrcodeCoordinates.push(
-                      resultData.data[i].qrcode_coordinates[j]
-                    );
+                    }
                   }
                 }
-              }
-              for (let i = 0; i < this.qrcodeCoordinates.length; i++) {
-                if (
-                  this.qrcodeCoordinates[i].register_date.split('/')[0] ==
-                    this.selectedYear &&
-                  this.qrcodeCoordinates[i].register_date.split('/')[1] ==
-                    this.selectedMonth
-                ) {
-                  this.actualCoordinates.push(this.qrcodeCoordinates[i]);
+                for (let i = 0; i < this.qrcodeCoordinates.length; i++) {
+                  if (
+                    this.qrcodeCoordinates[i].register_date.split('/')[0] ==
+                      this.selectedYear &&
+                    this.qrcodeCoordinates[i].register_date.split('/')[1] ==
+                      this.selectedMonth
+                  ) {
+                    this.actualCoordinates.push(this.qrcodeCoordinates[i]);
+                  }
                 }
-              }
-              console.log(this.actualCoordinates);
-              if (this.actualCoordinates.length == 0) {
+                console.log(this.actualCoordinates);
+                if (this.actualCoordinates.length == 0) {
+                  this.toastSvc.show({
+                    message: 'No Match Data Found',
+                    type: 'error',
+                  });
+                } else {
+                  this.drawMarkersOnMap();
+                }
+              } else {
                 this.toastSvc.show({
-                  message: 'No Match Data Found',
+                  message: 'No Data Found',
                   type: 'error',
                 });
-              } else {
-                this.drawMarkersOnMap();
               }
-            } else {
-              this.toastSvc.show({
-                message: 'No Data Found',
-                type: 'error',
-              });
+            });
+        }
+      } else {
+        if (this.distributorData == '') {
+          this.toastSvc.show({
+            message: 'Select one producer',
+            type: 'error',
+          });
+        } else if (this.productData == '') {
+          this.toastSvc.show({
+            message: 'Select one product',
+            type: 'error',
+          });
+        } else {
+          let qrparams = {
+            id_user_received: this.distributorData,
+            id_product: this.productData,
+            inidate: this.convertDate(this.date),
+            finaldate: this.convertDate(this.enddate),
+          };
+          // let qrparams = {
+          //   id_user_received: 10,
+          //   id_product: 20,
+          //   inidate: '2022/01/01',
+          //   finaldate: '2022/12/31',
+          // };
+          this.apiDataBind.getDataForLineChart(qrparams).then((data) => {
+            console.log(data);
+            this.chartdeta = data.data;
+            this.charttotalamount = [];
+            this.charttotalsale = [];
+            this.chartmonth = [];
+            for (var i = 0; i < this.chartdeta.length; i++) {
+              if (this.chartdeta[i]) {
+                this.charttotalamount.push(this.chartdeta[i].total_amount);
+                this.charttotalsale.push(this.chartdeta[i].total_sale);
+                this.chartmonth.push(this.chartdeta[i].month_sent);
+                console.log(this.charttotalamount);
+                this.secondchart();
+                this.thirdgrapg();
+              }
             }
           });
+        }
       }
     } else {
-      let qrparams = {
-        id_user_received: this.distributorData,
-        id_product: this.productData,
-        inidate: this.convertDate(this.date),
-        finaldate: this.convertDate(this.enddate),
-      };
-      // let qrparams = {
-      //   id_user_received: 10,
-      //   id_product: 20,
-      //   inidate: '2022/01/01',
-      //   finaldate: '2022/12/31',
-      // };
-      this.apiDataBind.getDataForLineChart(qrparams).then((data) => {
-        console.log(data);
-        this.chartdeta = data.data;
-        this.charttotalamount = [];
-        this.charttotalsale = [];
-        this.chartmonth = [];
-        for (var i = 0; i < this.chartdeta.length; i++) {
-          if (this.chartdeta[i]) {
-            this.charttotalamount.push(this.chartdeta[i].total_amount);
-            this.charttotalsale.push(this.chartdeta[i].total_sale);
-            this.chartmonth.push(this.chartdeta[i].month_sent);
-            console.log(this.charttotalamount);
-            this.secondchart();
-            this.thirdgrapg();
-          }
-        }
+      this.toastSvc.show({
+        message: ConstantService.message.noInternetConnection,
+        type: 'error',
       });
     }
   }
