@@ -4,12 +4,10 @@ import { Chart } from 'chart.js';
 import { ApiDataBindService } from 'src/app/services/api-data-bind.service';
 import { ConstantService } from 'src/app/services/constant.service';
 import { Storage } from '@ionic/storage-angular';
-import { GoogleMap, Marker } from '@capacitor/google-maps';
+import { GoogleMap } from '@capacitor/google-maps';
 import { environment } from 'src/environments/environment';
 import { ToastService } from 'src/app/services/toast.service';
-import { LatLngBounds } from '@capacitor/google-maps/dist/typings/definitions';
 import { NetworkConnectivityService } from 'src/app/services/network-connectivity.service';
-declare var google: any;
 
 @Component({
   selector: 'app-home',
