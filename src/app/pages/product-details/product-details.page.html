@@ -17,10 +17,10 @@
     <div class="shadowdv">
       <span class="header">Product Name</span>
       <ion-row  class="prductnamerw">
-        <ion-col size="6" style="padding-top: 7px;padding-left: 10px;">
-          <span style="color: #333333;font-size: 16px;">Organic mango</span>
+        <ion-col size="8" style="padding-top: 7px;padding-left: 10px;">
+          <span style="color: #333333;font-size: 16px;">{{productId.params.name}}</span>
         </ion-col>
-        <ion-col size="6" style="padding-top: 0;padding-bottom: 0;text-align: -webkit-right;" (click)="viewphoto()">
+        <ion-col size="4" style="padding-top: 0;padding-bottom: 0;text-align: -webkit-right;" (click)="viewphoto()">
           <div class="viewphoto">View Photo</div>
         </ion-col>
       </ion-row>
@@ -41,14 +41,12 @@
 
       <span class="header">Product Description</span>
       <div class="domydeta">
-        Lorem Ipsum is simply dummy text of the printing and
-        typesetting industry. Lorem Ipsum has been the
-        industry's standard dummy text ever since the 1500s
+       {{productId.params.description}}
       </div>
 
       <span class="header">Product Video</span>
       <div class="domydeta">
-        https://www.youtube.com/watch?v=Ez_d3MVjQm4
+        {{productId.params.video}}
       </div>
       <div style="text-align: center;">
         <ion-button class="save-button" fill="outline" (click)="save()"><img src="assets/images/save.png" class="goglelogin">SAVE

@@ -36,7 +36,7 @@ export class ProducerProductsPage implements OnInit {
   }
 
   goToNext(data) {
-    this.router.navigate(['product-details', { productId: data.id }], {
+    this.router.navigate(['product-details',data], {
       skipLocationChange: true,
     });
   }

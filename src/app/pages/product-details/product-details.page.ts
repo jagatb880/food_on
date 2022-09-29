@@ -14,8 +14,8 @@ export class ProductDetailsPage implements OnInit {
     private router: Router,
     private activeRouter: ActivatedRoute
   ) {
-    this.productId = this.activeRouter.snapshot.paramMap.get('productId');
-    console.log(this.productId);
+    this.productId = this.activeRouter.snapshot.paramMap;
+    console.log(this.productId.params);
   }
 
   ngOnInit() {}
