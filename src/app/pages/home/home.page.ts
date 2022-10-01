@@ -8,6 +8,8 @@ import { GoogleMap } from '@capacitor/google-maps';
 import { environment } from 'src/environments/environment';
 import { ToastService } from 'src/app/services/toast.service';
 import { NetworkConnectivityService } from 'src/app/services/network-connectivity.service';
+import { ViewGeographyComponent } from 'src/app/component/view-geography/view-geography.component';
+import { NavController, MenuController, ModalController, Platform, AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
@@ -57,7 +59,8 @@ export class HomePage implements OnInit {
     private storage: Storage,
     private toastSvc: ToastService,
     private networkSvc: NetworkConnectivityService,
-    private apiDataBind: ApiDataBindService
+    private apiDataBind: ApiDataBindService,
+    private modalCtrl: ModalController
   ) {}
 
   ngOnInit() {
@@ -497,5 +500,14 @@ export class HomePage implements OnInit {
       '/' +
       newDate.split('-')[2];
     return formatedDate;
+  }
+
+  async profileicon() {
+    const popover = await this.modalCtrl.create({
+      component: ViewGeographyComponent,
+      cssClass: 'login-unlock-modal-class',
+
+    });
+    return await popover.present();
   }
 }

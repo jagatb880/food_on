@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { ApiDataBindService } from 'src/app/services/api-data-bind.service';
 import { ConstantService } from 'src/app/services/constant.service';
 import { Storage } from '@ionic/storage-angular';
+import { ViewGeographyComponent } from 'src/app/component/view-geography/view-geography.component';
+import { NavController, MenuController, ModalController, Platform, AlertController } from '@ionic/angular';
 @Component({
   selector: 'app-my-distributor',
   templateUrl: './my-distributor.page.html',
@@ -13,7 +15,7 @@ export class MyDistributorPage implements OnInit {
   distributorList: any;
   searchText: any;
   datas: any[];
-  constructor(private router: Router, private apiDataBind: ApiDataBindService,private storage: Storage,) {
+  constructor(private router: Router, private apiDataBind: ApiDataBindService,private storage: Storage,    private modalCtrl: ModalController) {
     this.distrubutionarray = [{ 'name': 'El Agrario', 'invitation': 'SUBMITTED', 'color': '#f28a5f' },
     { 'name': 'International Distributor', 'invitation': 'accepted', 'color': '#35d097' },
     { 'name': 'Cosmic INC', 'invitation': 'RECEIVED', 'color': '#ffd445' }]
@@ -67,5 +69,14 @@ export class MyDistributorPage implements OnInit {
         this.datas = this.distributorList;
       }
     });
+  }
+
+  async profileicon() {
+    const popover = await this.modalCtrl.create({
+      component: ViewGeographyComponent,
+      cssClass: 'login-unlock-modal-class',
+
+    });
+    return await popover.present();
   }
 }

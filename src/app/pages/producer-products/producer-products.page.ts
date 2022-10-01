@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { ApiDataBindService } from 'src/app/services/api-data-bind.service';
 import { ConstantService } from 'src/app/services/constant.service';
 import { Storage } from '@ionic/storage-angular';
+import { ViewGeographyComponent } from 'src/app/component/view-geography/view-geography.component';
+import { NavController, MenuController, ModalController, Platform, AlertController } from '@ionic/angular';
 @Component({
   selector: 'app-producer-products',
   templateUrl: './producer-products.page.html',
@@ -17,7 +19,8 @@ export class ProducerProductsPage implements OnInit {
     private _location: Location,
     private router: Router,
     private storage: Storage,
-    private apiDataBind: ApiDataBindService
+    private apiDataBind: ApiDataBindService,
+    private modalCtrl: ModalController
   ) {}
 
   ngOnInit() {}
@@ -66,5 +69,14 @@ export class ProducerProductsPage implements OnInit {
       );
       console.log(this.datas);
     }
+  }
+
+  async profileicon() {
+    const popover = await this.modalCtrl.create({
+      component: ViewGeographyComponent,
+      cssClass: 'login-unlock-modal-class',
+
+    });
+    return await popover.present();
   }
 }
