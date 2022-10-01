@@ -444,7 +444,6 @@ export class HomePage implements OnInit {
               }
             }
             this.secondchart();
-            this.thirdgrapg();
           });
         }
       }
