@@ -60,8 +60,9 @@ export class ProducerProductsPage implements OnInit {
       this.datas = this.productList;
     } else {
       // let data = this.countryObj
-      this.datas = this.productList.filter((item) =>
-        item.name.toLowerCase().startsWith(this.searchText)
+      this.datas = this.productList.filter(
+        (item) =>
+          item.name.toLowerCase().indexOf(this.searchText.toLowerCase()) > -1
       );
       console.log(this.datas);
     }

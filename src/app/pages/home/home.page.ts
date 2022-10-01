@@ -441,10 +441,10 @@ export class HomePage implements OnInit {
                 this.charttotalsale.push(this.chartdeta[i].total_sale);
                 this.chartmonth.push(this.chartdeta[i].month_sent);
                 console.log(this.charttotalamount);
-                this.secondchart();
-                this.thirdgrapg();
               }
             }
+            this.secondchart();
+            this.thirdgrapg();
           });
         }
       }
