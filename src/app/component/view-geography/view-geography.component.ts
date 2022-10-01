@@ -18,9 +18,5 @@ export class ViewGeographyComponent implements OnInit {
     this.modalCtrl.dismiss()
   }
 
-  logout()
-{
-  this.storage.clear()
-  this.router.navigate(['login']);
-}
+
 }

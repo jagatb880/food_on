@@ -1,17 +1,21 @@
 import { Location } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit ,ViewChild} from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiDataBindService } from 'src/app/services/api-data-bind.service';
 import { ConstantService } from 'src/app/services/constant.service';
 import { Storage } from '@ionic/storage-angular';
 import { ViewGeographyComponent } from 'src/app/component/view-geography/view-geography.component';
 import { NavController, MenuController, ModalController, Platform, AlertController } from '@ionic/angular';
+import { PopoverController } from '@ionic/angular';
+
 @Component({
   selector: 'app-producer-products',
   templateUrl: './producer-products.page.html',
   styleUrls: ['./producer-products.page.scss'],
 })
 export class ProducerProductsPage implements OnInit {
+  @ViewChild('popover') popover;
+  isOpen = false;
   datas: any[];
   productList: any[];
   searchText: any;
@@ -20,7 +24,8 @@ export class ProducerProductsPage implements OnInit {
     private router: Router,
     private storage: Storage,
     private apiDataBind: ApiDataBindService,
-    private modalCtrl: ModalController
+    private modalCtrl: ModalController,
+    public popoverController: PopoverController
   ) {}
 
   ngOnInit() {}
@@ -71,12 +76,15 @@ export class ProducerProductsPage implements OnInit {
     }
   }
 
-  async profileicon() {
-    const popover = await this.modalCtrl.create({
-      component: ViewGeographyComponent,
-      cssClass: 'login-unlock-modal-class',
+  logout()
+  {
+    this.popoverController.dismiss()
+    this.storage.clear();
+    this.router.navigate(['login']);
+  }
 
-    });
-    return await popover.present();
+  presentPopover(e: Event) {
+    this.popover.event = e;
+    this.isOpen = true;
   }
 }

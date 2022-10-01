@@ -1,21 +1,25 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit ,ViewChild} from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiDataBindService } from 'src/app/services/api-data-bind.service';
 import { ConstantService } from 'src/app/services/constant.service';
 import { Storage } from '@ionic/storage-angular';
 import { ViewGeographyComponent } from 'src/app/component/view-geography/view-geography.component';
 import { NavController, MenuController, ModalController, Platform, AlertController } from '@ionic/angular';
+import { PopoverController } from '@ionic/angular';
+
 @Component({
   selector: 'app-my-distributor',
   templateUrl: './my-distributor.page.html',
   styleUrls: ['./my-distributor.page.scss'],
 })
 export class MyDistributorPage implements OnInit {
+  @ViewChild('popover') popover;
+  isOpen = false;
   distrubutionarray: { name: string; invitation: string; color: string; }[];
   distributorList: any;
   searchText: any;
   datas: any[];
-  constructor(private router: Router, private apiDataBind: ApiDataBindService,private storage: Storage,    private modalCtrl: ModalController) {
+  constructor( public popoverController: PopoverController,private router: Router, private apiDataBind: ApiDataBindService,private storage: Storage,    private modalCtrl: ModalController) {
     this.distrubutionarray = [{ 'name': 'El Agrario', 'invitation': 'SUBMITTED', 'color': '#f28a5f' },
     { 'name': 'International Distributor', 'invitation': 'accepted', 'color': '#35d097' },
     { 'name': 'Cosmic INC', 'invitation': 'RECEIVED', 'color': '#ffd445' }]
@@ -71,12 +75,14 @@ export class MyDistributorPage implements OnInit {
     });
   }
 
-  async profileicon() {
-    const popover = await this.modalCtrl.create({
-      component: ViewGeographyComponent,
-      cssClass: 'login-unlock-modal-class',
-
-    });
-    return await popover.present();
+  logout()
+  {
+    this.popoverController.dismiss()
+    this.storage.clear();
+    this.router.navigate(['login']);
+  }
+  presentPopover(e: Event) {
+    this.popover.event = e;
+    this.isOpen = true;
   }
 }

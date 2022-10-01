@@ -3,9 +3,17 @@
     <ion-buttons slot="start">
       <img style="width:32px;padding-left: 10%;" src="assets/images/back_a.png" (click)="goToBack()">
     </ion-buttons>
-    <ion-buttons slot="primary" (click)="profileicon()">
-      <img style="width:32px;padding-right: 10%;" src="assets/images/profile_menu_ic.png">
+    <ion-buttons slot="primary"  (click)="presentPopover($event)">
+      <img
+        style="width: 32px; padding-right: 10%"
+        src="assets/images/profile_menu_ic.png"
+      />
     </ion-buttons>
+    <ion-popover  #popover [isOpen]="isOpen" (didDismiss)="isOpen = false" >
+      <ng-template>
+        <ion-content class="ion-padding" (click)="logout()">Logout</ion-content>
+      </ng-template>
+    </ion-popover>
 
     <ion-title style="font-size:35px;color: #232844;">FOOD ON</ion-title>
   </ion-toolbar>

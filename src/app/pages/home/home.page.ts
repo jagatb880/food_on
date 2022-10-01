@@ -10,6 +10,7 @@ import { ToastService } from 'src/app/services/toast.service';
 import { NetworkConnectivityService } from 'src/app/services/network-connectivity.service';
 import { ViewGeographyComponent } from 'src/app/component/view-geography/view-geography.component';
 import { NavController, MenuController, ModalController, Platform, AlertController } from '@ionic/angular';
+import { PopoverController } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
@@ -19,6 +20,8 @@ import { NavController, MenuController, ModalController, Platform, AlertControll
 export class HomePage implements OnInit {
   @ViewChild('lineCanvas') lineCanvas: ElementRef;
   @ViewChild('map') mapView: ElementRef;
+  @ViewChild('popover') popover;
+  isOpen = false;
   gMap: GoogleMap;
 
   lineChart: any;
@@ -60,7 +63,8 @@ export class HomePage implements OnInit {
     private toastSvc: ToastService,
     private networkSvc: NetworkConnectivityService,
     private apiDataBind: ApiDataBindService,
-    private modalCtrl: ModalController
+    private modalCtrl: ModalController,
+    public popoverController: PopoverController
   ) {}
 
   ngOnInit() {
@@ -502,12 +506,16 @@ export class HomePage implements OnInit {
     return formatedDate;
   }
 
-  async profileicon() {
-    const popover = await this.modalCtrl.create({
-      component: ViewGeographyComponent,
-      cssClass: 'login-unlock-modal-class',
 
-    });
-    return await popover.present();
+  logout()
+  {
+    this.popoverController.dismiss()
+    this.storage.clear();
+    this.router.navigate(['login']);
   }
+  presentPopover(e: Event) {
+    this.popover.event = e;
+    this.isOpen = true;
+  }
+
 }
