@@ -64,7 +64,7 @@ export class RegisterPage implements OnInit {
               console.log(data.data.id);
               await this.storage.set(
                 ConstantService.dbKey.userID,
-                data.data[0].id_usuario
+                data.data.id
               );
               await this.router.navigate(['home'], { replaceUrl: true });
             } else {
