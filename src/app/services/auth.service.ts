@@ -17,6 +17,10 @@ export class AuthService {
     return this.http.post(ConstantService.api.userLogin, body);
   }
 
+  forgotpass(body): Observable<any> {
+    return this.http.post(ConstantService.api.forgotpass, body);
+  }
+
   getDistributorList(id): Observable<any> {
     return this.http.put(ConstantService.api.getDistributorList, id);
   }

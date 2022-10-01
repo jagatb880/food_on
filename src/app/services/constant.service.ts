@@ -13,6 +13,7 @@ export class ConstantService {
   static api: IApis = {
     userRegister: 'usrCreateUsuario',
     userLogin: 'usrLoginUsuario',
+    forgotpass: 'forgotpass',
     getDistributorList: 'GeDistributorsNetworkByUserId',
     getProductList: 'prdGetProductByUserId',
     getTotalAmountByUserIDProdID: 'GetTotalAmountByUserIDProdID',

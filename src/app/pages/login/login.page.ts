@@ -79,4 +79,8 @@ export class LoginPage implements OnInit {
   goToBack() {
     this._location.back();
   }
+
+  forgotPass() {
+    this.router.navigate(['forgot-password']);
+  }
 }

@@ -53,6 +53,24 @@ export class ApiDataBindService {
     return promise;
   }
 
+  forgotpass(email: String) {
+    let promise = new Promise<any>((resolve, reject) => {
+      let body = {
+        email: email,
+      };
+      this.authSvc.forgotpass(body).subscribe(
+        (res) => {
+          resolve(res);
+        },
+        (err) => {
+          console.log(err);
+          reject(err);
+        }
+      );
+    });
+    return promise;
+  }
+
   loginData(userLogin: ILoginData) {
     let promise = new Promise<any>((resolve, reject) => {
       let usuariologin = {
