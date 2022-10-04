@@ -1,6 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { NavController, MenuController, ModalController, Platform, AlertController } from '@ionic/angular';
+import {
+  NavController,
+  MenuController,
+  ModalController,
+  Platform,
+  AlertController,
+} from '@ionic/angular';
 
 @Component({
   selector: 'app-view-details-popup',
@@ -8,42 +14,20 @@ import { NavController, MenuController, ModalController, Platform, AlertControll
   styleUrls: ['./view-details-popup.component.scss'],
 })
 export class ViewDetailsPopupComponent implements OnInit {
-
-  datas: any[]
-  constructor(private modalCtrl: ModalController, private router: Router) { }
+  productLotDataValue;
+  productionDate;
+  constructor(private modalCtrl: ModalController, private router: Router) {}
 
   ngOnInit() {
-    this.datas = [
-      {
-        "public": false,
-        "description": "Value each unit",
-        "value": "$0.75"
-      },
-      {
-        "public": false,
-        "description": "Fertilizer supp.name",
-        "value": "Eoco unit"
-      },
-      {
-        "public": false,
-        "description": "Planning date",
-        "value": "2021/11/03"
-      },
-      {
-        "public": false,
-        "description": "Fertilizer Type",
-        "value": "Organic bayer"
-      },
-    ]
+    console.log(this.productLotDataValue);
   }
 
   close() {
-    this.modalCtrl.dismiss()
+    this.modalCtrl.dismiss();
   }
 
   save() {
     this.modalCtrl.dismiss();
     this.router.navigate(['my-qr-code']);
   }
-
 }

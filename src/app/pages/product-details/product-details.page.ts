@@ -1,6 +1,7 @@
 import { Location } from '@angular/common';
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { SharedService } from 'src/app/services/shared.service';
 
 @Component({
   selector: 'app-product-details',
@@ -8,14 +9,15 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./product-details.page.scss'],
 })
 export class ProductDetailsPage implements OnInit {
-  productId: any;
+  productData: any;
   constructor(
     private _location: Location,
     private router: Router,
+    private sharedSvc: SharedService,
     private activeRouter: ActivatedRoute
   ) {
-    this.productId = this.activeRouter.snapshot.paramMap;
-    console.log(this.productId.params);
+    // let paramData: any = this.activeRouter.snapshot.paramMap;
+    this.productData = this.sharedSvc.productData;
   }
 
   ngOnInit() {}
@@ -25,10 +27,7 @@ export class ProductDetailsPage implements OnInit {
   }
 
   productLots() {
-    this.router.navigate([
-      'production-lot',
-      { productId: this.productId.params.id },
-    ]);
+    this.router.navigate(['/production-lot']);
   }
 
   save() {}

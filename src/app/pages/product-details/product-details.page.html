@@ -26,7 +26,7 @@
       <ion-row class="prductnamerw">
         <ion-col size="8" style="padding-top: 7px; padding-left: 10px">
           <span style="color: #333333; font-size: 14px"
-            >{{productId.params.name}}</span
+            >{{productData.name}}</span
           >
         </ion-col>
         <ion-col
@@ -53,10 +53,10 @@
       </ion-row>
 
       <span class="header">Product Description</span>
-      <div class="domydeta">{{productId.params.description}}</div>
+      <div class="domydeta">{{productData.description}}</div>
 
       <span class="header">Product Video</span>
-      <div class="domydeta">{{productId.params.video}}</div>
+      <div class="domydeta">{{productData.video}}</div>
       <div style="text-align: center">
         <ion-button class="save-button" fill="outline" (click)="save()"
           ><img src="assets/images/save.png" class="goglelogin" />SAVE
@@ -74,7 +74,7 @@
 <ion-toolbar>
   <ion-tabs style="background-color: white">
     <ion-tab-bar slot="bottom">
-      <ion-tab-button tab="schedule" (click)="productLots()">
+      <ion-tab-button (click)="productLots()">
         <img width="27" src="assets/images/production_lots_ic.png" />
         <ion-label class="tab-lable">PRODUCTION LOTS</ion-label>
       </ion-tab-button>

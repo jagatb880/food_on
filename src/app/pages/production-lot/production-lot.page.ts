@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiDataBindService } from 'src/app/services/api-data-bind.service';
 import { Dialog } from '@capacitor/dialog';
+import { SharedService } from 'src/app/services/shared.service';
 
 @Component({
   selector: 'app-production-lot',
@@ -11,16 +12,17 @@ import { Dialog } from '@capacitor/dialog';
 })
 export class ProductionLotPage implements OnInit {
   datas: any[];
-  productId: any;
+  product: any;
 
   constructor(
     private _location: Location,
     private router: Router,
     private activeRouter: ActivatedRoute,
+    private sharedSvc: SharedService,
     private apiDataBind: ApiDataBindService
   ) {
-    this.productId = this.activeRouter.snapshot.paramMap.get('productId');
-    console.log(this.productId);
+    // let paramData: any = this.activeRouter.snapshot.paramMap;
+    this.product = this.sharedSvc.productData;
   }
 
   ngOnInit() {
@@ -28,12 +30,12 @@ export class ProductionLotPage implements OnInit {
   }
 
   ionViewWillEnter() {
-    if (this.productId != null) this.getProductLotData();
+    if (this.product != null) this.getProductLotData();
   }
 
   getProductLotData() {
     this.apiDataBind
-      .getMyProductLotByProductID(this.productId)
+      .getMyProductLotByProductID(this.product.id)
       .then((productLotDatas) => {
         if (productLotDatas.status == 200) {
           console.log(productLotDatas);
@@ -50,7 +52,8 @@ export class ProductionLotPage implements OnInit {
     this._location.back();
   }
 
-  viewDetails() {
+  viewDetails(i) {
+    this.sharedSvc.productLotData = this.datas[i];
     this.router.navigate(['view-details']);
   }
 
@@ -68,10 +71,10 @@ export class ProductionLotPage implements OnInit {
 
   showConfirm = async () => {
     const { value } = await Dialog.confirm({
-      title: 'Confirm',
-      message: `Are you sure you'd like to press the red button?`,
+      message: `No record found on this product`,
     });
-
-    console.log('Confirmed:', value);
+    if (value == true) {
+      this._location.back();
+    }
   };
 }

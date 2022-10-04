@@ -1,49 +1,69 @@
 <div class="modal-color">
-  <div style="padding: 0px 0px 26px 0px;">
-    <div style="text-align: center;padding-bottom: 11px;">
+  <div style="padding: 0px 0px 26px 0px">
+    <div style="text-align: center; padding-bottom: 11px">
       <span class="header">Customized Additional Data</span>
     </div>
-    <span style="color: #333333;font-weight: 600;font-family: 'Nunito-Bold';
-    font-size: 3.9vw;">Product Name</span>
+    <span
+      style="
+        color: #333333;
+        font-weight: 600;
+        font-family: 'Nunito-Bold';
+        font-size: 3.9vw;
+      "
+      >Product Name</span
+    >
     <div class="dvvvvvvv">
-      12-Aug-2022
-      <img src="assets/images/ic_date.png" style="float: right;height:18px;padding-right:10px;">
+      {{ productionDate }}
+      <img
+        src="assets/images/ic_date.png"
+        style="float: right; height: 18px; padding-right: 10px"
+      />
     </div>
 
-    <ion-row style="padding-top: 4px;
-    background: #001e62;
-    border-top-left-radius: 13px;
-    border-top-right-radius: 13px;
-    height: 37px;margin-top: 17px;">
+    <ion-row
+      style="
+        padding-top: 4px;
+        background: #001e62;
+        border-top-left-radius: 13px;
+        border-top-right-radius: 13px;
+        height: 37px;
+        margin-top: 17px;
+      "
+    >
       <ion-col size="2.5">
-        <p style="margin: 0;text-align: center;color: white">Public</p>
+        <p style="margin: 0; text-align: center; color: white">Public</p>
       </ion-col>
       <ion-col size="5.5">
-        <p style="margin: 0;color: white">Description</p>
+        <p style="margin: 0; color: white">Description</p>
       </ion-col>
       <ion-col size="4">
-        <p style="margin: 0;color: white">Value</p>
+        <p style="margin: 0; color: white">Value</p>
       </ion-col>
     </ion-row>
-    <div *ngFor="let data of datas">
-      <ion-row style="background: #f8f8f8;padding-top: 4px;">
+    <div *ngFor="let data of productLotDataValue">
+      <ion-row style="background: #f8f8f8; padding-top: 4px">
         <ion-col size="2.5">
           <ion-toggle mode="ios" [checked]="data.public"></ion-toggle>
         </ion-col>
         <ion-col size="5.5">
-          <p style="margin: 0;color: #333333;">{{data.description}}</p>
+          <p style="margin: 0; color: #333333">{{ data.description }}</p>
         </ion-col>
         <ion-col size="4">
-          <p style="margin: 0;color: #333333;">{{data.value}}</p>
+          <p style="margin: 0; color: #333333">{{ data.value }}</p>
         </ion-col>
       </ion-row>
     </div>
-    <div style="text-align: center;">
-      <ion-button class="login-button" fill="outline" (click)="save()"><img src="assets/images/save.png" class="goglelogin">SAVE
+    <div style="text-align: center">
+      <ion-button class="login-button" fill="outline" (click)="save()"
+        ><img src="assets/images/save.png" class="goglelogin" />SAVE
       </ion-button>
     </div>
   </div>
-  <div style="text-align: center;margin-bottom: -12vw;">
-    <img src="assets/images/crossclose.png" style="height: 48px;width: 48px;" (click)="close()">
+  <div style="text-align: center; margin-bottom: -12vw">
+    <img
+      src="assets/images/crossclose.png"
+      style="height: 48px; width: 48px"
+      (click)="close()"
+    />
   </div>
 </div>

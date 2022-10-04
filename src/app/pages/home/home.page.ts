@@ -9,7 +9,13 @@ import { environment } from 'src/environments/environment';
 import { ToastService } from 'src/app/services/toast.service';
 import { NetworkConnectivityService } from 'src/app/services/network-connectivity.service';
 import { ViewGeographyComponent } from 'src/app/component/view-geography/view-geography.component';
-import { NavController, MenuController, ModalController, Platform, AlertController } from '@ionic/angular';
+import {
+  NavController,
+  MenuController,
+  ModalController,
+  Platform,
+  AlertController,
+} from '@ionic/angular';
 import { PopoverController } from '@ionic/angular';
 
 @Component({
@@ -137,12 +143,8 @@ export class HomePage implements OnInit {
     this.storage.get(ConstantService.dbKey.userID).then(async (userID) => {
       await this.getDistributorList(userID);
       await this.getProductList(userID);
-      // this.createMap();
+      this.createMap();
     });
-  }
-
-  ionViewDidEnter() {
-    this.createMap();
   }
 
   async createMap() {
@@ -160,20 +162,16 @@ export class HomePage implements OnInit {
         zoom: 8, // The initial zoom level to be rendered by the map
       },
     });
+  }
 
-    // const markerId = await this.gMap.addMarker({
-    //   coordinate: {
-    //     lat: 7.083205,
-    //     lng: -73.154096,
-    //   },
-    // });
+  handleChange(event) {
+    this.gMap.destroy();
+  }
 
-    // await this.gMap.setCamera({
-    //   coordinate: {
-    //     lat: 7.083205,
-    //     lng: -73.154096,
-    //   },
-    // });
+  ionViewWillLeave() {
+    this.gMap.destroy().then((data) => {
+      console.log(data);
+    });
   }
 
   segmentChanged(event) {
@@ -364,6 +362,7 @@ export class HomePage implements OnInit {
         } else {
           this.qrcodeCoordinates = [];
           this.actualCoordinates = [];
+          this.createMap();
           this.apiDataBind
             .getMyProductLotByProductID(this.productData)
             .then((resultData) => {
@@ -481,15 +480,17 @@ export class HomePage implements OnInit {
         },
       });
     }
-    this.gMap.setCamera({
-      zoom: 8,
-      coordinate: {
-        lat: this.markers[0].lat,
-        lng: this.markers[0].lng,
-      },
-    });
-
+    // this.gMap.setCamera({
+    //   zoom: 8,
+    //   coordinate: {
+    //     lat: this.markers[0].lat,
+    //     lng: this.markers[0].lng,
+    //   },
+    // });
     this.gMap.getMapBounds().then((data) => {
+      console.log(data);
+    });
+    this.gMap.setOnBoundsChangedListener((data) => {
       console.log(data);
     });
   }
@@ -506,10 +507,8 @@ export class HomePage implements OnInit {
     return formatedDate;
   }
 
-
-  logout()
-  {
-    this.popoverController.dismiss()
+  logout() {
+    this.popoverController.dismiss();
     this.storage.clear();
     this.router.navigate(['login']);
   }
@@ -517,5 +516,4 @@ export class HomePage implements OnInit {
     this.popover.event = e;
     this.isOpen = true;
   }
-
 }

@@ -1,12 +1,19 @@
 import { Location } from '@angular/common';
-import { Component, OnInit ,ViewChild} from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiDataBindService } from 'src/app/services/api-data-bind.service';
 import { ConstantService } from 'src/app/services/constant.service';
 import { Storage } from '@ionic/storage-angular';
 import { ViewGeographyComponent } from 'src/app/component/view-geography/view-geography.component';
-import { NavController, MenuController, ModalController, Platform, AlertController } from '@ionic/angular';
+import {
+  NavController,
+  MenuController,
+  ModalController,
+  Platform,
+  AlertController,
+} from '@ionic/angular';
 import { PopoverController } from '@ionic/angular';
+import { SharedService } from 'src/app/services/shared.service';
 
 @Component({
   selector: 'app-producer-products',
@@ -24,7 +31,7 @@ export class ProducerProductsPage implements OnInit {
     private router: Router,
     private storage: Storage,
     private apiDataBind: ApiDataBindService,
-    private modalCtrl: ModalController,
+    private sharedSvc: SharedService,
     public popoverController: PopoverController
   ) {}
 
@@ -44,7 +51,8 @@ export class ProducerProductsPage implements OnInit {
   }
 
   goToNext(data) {
-    this.router.navigate(['product-details', data]);
+    this.sharedSvc.productData = data;
+    this.router.navigate(['/product-details']);
   }
 
   goToReceiveLot() {
@@ -76,9 +84,8 @@ export class ProducerProductsPage implements OnInit {
     }
   }
 
-  logout()
-  {
-    this.popoverController.dismiss()
+  logout() {
+    this.popoverController.dismiss();
     this.storage.clear();
     this.router.navigate(['login']);
   }

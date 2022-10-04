@@ -39,9 +39,9 @@
         >
       </div>
       <div class="header">Product Name</div>
-      <div class="dvvvvvvv">Organic mango</div>
+      <div class="dvvvvvvv">{{product.name}}</div>
       <div
-        *ngFor="let data of datas"
+        *ngFor="let data of datas;let i = index"
         style="
           margin-top: 12px;
           background: white;
@@ -88,7 +88,7 @@
               height: 38px;
               border-bottom-left-radius: 11px;
             "
-            (click)="viewDetails()"
+            (click)="viewDetails(i)"
           >
             <div style="display: flex; padding-left: 6px; padding-top: 3px">
               <img src="assets/images/details_icon.png" style="height: 20px" />

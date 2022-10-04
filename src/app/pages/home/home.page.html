@@ -12,7 +12,7 @@
         src="assets/images/profile_menu_ic.png"
       />
     </ion-buttons>
-    <ion-popover #popover [isOpen]="isOpen" (didDismiss)="isOpen = false"  >
+    <ion-popover #popover [isOpen]="isOpen" (didDismiss)="isOpen = false">
       <ng-template>
         <ion-content class="ion-padding" (click)="logout()">Logout</ion-content>
       </ng-template>
@@ -34,6 +34,7 @@
           placeholder="Please Select a Producer"
           class="producerselect"
           [(ngModel)]="distributorData"
+          (ionChange)="handleChange($event)"
         >
           <ion-select-option
             *ngFor="let data of distributorList"
@@ -48,6 +49,7 @@
           placeholder="Please Select a Product"
           class="producerselect"
           [(ngModel)]="productData"
+          (ionChange)="handleChange($event)"
         >
           <ion-select-option *ngFor="let data of productList" [value]="data.id"
             >{{data.name}}</ion-select-option
@@ -61,6 +63,7 @@
             placeholder="Select a Year"
             class="producerselect"
             [(ngModel)]="selectedYear"
+            (ionChange)="handleChange($event)"
           >
             <ion-select-option *ngFor="let year of yearRange" [value]="year"
               >{{year}}</ion-select-option
@@ -72,6 +75,7 @@
             placeholder="Select a Month"
             class="producerselect"
             [(ngModel)]="selectedMonth"
+            (ionChange)="handleChange($event)"
           >
             <ion-select-option
               *ngFor="let data of monthList"
@@ -107,6 +111,7 @@
                 <ion-datetime
                   presentation="enddate"
                   [(ngModel)]="enddate"
+                  locale="en-GB"
                   (ionChange)="enddatevalue()"
                   [showDefaultButtons]="true"
                   doneText="Ok"
@@ -121,7 +126,7 @@
             <ion-datetime
               presentation="date"
               [(ngModel)]="date"
-              locale="sl-SI"
+              locale="en-GB"
               (ionChange)="startdatevalue()"
               [showDefaultButtons]="true"
               doneText="Ok"
