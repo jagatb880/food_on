@@ -57,6 +57,11 @@ export class ProductionLotPage implements OnInit {
     this.router.navigate(['view-details']);
   }
 
+  viewQRCode(i) {
+    this.sharedSvc.productLotData = this.datas[i];
+    this.router.navigate(['my-qr-code']);
+  }
+
   convertDate(date) {
     let isoDate = new Date(date);
     let newDate = isoDate.toISOString().substring(0, 10);

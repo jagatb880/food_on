@@ -10,7 +10,7 @@
         font-family: 'Nunito-Bold';
         font-size: 3.9vw;
       "
-      >Product Name</span
+      >Reading Date</span
     >
     <div class="dvvvvvvv">
       {{ productionDate }}
@@ -30,25 +30,25 @@
         margin-top: 17px;
       "
     >
-      <ion-col size="2.5">
+      <!-- <ion-col size="2.5">
         <p style="margin: 0; text-align: center; color: white">Public</p>
-      </ion-col>
-      <ion-col size="5.5">
+      </ion-col> -->
+      <ion-col size="6">
         <p style="margin: 0; color: white">Description</p>
       </ion-col>
-      <ion-col size="4">
+      <ion-col size="6">
         <p style="margin: 0; color: white">Value</p>
       </ion-col>
     </ion-row>
     <div *ngFor="let data of productLotDataValue">
       <ion-row style="background: #f8f8f8; padding-top: 4px">
-        <ion-col size="2.5">
+        <!-- <ion-col size="2.5">
           <ion-toggle mode="ios" [checked]="data.public"></ion-toggle>
-        </ion-col>
-        <ion-col size="5.5">
+        </ion-col> -->
+        <ion-col size="6">
           <p style="margin: 0; color: #333333">{{ data.description }}</p>
         </ion-col>
-        <ion-col size="4">
+        <ion-col size="6">
           <p style="margin: 0; color: #333333">{{ data.value }}</p>
         </ion-col>
       </ion-row>

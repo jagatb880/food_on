@@ -1,67 +1,110 @@
 <ion-header>
-  <ion-toolbar style="--background: #ffffff;">
+  <ion-toolbar style="--background: #ffffff">
     <ion-buttons slot="start">
-      <img style="width:32px;padding-left: 10%;" src="assets/images/back_a.png" (click)="goToBack()">
+      <img
+        style="width: 32px; padding-left: 10%"
+        src="assets/images/back_a.png"
+        (click)="goToBack()"
+      />
     </ion-buttons>
     <ion-buttons slot="primary">
-      <img style="width:32px;padding-right: 10%;" src="assets/images/profile_menu_ic.png">
+      <img
+        style="width: 32px; padding-right: 10%"
+        src="assets/images/profile_menu_ic.png"
+      />
     </ion-buttons>
 
-    <ion-title style="font-size:35px;color: #232844;">FOOD ON</ion-title>
+    <ion-title style="font-size: 35px; color: #232844">FOOD ON</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content style="--background: #ffffff;">
-  <div style="padding: 12px 14px 26px 14px;">
-    <div style="text-align: center;">
+<ion-content style="--background: #ffffff">
+  <div style="padding: 12px 14px 26px 14px">
+    <div style="text-align: center">
       <span class="header">My QR Code</span>
     </div>
     <div class="shadowdv">
-      <span style="color: #333333;font-weight: 600;font-family: 'Nunito-Bold';
-      font-size: 3.9vw;margin-left: 5px;">Product Name</span>
-      <div class="sub-header">
-        Organic mango
+      <span
+        style="
+          color: #333333;
+          font-weight: 600;
+          font-family: 'Nunito-Bold';
+          font-size: 3.9vw;
+          margin-left: 5px;
+        "
+        >Product Name</span
+      >
+      <div class="sub-header">{{product.name}}</div>
+
+      <ion-row style="margin-top: 7px">
+        <ion-col size="6">
+          <span
+            style="
+              color: #333333;
+              font-weight: 600;
+              font-family: 'Nunito-Bold';
+              font-size: 3.9vw;
+            "
+            >Lot Code</span
+          >
+          <div class="sub-header">{{productLotData.id}}</div>
+        </ion-col>
+        <ion-col size="6">
+          <span
+            style="
+              color: #333333;
+              font-weight: 600;
+              font-family: 'Nunito-Bold';
+              font-size: 3.9vw;
+            "
+            >Amount Of Unit</span
+          >
+          <div class="sub-header"></div>
+        </ion-col>
+      </ion-row>
+
+      <ion-row style="margin-top: 7px">
+        <ion-col size="6">
+          <span
+            style="
+              color: #333333;
+              font-weight: 600;
+              font-family: 'Nunito-Bold';
+              font-size: 3.9vw;
+            "
+            >Production Date</span
+          >
+          <div class="sub-header">
+            {{convertDate(productLotData.production_date)}}
+          </div>
+        </ion-col>
+        <ion-col size="6">
+          <span
+            style="
+              color: #333333;
+              font-weight: 600;
+              font-family: 'Nunito-Bold';
+              font-size: 3.9vw;
+            "
+            >Expiration Date</span
+          >
+          <div class="sub-header">
+            {{convertDate(productLotData.expiration_date)}}
+          </div>
+        </ion-col>
+      </ion-row>
+      <div style="text-align: center">
+        <ion-card class="ion-text-center" *ngIf="showQRCode">
+          <ion-card-content>
+            <qrcode [qrdata]="qrCodeString" [width]="256"> </qrcode>
+          </ion-card-content>
+        </ion-card>
+        <!-- <img src="assets/images/barcode_icon.png" style="height: 160px;margin-top: 18px;" (click)="scanQrCode()"> -->
+        <p class="show-qrcode-msg">
+          Show this QR CODE to your distributor to register the delivery of your
+          product.
+        </p>
       </div>
-
-      <ion-row style="margin-top:7px;">
-        <ion-col size="6">
-          <span  style="color: #333333;font-weight: 600;font-family: 'Nunito-Bold';
-          font-size: 3.9vw;">Lot Code</span>
-          <div class="sub-header">
-           56163
-          </div>
-        </ion-col>
-        <ion-col size="6">
-          <span  style="color: #333333;font-weight: 600;font-family: 'Nunito-Bold';
-          font-size: 3.9vw;">Amount Of Unit</span>
-          <div class="sub-header">
-           15.32
-          </div>
-        </ion-col>
-      </ion-row>
-
-      <ion-row style="margin-top:7px;">
-        <ion-col size="6">
-          <span  style="color: #333333;font-weight: 600;font-family: 'Nunito-Bold';
-          font-size: 3.9vw;">Production Date</span>
-          <div class="sub-header">
-            08-Aug-2022
-          </div>
-        </ion-col>
-        <ion-col size="6">
-          <span  style="color: #333333;font-weight: 600;font-family: 'Nunito-Bold';
-          font-size: 3.9vw;">Expiration Date</span>
-          <div class="sub-header">
-            12-Aug-2022
-          </div>
-        </ion-col>
-      </ion-row>
-      <div style="text-align: center;">
-      <img src="assets/images/barcode_icon.png" style="height: 160px;margin-top: 18px;" (click)="scanQrCode()">
-      <p class="show-qrcode-msg">Show this QR CODE to your distributor to
-        register the delivery of your product.</p>
-    </div>
     </div>
   </div>
-
 </ion-content>

@@ -47,4 +47,11 @@ export class AuthService {
   getQRCodeOperByProdLotId(body): Observable<any> {
     return this.http.post(ConstantService.api.getQRCodeOperByProdLotId, body);
   }
+
+  createProducerQRCodeOperation(body): Observable<any> {
+    return this.http.post(
+      ConstantService.api.createProducerQRCodeOperation,
+      body
+    );
+  }
 }

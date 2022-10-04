@@ -34,6 +34,7 @@
     "@capacitor/status-bar": "4.0.1",
     "@ionic/angular": "^6.1.9",
     "@ionic/storage-angular": "^3.0.6",
+    "angularx-qrcode": "^14.0.0",
     "capacitor-resources": "^2.0.5",
     "chart.js": "^2.9.4",
     "ionicons": "^6.0.3",

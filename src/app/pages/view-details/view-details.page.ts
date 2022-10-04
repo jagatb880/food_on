@@ -12,6 +12,7 @@ import { ViewDetailsPopupComponent } from 'src/app/component/view-details-popup/
 import { IMyProductLotDetails } from 'src/app/interfaces/my-product-lot-details';
 import { ApiDataBindService } from 'src/app/services/api-data-bind.service';
 import { SharedService } from 'src/app/services/shared.service';
+import { ToastService } from 'src/app/services/toast.service';
 
 @Component({
   selector: 'app-view-details',
@@ -28,7 +29,8 @@ export class ViewDetailsPage implements OnInit {
     private modalCtrl: ModalController,
     private router: Router,
     private apiDataBinding: ApiDataBindService,
-    private sharedSvc: SharedService
+    private sharedSvc: SharedService,
+    private toastSvc: ToastService
   ) {
     this.productLotData = this.sharedSvc.productLotData;
   }
@@ -45,8 +47,15 @@ export class ViewDetailsPage implements OnInit {
       id_user: 10,
     };
     this.apiDataBinding.getMyProductLotDetails(data).then((data) => {
-      this.productLotDetails = data.data[0];
-      this.productLotDetailsDataValue = this.productLotDetails.datavalues;
+      if (data.status == 200 && data.data != null) {
+        this.productLotDetails = data.data[0];
+        this.productLotDetailsDataValue = this.productLotDetails.datavalues;
+      } else {
+        this.toastSvc.show({
+          message: 'No Data Found',
+          type: 'error',
+        });
+      }
     });
   }
 
