@@ -44,7 +44,7 @@ export class ViewDetailsPage implements OnInit {
   fetchProductLotDetails() {
     let data: IMyProductLotDetails = {
       id_production_lot: this.productLotData.id,
-      id_user: 10,
+      id_user: this.sharedSvc.userId,
     };
     this.apiDataBinding.getMyProductLotDetails(data).then((data) => {
       if (data.status == 200 && data.data != null) {

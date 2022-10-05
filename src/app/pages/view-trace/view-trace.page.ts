@@ -42,7 +42,7 @@ export class ViewTracePage implements OnInit {
   getQRCodeOperByProdLotId(id) {
     let params = {
       id_production_lot: id,
-      id_user_received: 10,
+      id_user_received: this.sharedSvc.userId,
     };
     this.apiDataBindiing
       .getQRCodeOperByProdLotId(params)

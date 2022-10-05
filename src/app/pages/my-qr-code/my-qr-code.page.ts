@@ -42,7 +42,7 @@ export class MyQrCodePage implements OnInit {
   getQRCodeOperByProdLotId() {
     let params = {
       id_production_lot: this.productLotData.id,
-      id_user_received: 10,
+      id_user_received: this.sharedSvc.userId,
     };
     this.apiDataBinding.getQRCodeOperByProdLotId(params).then((data) => {
       if (data.status == 200 && data.data.length == 0) {
