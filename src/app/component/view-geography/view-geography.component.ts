@@ -43,6 +43,10 @@ export class ViewGeographyComponent implements OnInit {
   }
 
   close() {
-    this.modalCtrl.dismiss();
+    this.modalCtrl.dismiss(false);
+  }
+
+  view() {
+    this.modalCtrl.dismiss(true);
   }
 }

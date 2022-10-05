@@ -23,6 +23,5 @@ export class ViewDetailsPopupComponent implements OnInit {
 
   save() {
     this.modalCtrl.dismiss();
-    this.router.navigate(['my-qr-code']);
   }
 }

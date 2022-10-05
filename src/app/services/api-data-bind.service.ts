@@ -6,12 +6,17 @@ import { ILoginData } from '../interfaces/login-data';
 import { Storage } from '@ionic/storage-angular';
 import { IMyProductLotDetails } from '../interfaces/my-product-lot-details';
 import { IQrCodeOperation } from '../interfaces/qr-code-operation';
+import { SharedService } from './shared.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ApiDataBindService {
-  constructor(private authSvc: AuthService, private storage: Storage) {}
+  constructor(
+    private authSvc: AuthService,
+    private storage: Storage,
+    private sharedSvc: SharedService
+  ) {}
 
   getUserInfo() {
     let promise = new Promise<any>(async (resolve, reject) => {
@@ -20,6 +25,7 @@ export class ApiDataBindService {
         .get(ConstantService.dbKey.userID)
         .then((userID) => {
           if (userID != null) {
+            this.sharedSvc.userId = userID;
             resolve(userID);
           } else {
             resolve(null);

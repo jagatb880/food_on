@@ -11,6 +11,7 @@ import { Location } from '@angular/common';
 import { ViewGeographyComponent } from 'src/app/component/view-geography/view-geography.component';
 import { ApiDataBindService } from 'src/app/services/api-data-bind.service';
 import { SharedService } from 'src/app/services/shared.service';
+import { ViewDetailsPopupComponent } from 'src/app/component/view-details-popup/view-details-popup.component';
 
 @Component({
   selector: 'app-view-trace',
@@ -75,6 +76,24 @@ export class ViewTracePage implements OnInit {
     const popover = await this.modalCtrl.create({
       component: ViewGeographyComponent,
       componentProps: { producerData: this.producerData },
+      cssClass: 'login-unlock-modal-class',
+    });
+    popover.onDidDismiss().then((data) => {
+      if (data) {
+        this.viewDataValue(this.producerData);
+      }
+    });
+    return await popover.present();
+  }
+
+  async viewDataValue(producerData) {
+    //production_date
+    const popover = await this.modalCtrl.create({
+      component: ViewDetailsPopupComponent,
+      componentProps: {
+        productLotDataValue: producerData.datavalues,
+        productionDate: this.convertDate(this.producerData.production_date),
+      },
       cssClass: 'login-unlock-modal-class',
     });
     return await popover.present();

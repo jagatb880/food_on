@@ -8,6 +8,7 @@ export class SharedService {
   productData: any;
   productLotData: any;
   loading: any;
+  userId: any;
   constructor(private loadingCtrl: LoadingController) {}
 
   async showLoader() {

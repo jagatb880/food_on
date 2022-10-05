@@ -480,19 +480,16 @@ export class HomePage implements OnInit {
         },
       });
     }
-    // this.gMap.setCamera({
-    //   zoom: 8,
-    //   coordinate: {
-    //     lat: this.markers[0].lat,
-    //     lng: this.markers[0].lng,
-    //   },
+    this.gMap.setCamera({
+      zoom: 8,
+      coordinate: {
+        lat: this.markers[0].lat,
+        lng: this.markers[0].lng,
+      },
+    });
+    // this.gMap.getMapBounds().then((data) => {
+    //   console.log(data);
     // });
-    this.gMap.getMapBounds().then((data) => {
-      console.log(data);
-    });
-    this.gMap.setOnBoundsChangedListener((data) => {
-      console.log(data);
-    });
   }
 
   convertDate(date) {
