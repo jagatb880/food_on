@@ -1,39 +1,40 @@
 <ion-header>
-  <ion-toolbar style="--background: #ffffff;">
+  <ion-toolbar style="--background: #ffffff">
     <ion-buttons slot="start">
-      <img style="width:32px;padding-left: 10%;" src="assets/images/back_a.png" (click)="goToBack()">
+      <img
+        style="width: 32px; padding-left: 10%"
+        src="assets/images/back_a.png"
+        (click)="goToBack()"
+      />
     </ion-buttons>
     <ion-buttons slot="primary">
-      <img style="width:32px;padding-right: 10%;" src="assets/images/profile_menu_ic.png">
+      <img
+        style="width: 32px; padding-right: 10%"
+        src="assets/images/profile_menu_ic.png"
+      />
     </ion-buttons>
 
-    <ion-title style="font-size:35px;color: #232844;">FOOD ON</ion-title>
+    <ion-title style="font-size: 35px; color: #232844">FOOD ON</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content style="--background: #ffffff;">
-  <div style="padding: 12px 14px 26px 14px;">
-    <div style="text-align: center;">
+<ion-content style="--background: #ffffff">
+  <div style="padding: 12px 14px 26px 14px">
+    <div style="text-align: center">
       <span class="header">View Product Traceability</span>
     </div>
     <div class="shadowdv">
       <span class="header" class="pruct_nametextcss">Product Name</span>
-      <div class="dvvvvvvv">
-        Organic mango
-      </div>
+      <div class="dvvvvvvv">{{product.name}}</div>
 
       <ion-row>
         <ion-col size="6">
           <span class="pruct_nametextcss">Lot Code</span>
-          <div class="dvvvvvvv">
-            56163
-          </div>
+          <div class="dvvvvvvv">{{productLotData.id}}</div>
         </ion-col>
         <ion-col size="6">
           <span class="pruct_nametextcss">Amount Of Unit</span>
-          <div class="dvvvvvvv">
-            15.32
-          </div>
+          <div class="dvvvvvvv"></div>
         </ion-col>
       </ion-row>
 
@@ -41,13 +42,13 @@
         <ion-col size="6">
           <span class="pruct_nametextcss">Production Date</span>
           <div class="dvvvvvvv">
-            08-Aug-2022
+            {{convertDate(productLotData.production_date)}}
           </div>
         </ion-col>
         <ion-col size="6">
           <span class="pruct_nametextcss">Expiration Date</span>
           <div class="dvvvvvvv">
-            12-Aug-2022
+            {{convertDate(productLotData.expiration_date)}}
           </div>
         </ion-col>
       </ion-row>
@@ -62,8 +63,10 @@
           <div class="content">
             <ion-row>
               <ion-col size="2">
-                <ion-icon style=" font-size: 25px;
-                color: black;" name="person-circle">
+                <ion-icon
+                  style="font-size: 25px; color: black"
+                  name="person-circle"
+                >
                 </ion-icon>
               </ion-col>
               <ion-col size="7.5">
@@ -72,13 +75,21 @@
                 <p class="dateandtext">09-Aug-2022</p>
               </ion-col>
               <ion-col size="2.5">
-                <ion-icon style="font-size: 37px;margin-top:9px;margin-bottom:7px;color: black;" name="information-circle-outline" (click)="view()">
+                <ion-icon
+                  style="
+                    font-size: 37px;
+                    margin-top: 9px;
+                    margin-bottom: 7px;
+                    color: black;
+                  "
+                  name="information-circle-outline"
+                  (click)="view()"
+                >
                 </ion-icon>
               </ion-col>
             </ion-row>
           </div>
         </div>
-
 
         <div class="step completed">
           <div class="v-stepper">
@@ -89,7 +100,10 @@
           <div class="content">
             <ion-row>
               <ion-col size="2">
-                <ion-icon style="font-size: 25px;color: black;" name="person-circle">
+                <ion-icon
+                  style="font-size: 25px; color: black"
+                  name="person-circle"
+                >
                 </ion-icon>
               </ion-col>
               <ion-col size="7.5">
@@ -98,13 +112,20 @@
                 <p class="dateandtext">09-Aug-2022</p>
               </ion-col>
               <ion-col size="1">
-                <ion-icon style="font-size: 37px;margin-top:9px;margin-bottom:7px;color: black;" name="information-circle-outline">
+                <ion-icon
+                  style="
+                    font-size: 37px;
+                    margin-top: 9px;
+                    margin-bottom: 7px;
+                    color: black;
+                  "
+                  name="information-circle-outline"
+                >
                 </ion-icon>
               </ion-col>
             </ion-row>
           </div>
         </div>
-
 
         <div class="step active">
           <div class="v-stepper">
@@ -115,7 +136,10 @@
           <div class="content">
             <ion-row>
               <ion-col size="2">
-                <ion-icon style="font-size: 25px;color: black;" name="person-circle">
+                <ion-icon
+                  style="font-size: 25px; color: black"
+                  name="person-circle"
+                >
                 </ion-icon>
               </ion-col>
               <ion-col size="7.5">
@@ -124,7 +148,15 @@
                 <p class="dateandtext">09-Aug-2022</p>
               </ion-col>
               <ion-col size="1">
-                <ion-icon style="font-size: 37px;margin-top:9px;margin-bottom:7px;color: black;" name="information-circle-outline">
+                <ion-icon
+                  style="
+                    font-size: 37px;
+                    margin-top: 9px;
+                    margin-bottom: 7px;
+                    color: black;
+                  "
+                  name="information-circle-outline"
+                >
                 </ion-icon>
               </ion-col>
             </ion-row>
@@ -133,11 +165,13 @@
       </div>
     </div>
   </div>
-
 </ion-content>
-<ion-footer style="background: white;">
-  <div style="text-align: center;padding-top: 7px;" (click)="viewGeographicalJourney()">
-    <img src="assets/images/location.png" style="height: 26px;">
+<ion-footer style="background: white">
+  <div
+    style="text-align: center; padding-top: 7px"
+    (click)="viewGeographicalJourney()"
+  >
+    <img src="assets/images/location.png" style="height: 26px" />
     <p class="tab-lable">VIEW GEOGRAPHY JOURNEY</p>
   </div>
 </ion-footer>

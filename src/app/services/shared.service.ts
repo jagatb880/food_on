@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { LoadingController } from '@ionic/angular';
 
 @Injectable({
   providedIn: 'root',
@@ -6,5 +7,18 @@ import { Injectable } from '@angular/core';
 export class SharedService {
   productData: any;
   productLotData: any;
-  constructor() {}
+  loading: any;
+  constructor(private loadingCtrl: LoadingController) {}
+
+  async showLoader() {
+    this.loading = await this.loadingCtrl.create({
+      message: 'Please wait ...',
+    });
+
+    this.loading.present();
+  }
+
+  dismissLoader() {
+    this.loading.dismiss();
+  }
 }

@@ -34,17 +34,22 @@ export class ProductionLotPage implements OnInit {
   }
 
   getProductLotData() {
+    this.sharedSvc.showLoader();
     this.apiDataBind
       .getMyProductLotByProductID(this.product.id)
       .then((productLotDatas) => {
         if (productLotDatas.status == 200) {
           console.log(productLotDatas);
           if (productLotDatas.data != null) {
+            this.sharedSvc.dismissLoader();
             this.datas = productLotDatas.data;
           } else {
             this.showConfirm();
           }
         }
+      })
+      .catch((error) => {
+        this.sharedSvc.dismissLoader();
       });
   }
 
@@ -60,6 +65,11 @@ export class ProductionLotPage implements OnInit {
   viewQRCode(i) {
     this.sharedSvc.productLotData = this.datas[i];
     this.router.navigate(['my-qr-code']);
+  }
+
+  viewTrace(i) {
+    this.sharedSvc.productLotData = this.datas[i];
+    this.router.navigate(['view-trace']);
   }
 
   convertDate(date) {

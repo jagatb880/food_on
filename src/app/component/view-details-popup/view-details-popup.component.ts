@@ -1,12 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import {
-  NavController,
-  MenuController,
-  ModalController,
-  Platform,
-  AlertController,
-} from '@ionic/angular';
+import { ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-view-details-popup',
@@ -16,6 +10,7 @@ import {
 export class ViewDetailsPopupComponent implements OnInit {
   productLotDataValue;
   productionDate;
+  location: any;
   constructor(private modalCtrl: ModalController, private router: Router) {}
 
   ngOnInit() {

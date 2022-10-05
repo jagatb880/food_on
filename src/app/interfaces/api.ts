@@ -9,4 +9,5 @@ export interface IApis {
   getMyProductLotDetails: string;
   getQRCodeOperByProdLotId: string;
   createProducerQRCodeOperation: string;
+  getQRCodeOperAllInfoByQRCodeOperId: string;
 }

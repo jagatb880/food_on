@@ -37,6 +37,7 @@ export class ProducerProductsPage implements OnInit {
 
   ngOnInit() {}
   ionViewWillEnter() {
+    this.sharedSvc.showLoader();
     this.storage.get(ConstantService.dbKey.userID).then(async (userID) => {
       await this.getProductList(userID);
     });
@@ -59,14 +60,20 @@ export class ProducerProductsPage implements OnInit {
     this.router.navigate(['receive-lot']);
   }
   getProductList(userID) {
-    this.apiDataBind.getProductList(userID).then((data) => {
-      console.log(data);
-      if (data.status == 200) {
-        this.productList = data.data;
-        this.datas = this.productList;
-        console.log(this.productList);
-      }
-    });
+    this.apiDataBind
+      .getProductList(userID)
+      .then((data) => {
+        console.log(data);
+        if (data.status == 200) {
+          this.sharedSvc.dismissLoader();
+          this.productList = data.data;
+          this.datas = this.productList;
+          console.log(this.productList);
+        }
+      })
+      .catch((error) => {
+        this.sharedSvc.dismissLoader();
+      });
   }
 
   search() {

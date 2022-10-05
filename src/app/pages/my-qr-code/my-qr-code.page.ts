@@ -1,6 +1,7 @@
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Geolocation } from '@awesome-cordova-plugins/geolocation/ngx';
 import { Dialog } from '@capacitor/dialog';
 import { ApiDataBindService } from 'src/app/services/api-data-bind.service';
 import { SharedService } from 'src/app/services/shared.service';
@@ -15,10 +16,13 @@ export class MyQrCodePage implements OnInit {
   showQRCode: boolean;
   product: any;
   productLotData: any;
+  lat: any;
+  lng: any;
   constructor(
     private _location: Location,
     private router: Router,
     private sharedSvc: SharedService,
+    private geolocation: Geolocation,
     private apiDataBinding: ApiDataBindService
   ) {}
 
@@ -27,7 +31,12 @@ export class MyQrCodePage implements OnInit {
     this.product = this.sharedSvc.productData;
     console.log(this.productLotData);
     this.showQRCode = false;
-    this.getQRCodeOperByProdLotId();
+    this.initialize();
+  }
+
+  async initialize() {
+    let result = await this.getCurrentLocation();
+    await this.getQRCodeOperByProdLotId();
   }
 
   getQRCodeOperByProdLotId() {
@@ -46,6 +55,18 @@ export class MyQrCodePage implements OnInit {
     });
   }
 
+  getCurrentLocation() {
+    this.geolocation
+      .getCurrentPosition()
+      .then((resp) => {
+        this.lat = resp.coords.latitude;
+        this.lng = resp.coords.longitude;
+      })
+      .catch((error) => {
+        console.log('Error getting location', error);
+      });
+  }
+
   generateQRCode(data: string) {
     this.qrCodeString = data.toString();
   }
@@ -56,7 +77,11 @@ export class MyQrCodePage implements OnInit {
     });
     if (value == true) {
       this.apiDataBinding
-        .createProducerQRCodeOperation(this.productLotData.id)
+        .createProducerQRCodeOperation(
+          this.productLotData.id,
+          this.lat,
+          this.lng
+        )
         .then((data) => {
           if (data.status == 200 && data.data != null) {
             this.generateQRCode(data.data.id);

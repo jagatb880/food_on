@@ -192,19 +192,34 @@ export class ApiDataBindService {
     return promise;
   }
 
-  createProducerQRCodeOperation(product_lot_id: any) {
+  createProducerQRCodeOperation(product_lot_id: any, lat: any, lng: any) {
     let promise = new Promise<any>((resolve, reject) => {
       let qrcodeoperation = {
         id_production_lot: product_lot_id,
         amount: 0,
         sale_value: 0,
         show_value_each_prod: 0,
-        n_coord: 0,
-        w_coord: 0,
+        n_coord: lat,
+        w_coord: lng,
         adddata: [],
       };
       let body = { qrcodeoperation };
       this.authSvc.createProducerQRCodeOperation(body).subscribe(
+        (res) => {
+          resolve(res);
+        },
+        (err) => {
+          console.log(err);
+          reject(err);
+        }
+      );
+    });
+    return promise;
+  }
+
+  getQRCodeOperAllInfoByQRCodeOperId(id) {
+    let promise = new Promise<any>((resolve, reject) => {
+      this.authSvc.getQRCodeOperAllInfoByQRCodeOperId(id).subscribe(
         (res) => {
           resolve(res);
         },

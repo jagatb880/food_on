@@ -11,6 +11,8 @@ import { ViewGeographyComponent } from './component/view-geography/view-geograph
 import { RecievelotdetailpopupComponent } from './component/recievelotdetailpopup/recievelotdetailpopup.component';
 import { HttpClientModule } from '@angular/common/http';
 import { IonicStorageModule, Storage } from '@ionic/storage-angular';
+import { NativeGeocoder } from '@awesome-cordova-plugins/native-geocoder/ngx';
+import { Geolocation } from '@awesome-cordova-plugins/geolocation/ngx';
 // import { Chart } from 'chart.js';
 // import { ChartsModule } from 'ng2-charts';
 // import { NgChartsModule } from 'ng2-charts';
@@ -36,6 +38,8 @@ import { IonicStorageModule, Storage } from '@ionic/storage-angular';
   ],
   providers: [
     Storage,
+    Geolocation,
+    NativeGeocoder,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
   ],
   bootstrap: [AppComponent],

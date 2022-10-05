@@ -54,4 +54,11 @@ export class AuthService {
       body
     );
   }
+
+  getQRCodeOperAllInfoByQRCodeOperId(id): Observable<any> {
+    return this.http.put(
+      ConstantService.api.getQRCodeOperAllInfoByQRCodeOperId,
+      id
+    );
+  }
 }

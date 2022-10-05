@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController, MenuController, ModalController, Platform, AlertController } from '@ionic/angular';
-import { Storage } from '@ionic/storage-angular';
-import { Router } from '@angular/router';
+import { ModalController } from '@ionic/angular';
+import {
+  NativeGeocoder,
+  NativeGeocoderResult,
+  NativeGeocoderOptions,
+} from '@awesome-cordova-plugins/native-geocoder/ngx';
 
 @Component({
   selector: 'app-view-geography',
@@ -9,14 +12,37 @@ import { Router } from '@angular/router';
   styleUrls: ['./view-geography.component.scss'],
 })
 export class ViewGeographyComponent implements OnInit {
+  producerData: any;
+  location: any;
+  constructor(
+    private modalCtrl: ModalController,
+    private nativeGeocoder: NativeGeocoder
+  ) {}
 
-  constructor(private modalCtrl: ModalController, private storage: Storage, private router: Router,) { }
-
-  ngOnInit() {}
-  close()
-  {
-    this.modalCtrl.dismiss()
+  ngOnInit() {
+    this.getLocation();
   }
 
+  getLocation() {
+    let options: NativeGeocoderOptions = {
+      useLocale: true,
+      maxResults: 5,
+    };
 
+    this.nativeGeocoder
+      .reverseGeocode(
+        this.producerData.n_coord,
+        this.producerData.w_coord,
+        options
+      )
+      .then((result: NativeGeocoderResult[]) => {
+        this.location = result[0].administrativeArea;
+        console.log(this.location);
+      })
+      .catch((error: any) => console.log(error));
+  }
+
+  close() {
+    this.modalCtrl.dismiss();
+  }
 }
