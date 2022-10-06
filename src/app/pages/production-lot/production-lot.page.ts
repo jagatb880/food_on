@@ -57,6 +57,11 @@ export class ProductionLotPage implements OnInit {
     this._location.back();
   }
 
+  createnewlot()
+  {
+    this.sharedSvc.productLotData = null;
+    this.router.navigate(['view-details']);
+  }
   viewDetails(i) {
     this.sharedSvc.productLotData = this.datas[i];
     this.router.navigate(['view-details']);

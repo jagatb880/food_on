@@ -24,6 +24,15 @@ export class ViewDetailsPage implements OnInit {
   productLotDetails: any;
   productLotDetailsDataValue: any[];
   data: any;
+  prductname: any;
+  lotcode: any;
+  amountofunit: any;
+  salesprice: any;
+  valueeachunit: any;
+  enddate: any;
+  exipredate: any;
+  disablestatus = false;
+  savebutton = false;
   constructor(
     private _location: Location,
     private modalCtrl: ModalController,
@@ -36,9 +45,17 @@ export class ViewDetailsPage implements OnInit {
   }
 
   ngOnInit() {
-    this.fetchProductLotDetails();
-    this.productLotDetails = '';
-    this.productLotDetailsDataValue = [];
+    if (this.productLotData != null) {
+      this.savebutton = false;
+      this.fetchProductLotDetails();
+      this.productLotDetails = '';
+      this.productLotDetailsDataValue = [];
+    }
+    else {
+      this.disablestatus = false;
+      this.savebutton = true
+    }
+
   }
 
   fetchProductLotDetails() {
@@ -46,10 +63,21 @@ export class ViewDetailsPage implements OnInit {
       id_production_lot: this.productLotData.id,
       id_user: this.sharedSvc.userId,
     };
+    console.log(data)
     this.apiDataBinding.getMyProductLotDetails(data).then((data) => {
+      console.log(data)
       if (data.status == 200 && data.data != null) {
         this.productLotDetails = data.data[0];
         this.productLotDetailsDataValue = this.productLotDetails.datavalues;
+        console.log()
+        this.prductname = this.productLotDetails.producer_name;
+        this.lotcode = this.productLotDetails.code_bar_lot;
+        this.amountofunit = this.productLotDetails.amount;
+        this.salesprice = this.productLotDetails.sale_value;
+        this.valueeachunit = this.productLotDetails.value_each_unit;
+        this.enddate = this.productLotDetails.production_date;
+        this.exipredate = this.productLotDetails.expiration_date;
+        this.disablestatus = true;
       } else {
         this.toastSvc.show({
           message: 'No Data Found',
@@ -89,4 +117,12 @@ export class ViewDetailsPage implements OnInit {
       newDate.split('-')[2];
     return formatedDate;
   }
+
+  enddatevalue() {
+    console.log(this.enddate);
+  }
+  expiredatevalue() {
+    console.log(this.exipredate);
+  }
+
 }
