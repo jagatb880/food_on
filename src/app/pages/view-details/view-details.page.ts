@@ -50,12 +50,10 @@ export class ViewDetailsPage implements OnInit {
       this.fetchProductLotDetails();
       this.productLotDetails = '';
       this.productLotDetailsDataValue = [];
-    }
-    else {
+    } else {
       this.disablestatus = false;
-      this.savebutton = true
+      this.savebutton = true;
     }
-
   }
 
   fetchProductLotDetails() {
@@ -63,18 +61,20 @@ export class ViewDetailsPage implements OnInit {
       id_production_lot: this.productLotData.id,
       id_user: this.sharedSvc.userId,
     };
-    console.log(data)
+    console.log(data);
     this.apiDataBinding.getMyProductLotDetails(data).then((data) => {
-      console.log(data)
+      console.log(data);
       if (data.status == 200 && data.data != null) {
         this.productLotDetails = data.data[0];
         this.productLotDetailsDataValue = this.productLotDetails.datavalues;
-        console.log()
-        this.prductname = this.productLotDetails.producer_name;
+        console.log();
+        this.prductname = this.productLotDetails.name;
         this.lotcode = this.productLotDetails.code_bar_lot;
         this.amountofunit = this.productLotDetails.amount;
-        this.salesprice = this.productLotDetails.sale_value;
-        this.valueeachunit = this.productLotDetails.value_each_unit;
+        this.salesprice = '$' + this.productLotDetails.sale_value;
+        this.valueeachunit = Number(
+          this.productLotDetails.value_each_unit
+        ).toFixed(3);
         this.enddate = this.productLotDetails.production_date;
         this.exipredate = this.productLotDetails.expiration_date;
         this.disablestatus = true;
@@ -124,5 +124,4 @@ export class ViewDetailsPage implements OnInit {
   expiredatevalue() {
     console.log(this.exipredate);
   }
-
 }
