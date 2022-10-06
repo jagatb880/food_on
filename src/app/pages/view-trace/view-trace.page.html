@@ -54,7 +54,10 @@
       </ion-row>
 
       <div class="container">
-        <div class="step completed">
+        <div
+          [ngClass]="data.sent_date != null?'step completed':'step active'"
+          *ngFor="let data of steperdatas;let i = index"
+        >
           <div class="v-stepper">
             <div class="circle"></div>
             <div class="line"></div>
@@ -70,9 +73,11 @@
                 </ion-icon>
               </ion-col>
               <ion-col size="7.5">
-                <h3 class="producer_text">Producer</h3>
-                <p class="dateandtext">Finca La Coma</p>
-                <p class="dateandtext">09-Aug-2022</p>
+                <h3 class="producer_text">{{data.user_received}}</h3>
+                <!-- <p class="dateandtext">Finca La Coma</p> -->
+                <p *ngIf="data.sent_date != null" class="dateandtext">
+                  {{convertDate(data.sent_date)}}
+                </p>
               </ion-col>
               <ion-col size="2.5">
                 <ion-icon
@@ -83,7 +88,7 @@
                     color: black;
                   "
                   name="information-circle-outline"
-                  (click)="view()"
+                  (click)="view(i)"
                 >
                 </ion-icon>
               </ion-col>
@@ -91,7 +96,7 @@
           </div>
         </div>
 
-        <div class="step completed">
+        <!-- <div class="step completed">
           <div class="v-stepper">
             <div class="circle"></div>
             <div class="activeline"></div>
@@ -125,9 +130,9 @@
               </ion-col>
             </ion-row>
           </div>
-        </div>
+        </div> -->
 
-        <div class="step active">
+        <!-- <div class="step active">
           <div class="v-stepper">
             <div class="circle"></div>
             <div class="line"></div>
@@ -161,7 +166,7 @@
               </ion-col>
             </ion-row>
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
   </div>

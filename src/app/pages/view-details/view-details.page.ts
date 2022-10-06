@@ -47,6 +47,7 @@ export class ViewDetailsPage implements OnInit {
   ngOnInit() {
     if (this.productLotData != null) {
       this.savebutton = false;
+      this.sharedSvc.showLoader();
       this.fetchProductLotDetails();
       this.productLotDetails = '';
       this.productLotDetailsDataValue = [];
@@ -78,11 +79,16 @@ export class ViewDetailsPage implements OnInit {
         this.enddate = this.productLotDetails.production_date;
         this.exipredate = this.productLotDetails.expiration_date;
         this.disablestatus = true;
+        this.sharedSvc.dismissLoader();
       } else {
+        this.sharedSvc.dismissLoader();
         this.toastSvc.show({
           message: 'No Data Found',
           type: 'error',
         });
+        setTimeout(() => {
+          this._location.back();
+        }, 1000);
       }
     });
   }

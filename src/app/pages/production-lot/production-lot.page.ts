@@ -44,6 +44,7 @@ export class ProductionLotPage implements OnInit {
             this.sharedSvc.dismissLoader();
             this.datas = productLotDatas.data;
           } else {
+            this.sharedSvc.dismissLoader();
             this.showConfirm();
           }
         }
@@ -57,8 +58,7 @@ export class ProductionLotPage implements OnInit {
     this._location.back();
   }
 
-  createnewlot()
-  {
+  createnewlot() {
     this.sharedSvc.productLotData = null;
     this.router.navigate(['view-details']);
   }

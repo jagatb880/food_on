@@ -36,7 +36,7 @@ export class ViewGeographyComponent implements OnInit {
         options
       )
       .then((result: NativeGeocoderResult[]) => {
-        this.location = result[0].administrativeArea;
+        this.location = result[0].countryName;
         console.log(this.location);
       })
       .catch((error: any) => console.log(error));

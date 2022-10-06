@@ -10,7 +10,7 @@ export class ToastService {
   toast: any;
   async show({
     message = '',
-    duration = 4000,
+    duration = 3000,
     type = 'success',
     position = 'bottom',
   }) {

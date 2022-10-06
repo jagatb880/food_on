@@ -1,39 +1,52 @@
 <ion-header>
-  <ion-toolbar style="--background: #ffffff;">
+  <ion-toolbar style="--background: #ffffff">
     <ion-buttons slot="start">
-      <img style="width:32px;padding-left: 10%;" src="assets/images/back_a.png" (click)="goToBack()">
+      <img
+        style="width: 32px; padding-left: 10%"
+        src="assets/images/back_a.png"
+        (click)="goToBack()"
+      />
     </ion-buttons>
     <ion-buttons slot="primary">
-      <img style="width:32px;padding-right: 10%;" src="assets/images/profile_menu_ic.png">
+      <img
+        style="width: 32px; padding-right: 10%"
+        src="assets/images/profile_menu_ic.png"
+      />
     </ion-buttons>
 
-    <ion-title style="font-size:35px;color: #232844;">FOOD ON</ion-title>
+    <ion-title style="font-size: 35px; color: #232844">FOOD ON</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content style="--background: #ffffff;">
-  <div style="padding: 12px 12px 26px 12px;">
-    <div style="text-align: center;">
+<ion-content style="--background: #ffffff">
+  <div style="padding: 12px 12px 26px 12px">
+    <div style="text-align: center">
       <span class="header">Send Invitation</span>
     </div>
 
     <div class="shadowdv">
-      <span class="header" style="color: #333333;font-weight: 600;font-family: 'Nunito-Bold';
+      <!-- <span class="header" style="color: #333333;font-weight: 600;font-family: 'Nunito-Bold';
       font-size: 16px;">Name</span>
       <div class="input-div">
         Distributor Name
-      </div>
+      </div> -->
 
-      <span class="header" style="color: #333333;font-weight: 600;font-family: 'Nunito-Bold';
-      font-size: 16px;">Email</span>
-      <div class="input-div">
-        Distributor Email
-      </div>
+      <span
+        class="header"
+        style="
+          color: #333333;
+          font-weight: 600;
+          font-family: 'Nunito-Bold';
+          font-size: 16px;
+        "
+        >Email</span
+      >
+      <div class="input-div">Distributor Email</div>
 
-  
-      <ion-button expand="block" class="google-button"><img src="assets/images/ic_near_me.png" class="goglelogin">Send Invitation
+      <ion-button expand="block" class="google-button"
+        ><img src="assets/images/ic_near_me.png" class="goglelogin" />Send
+        Invitation
       </ion-button>
     </div>
   </div>
-
 </ion-content>
