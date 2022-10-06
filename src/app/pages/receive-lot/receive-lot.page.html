@@ -1,37 +1,47 @@
 <ion-header>
-  <ion-toolbar style="--background: #ffffff;">
+  <ion-toolbar style="--background: #ffffff">
     <ion-buttons slot="start">
-      <img style="width:32px;padding-left: 10%;" src="assets/images/back_a.png" (click)="goToBack()">
+      <img
+        style="width: 32px; padding-left: 10%"
+        src="assets/images/back_a.png"
+        (click)="goToBack()"
+      />
     </ion-buttons>
-    <ion-buttons slot="primary"  (click)="presentPopover($event)">
+    <ion-buttons slot="primary" (click)="presentPopover($event)">
       <img
         style="width: 32px; padding-right: 10%"
         src="assets/images/profile_menu_ic.png"
       />
     </ion-buttons>
-    <ion-popover  #popover [isOpen]="isOpen" (didDismiss)="isOpen = false" >
+    <ion-popover #popover [isOpen]="isOpen" (didDismiss)="isOpen = false">
       <ng-template>
         <ion-content class="ion-padding" (click)="logout()">Logout</ion-content>
       </ng-template>
     </ion-popover>
 
-    <ion-title style="font-size:35px;color: #232844;">FOOD ON</ion-title>
+    <ion-title style="font-size: 35px; color: #232844">FOOD ON</ion-title>
   </ion-toolbar>
 </ion-header>
-<ion-content style="--background: #ffffff;">
-  <div style="padding: 12px 14px 26px 14px;">
-    <div style="text-align: center;"> 
+<ion-content>
+  <div style="padding: 12px 14px 26px 14px">
+    <div style="text-align: center">
       <span class="header">Receive Lot Via QR Code</span>
     </div>
 
     <div class="shadowdv">
-      <img src="assets/images/barcodeicon.png" style="height: 160px;margin-top: 18px;" (click)="goToReceiveLotDetails()">
-      <p class="placeorder">Place The QR Code <br>Inside The Scan Area</p>
-      <div style="display: flex;justify-content: center;margin-top: 35px;">
-        <img src="assets/images/mode.png" style="height: 45px;margin-top: 18px;" >
-        <img src="assets/images/light.png" style="height: 45px;margin-top: 18px;margin-left: 33px;" >
+      <div class="scan-box"></div>
+      <!-- <img src="assets/images/barcodeicon.png" style="height: 160px;margin-top: 18px;" (click)="goToReceiveLotDetails()"> -->
+      <p class="placeorder">Place The QR Code <br />Inside The Scan Area</p>
+      <div style="display: flex; justify-content: center; margin-top: 35px">
+        <img
+          src="assets/images/mode.png"
+          style="height: 45px; margin-top: 18px"
+        />
+        <img
+          src="assets/images/light.png"
+          style="height: 45px; margin-top: 18px; margin-left: 33px"
+        />
       </div>
     </div>
   </div>
-
 </ion-content>

@@ -17,7 +17,6 @@ ion-title {
 }
 .shadowdv{
     text-align: center;
-    background: white;
     padding-top: 12%;
     padding-bottom: 20%;
     border-radius: 10px;
@@ -27,4 +26,17 @@ ion-title {
 .placeorder{
     color: #333333;
     font-family: 'Nunito-Bold';
+    margin-top: 30vh;
+}
+.scan-box {
+    border: 2px solid #fff;
+    box-shadow: 0 0 0 100vmax rgb(0 0 0 / 50%);
+    content: "";
+    display: block;
+    left: 50%;
+    height: 28vh;
+    position: absolute;
+    top: 28%;
+    transform: translate(-50%, -50%);
+    width: 300px;
 }

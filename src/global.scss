@@ -44,3 +44,8 @@ ion-popover {
     min-width: 290px;
   }
 }
+
+body.scanner-active {
+  --background: transparent;
+  --ion-background-color: transparent;
+}

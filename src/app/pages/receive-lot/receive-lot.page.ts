@@ -1,10 +1,17 @@
 import { Location } from '@angular/common';
-import { Component, OnInit,ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { ViewGeographyComponent } from 'src/app/component/view-geography/view-geography.component';
-import { NavController, MenuController, ModalController, Platform, AlertController } from '@ionic/angular';
+import {
+  NavController,
+  MenuController,
+  ModalController,
+  Platform,
+  AlertController,
+} from '@ionic/angular';
 import { PopoverController } from '@ionic/angular';
 import { Storage } from '@ionic/storage-angular';
+import { BarcodeScanner } from '@capacitor-community/barcode-scanner';
 
 @Component({
   selector: 'app-receive-lot',
@@ -14,9 +21,63 @@ import { Storage } from '@ionic/storage-angular';
 export class ReceiveLotPage implements OnInit {
   @ViewChild('popover') popover;
   isOpen = false;
-  constructor(private storage: Storage, public popoverController: PopoverController,private _location: Location, private router: Router,private modalCtrl: ModalController) { }
+  scanActive: boolean = false;
+  constructor(
+    private storage: Storage,
+    public popoverController: PopoverController,
+    private _location: Location,
+    private router: Router,
+    private modalCtrl: ModalController
+  ) {}
 
   ngOnInit() {
+    this.initialization();
+  }
+
+  async initialization() {
+    await this.checkPermission();
+    await this.startScanner();
+  }
+
+  async checkPermission() {
+    return new Promise(async (resolve, reject) => {
+      const status = await BarcodeScanner.checkPermission({ force: true });
+      if (status.granted) {
+        resolve(true);
+      } else if (status.denied) {
+        BarcodeScanner.openAppSettings();
+        resolve(false);
+      }
+    });
+  }
+
+  async startScanner() {
+    const allowed = await this.checkPermission();
+
+    if (allowed) {
+      this.scanActive = true;
+      BarcodeScanner.hideBackground();
+      document.querySelector('body').classList.add('scanner-active');
+      const result = await BarcodeScanner.startScan();
+
+      if (result.hasContent) {
+        this.scanActive = false;
+        alert(result.content); //The QR content will come out here
+        //Handle the data as your heart desires here
+        this.stopScanner();
+      } else {
+        alert('NO DATA FOUND!');
+      }
+    } else {
+      alert('NOT ALLOWED!');
+    }
+  }
+
+  stopScanner() {
+    BarcodeScanner.showBackground();
+    document.querySelector('body').classList.remove('scanner-active');
+    BarcodeScanner.stopScan();
+    this.scanActive = false;
   }
 
   goToBack() {
@@ -24,17 +85,21 @@ export class ReceiveLotPage implements OnInit {
   }
 
   goToReceiveLotDetails() {
-    this.router.navigate(['receive-lot-details'])
+    this.router.navigate(['receive-lot-details']);
   }
 
-  logout()
-  {
-    this.popoverController.dismiss()
+  logout() {
+    this.popoverController.dismiss();
     this.storage.clear();
     this.router.navigate(['login']);
   }
   presentPopover(e: Event) {
     this.popover.event = e;
     this.isOpen = true;
+  }
+
+  ionViewWillLeave() {
+    BarcodeScanner.stopScan();
+    this.scanActive = false;
   }
 }
