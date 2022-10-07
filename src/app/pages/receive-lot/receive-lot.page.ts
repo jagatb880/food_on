@@ -12,6 +12,7 @@ import {
 import { PopoverController } from '@ionic/angular';
 import { Storage } from '@ionic/storage-angular';
 import { BarcodeScanner } from '@capacitor-community/barcode-scanner';
+import { SharedService } from 'src/app/services/shared.service';
 
 @Component({
   selector: 'app-receive-lot',
@@ -27,10 +28,12 @@ export class ReceiveLotPage implements OnInit {
     public popoverController: PopoverController,
     private _location: Location,
     private router: Router,
-    private modalCtrl: ModalController
+    private sharedSvc: SharedService
   ) {}
 
-  ngOnInit() {
+  ngOnInit() {}
+
+  ionViewWillEnter() {
     this.initialization();
   }
 
@@ -62,7 +65,7 @@ export class ReceiveLotPage implements OnInit {
 
       if (result.hasContent) {
         this.scanActive = false;
-        alert(result.content); //The QR content will come out here
+        this.sharedSvc.scanedQrCode = result.content; //The QR content will come out here
         //Handle the data as your heart desires here
         this.stopScanner();
       } else {
@@ -78,6 +81,7 @@ export class ReceiveLotPage implements OnInit {
     document.querySelector('body').classList.remove('scanner-active');
     BarcodeScanner.stopScan();
     this.scanActive = false;
+    this.router.navigate(['receive-lot-details']);
   }
 
   goToBack() {
@@ -93,6 +97,7 @@ export class ReceiveLotPage implements OnInit {
     this.storage.clear();
     this.router.navigate(['login']);
   }
+
   presentPopover(e: Event) {
     this.popover.event = e;
     this.isOpen = true;

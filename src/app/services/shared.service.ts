@@ -10,6 +10,7 @@ export class SharedService {
   loading: any;
   userId: any;
   productId: any;
+  scanedQrCode: any;
   constructor(private loadingCtrl: LoadingController) {}
 
   async showLoader() {

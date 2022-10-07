@@ -10,7 +10,7 @@ ion-title {
 }
 .header {
     font-family: 'Nunito-Bold';
-    color: #001e62;
+    color: white;
     font-size: 4.9vw;
     margin-top: 10%;
     font-weight: 600;
@@ -24,9 +24,9 @@ ion-title {
     margin-top: 20px;
 }
 .placeorder{
-    color: #333333;
+    color: white;
     font-family: 'Nunito-Bold';
-    margin-top: 30vh;
+    margin-top: 38vh;
 }
 .scan-box {
     border: 2px solid #fff;
@@ -36,7 +36,7 @@ ion-title {
     left: 50%;
     height: 28vh;
     position: absolute;
-    top: 28%;
+    top: 38%;
     transform: translate(-50%, -50%);
     width: 300px;
 }
