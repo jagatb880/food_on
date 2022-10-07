@@ -31,7 +31,9 @@ export class ReceiveLotPage implements OnInit {
     private sharedSvc: SharedService
   ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.router.navigate(['receive-lot-details']);
+  }
 
   ionViewWillEnter() {
     this.initialization();

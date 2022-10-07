@@ -17,6 +17,7 @@ import { ApiDataBindService } from 'src/app/services/api-data-bind.service';
   styleUrls: ['./receive-lot-details.page.scss'],
 })
 export class ReceiveLotDetailsPage implements OnInit {
+  receivelot: any;
   constructor(
     private modalCtrl: ModalController,
     private _location: Location,
@@ -26,6 +27,7 @@ export class ReceiveLotDetailsPage implements OnInit {
 
   ngOnInit() {
     this.sharedSvc.showLoader();
+    this.sharedSvc.scanedQrCode = '100';
     this.getQRCodeOperAllInfoByQRCodeOperId(this.sharedSvc.scanedQrCode);
   }
 
@@ -35,6 +37,7 @@ export class ReceiveLotDetailsPage implements OnInit {
       .then((result) => {
         if (result.status == 200) {
           this.sharedSvc.dismissLoader();
+          this.receivelot = result.data;
           console.log(result.data);
         }
       })
@@ -52,5 +55,17 @@ export class ReceiveLotDetailsPage implements OnInit {
 
   goToBack() {
     this._location.back();
+  }
+
+  convertDate(date) {
+    let isoDate = new Date(date);
+    let newDate = isoDate.toISOString().substring(0, 10);
+    let formatedDate =
+      newDate.split('-')[2] +
+      '-' +
+      newDate.split('-')[1] +
+      '-' +
+      newDate.split('-')[0];
+    return formatedDate;
   }
 }

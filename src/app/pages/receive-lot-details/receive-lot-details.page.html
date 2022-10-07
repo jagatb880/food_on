@@ -16,33 +16,33 @@
       <span class="header">Receive Lot Via QR Code</span>
     </div>
 
-    <div class="shadowdv">
+    <div class="shadowdv" *ngFor="let obj of receivelot">
       <span class="header" class="pruct_nametextcss">Product Name</span>
       <div class="dvvvvvvv">
-        Organic mango
+        {{obj.producer_name}}
       </div>
 
       <span class="header" class="pruct_nametextcss">Producer</span>
       <div class="dvvvvvvv">
-        Fininca La Lama
+        {{obj.producer_name}}
       </div>
 
       <span class="header" class="pruct_nametextcss">Received From</span>
       <div class="dvvvvvvv">
-        Fininca La Lama
+        {{obj.received_name}}
       </div>
 
       <ion-row>
         <ion-col size="6">
           <span class="pruct_nametextcss">Lot Code</span>
           <div class="dvvvvvvv">
-            56163
+            {{obj.code_bar_lot}}
           </div>
         </ion-col>
         <ion-col size="6">
           <span class="pruct_nametextcss">Amount Of Unit</span>
           <div class="dvvvvvvv">
-            15.32
+            {{obj.amount}}
           </div>
         </ion-col>
       </ion-row>
@@ -51,13 +51,13 @@
         <ion-col size="6">
           <span class="pruct_nametextcss">Purchase Price</span>
           <div class="dvvvvvvv">
-            $200.00
+            ${{obj.purchase_value | number:'1.0':'en-US'}}
           </div>
         </ion-col>
         <ion-col size="6">
           <span class="pruct_nametextcss">Value Each Unit</span>
           <div class="dvvvvvvv">
-            $200.00
+            ${{obj.value_each_unit | number:'1.0':'en-US'}}
           </div>
         </ion-col>
       </ion-row>
@@ -66,14 +66,14 @@
         <ion-col size="6">
           <span class="pruct_nametextcss">Production Date</span>
           <div class="dvvvvvvv">
-            08-Aug-2022
+            {{convertDate(obj.production_date)}}
             <img src="assets/images/ic_date.png" style="float: right;height:18px;padding-right:10px;">
           </div>
         </ion-col>
         <ion-col size="6">
           <span class="pruct_nametextcss">Expiration Date</span>
           <div class="dvvvvvvv">
-            12-Aug-2022
+            {{convertDate(obj.expiration_date)}}
             <img src="assets/images/ic_date.png" style="float: right;height:18px;padding-right:10px;">
           </div>
         </ion-col>
