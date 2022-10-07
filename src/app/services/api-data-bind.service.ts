@@ -237,4 +237,18 @@ export class ApiDataBindService {
     });
     return promise;
   }
+  sendlotdata(body) {
+    let promise = new Promise<any>((resolve, reject) => {
+      this.authSvc.sendlotdeta(body).subscribe(
+        (res) => {
+          resolve(res);
+        },
+        (err) => {
+          console.log(err);
+          reject(err);
+        }
+      );
+    });
+    return promise;
+  }
 }

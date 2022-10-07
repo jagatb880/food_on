@@ -7,10 +7,12 @@ import { NavController, MenuController, ModalController, Platform, AlertControll
   styleUrls: ['./recievelotdetailpopup.component.scss'],
 })
 export class RecievelotdetailpopupComponent implements OnInit {
-
+  releventdata;
   constructor(private modalCtrl: ModalController) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.log(this.releventdata)
+  }
 
   close()
   {

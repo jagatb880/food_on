@@ -10,6 +10,9 @@ import { Location } from '@angular/common';
 import { RecievelotdetailpopupComponent } from 'src/app/component/recievelotdetailpopup/recievelotdetailpopup.component';
 import { SharedService } from 'src/app/services/shared.service';
 import { ApiDataBindService } from 'src/app/services/api-data-bind.service';
+import { ConstantService } from 'src/app/services/constant.service';
+import { NetworkConnectivityService } from 'src/app/services/network-connectivity.service';
+import { ToastService } from 'src/app/services/toast.service';
 
 @Component({
   selector: 'app-receive-lot-details',
@@ -18,12 +21,16 @@ import { ApiDataBindService } from 'src/app/services/api-data-bind.service';
 })
 export class ReceiveLotDetailsPage implements OnInit {
   receivelot: any;
+  releventdta: any;
+  lotbody: { qrcodeoperation: { id_prior_operation: number; id_user_received: number; n_coord: number; w_coord: number; }; };
   constructor(
     private modalCtrl: ModalController,
     private _location: Location,
     private sharedSvc: SharedService,
-    private apiDataBinding: ApiDataBindService
-  ) {}
+    private apiDataBinding: ApiDataBindService,
+    private networkSvc: NetworkConnectivityService,
+    private toastSvc: ToastService
+  ) { }
 
   ngOnInit() {
     this.sharedSvc.showLoader();
@@ -38,6 +45,7 @@ export class ReceiveLotDetailsPage implements OnInit {
         if (result.status == 200) {
           this.sharedSvc.dismissLoader();
           this.receivelot = result.data;
+          this.releventdta = this.receivelot[0].datavalues;
           console.log(result.data);
         }
       })
@@ -45,10 +53,13 @@ export class ReceiveLotDetailsPage implements OnInit {
         this.sharedSvc.dismissLoader();
       });
   }
-  async view() {
+  async releventdata() {
     const popover = await this.modalCtrl.create({
       component: RecievelotdetailpopupComponent,
       cssClass: 'login-unlock-modal-class',
+      componentProps: {
+        releventdata: this.releventdta,
+      },
     });
     return await popover.present();
   }
@@ -67,5 +78,45 @@ export class ReceiveLotDetailsPage implements OnInit {
       '-' +
       newDate.split('-')[0];
     return formatedDate;
+  }
+
+  yes() {
+    if (this.networkSvc.status) {
+      this.lotbody = {
+        "qrcodeoperation": {
+          "id_prior_operation": this.receivelot[0].id_prior_operation,
+          "id_user_received": 5,
+          "n_coord": 0,
+          "w_coord": 0
+        }
+      }
+      
+      this.apiDataBinding
+        .sendlotdata(this.lotbody)
+        .then(async (data) => {
+          console.log(data);
+          if (data.status == 200) {
+            console.log(data.data.id);
+
+          } else {
+            this.toastSvc.show({
+              message: data.message,
+              type: 'error',
+            });
+          }
+        })
+        .catch((error) => {
+          this.toastSvc.show({
+            message: error,
+            type: 'error',
+          });
+        });
+
+    } else {
+      this.toastSvc.show({
+        message: ConstantService.message.noInternetConnection,
+        type: 'error',
+      });
+    }
   }
 }

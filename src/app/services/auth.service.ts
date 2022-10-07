@@ -20,6 +20,10 @@ export class AuthService {
   forgotpass(body): Observable<any> {
     return this.http.post(ConstantService.api.forgotpass, body);
   }
+  sendlotdeta(body): Observable<any> {
+    debugger
+    return this.http.post(ConstantService.api.qrcodeopeoperation, body);
+  }
 
   getDistributorList(id): Observable<any> {
     return this.http.put(ConstantService.api.getDistributorList, id);
