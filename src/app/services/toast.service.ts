@@ -17,7 +17,7 @@ export class ToastService {
     this.toast = await this.toastController.create({
       message,
       duration,
-      color: type === 'error' ? 'danger' : 'light',
+      color: type === 'error' ? 'danger' : 'success',
       cssClass: type === 'success' ? 'toast-success' : 'toast-error',
       animated: true,
       mode: 'ios',

@@ -22,6 +22,7 @@ export class ConstantService {
     getQRCodeOperByProdLotId: 'GetQRCodeOperByProdLotId',
     createProducerQRCodeOperation: 'CreateProducerQRCodeOperation',
     getQRCodeOperAllInfoByQRCodeOperId: 'GetQRCodeOperAllInfoByQRCodeOperId',
+    usrGetUsuarioByEmail: 'usrGetUsuarioByEmail',
   };
 
   static message: IMessages = {

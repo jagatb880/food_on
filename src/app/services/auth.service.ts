@@ -61,4 +61,8 @@ export class AuthService {
       id
     );
   }
+
+  getUsrGetUsuarioByEmail(email): Observable<any> {
+    return this.http.put(ConstantService.api.usrGetUsuarioByEmail, email);
+  }
 }
