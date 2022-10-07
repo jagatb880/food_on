@@ -85,7 +85,7 @@ export class ReceiveLotDetailsPage implements OnInit {
       this.lotbody = {
         "qrcodeoperation": {
           "id_prior_operation": this.receivelot[0].id_prior_operation,
-          "id_user_received": 5,
+          "id_user_received": this.receivelot[0].id_user_received,
           "n_coord": 0,
           "w_coord": 0
         }
