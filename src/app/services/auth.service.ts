@@ -21,7 +21,6 @@ export class AuthService {
     return this.http.post(ConstantService.api.forgotpass, body);
   }
   sendlotdeta(body): Observable<any> {
-    debugger
     return this.http.post(ConstantService.api.qrcodeopeoperation, body);
   }
 
@@ -64,5 +63,13 @@ export class AuthService {
       ConstantService.api.getQRCodeOperAllInfoByQRCodeOperId,
       id
     );
+  }
+
+  prdCreateProductionLot(body): Observable<any> {
+    return this.http.post(ConstantService.api.prdCreateProductionLot, body);
+  }
+
+  usrGetUsuarioByEmail(email): Observable<any> {
+    return this.http.put(ConstantService.api.usrGetUsuarioByEmail, email);
   }
 }

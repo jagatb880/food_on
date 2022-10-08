@@ -4,6 +4,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ApiDataBindService } from 'src/app/services/api-data-bind.service';
 import { Dialog } from '@capacitor/dialog';
 import { SharedService } from 'src/app/services/shared.service';
+import { ConstantService } from 'src/app/services/constant.service';
+import { ToastService } from 'src/app/services/toast.service';
 
 @Component({
   selector: 'app-production-lot',
@@ -17,7 +19,7 @@ export class ProductionLotPage implements OnInit {
   constructor(
     private _location: Location,
     private router: Router,
-    private activeRouter: ActivatedRoute,
+    private toastSvc: ToastService,
     private sharedSvc: SharedService,
     private apiDataBind: ApiDataBindService
   ) {
@@ -51,6 +53,10 @@ export class ProductionLotPage implements OnInit {
       })
       .catch((error) => {
         this.sharedSvc.dismissLoader();
+        this.toastSvc.show({
+          message: ConstantService.message.wentWrong,
+          type: 'error',
+        });
       });
   }
 

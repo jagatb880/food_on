@@ -13,6 +13,7 @@ import { ApiDataBindService } from 'src/app/services/api-data-bind.service';
 import { ConstantService } from 'src/app/services/constant.service';
 import { NetworkConnectivityService } from 'src/app/services/network-connectivity.service';
 import { ToastService } from 'src/app/services/toast.service';
+import { Geolocation } from '@awesome-cordova-plugins/geolocation/ngx';
 
 @Component({
   selector: 'app-receive-lot-details',
@@ -22,20 +23,31 @@ import { ToastService } from 'src/app/services/toast.service';
 export class ReceiveLotDetailsPage implements OnInit {
   receivelot: any;
   releventdta: any;
-  lotbody: { qrcodeoperation: { id_prior_operation: number; id_user_received: number; n_coord: number; w_coord: number; }; };
+  lotbody: {
+    qrcodeoperation: {
+      id_prior_operation: number;
+      id_user_received: number;
+      n_coord: number;
+      w_coord: number;
+    };
+  };
+  lat: any;
+  lng: any;
   constructor(
     private modalCtrl: ModalController,
     private _location: Location,
     private sharedSvc: SharedService,
     private apiDataBinding: ApiDataBindService,
     private networkSvc: NetworkConnectivityService,
-    private toastSvc: ToastService
-  ) { }
+    private toastSvc: ToastService,
+    private geolocation: Geolocation
+  ) {}
 
   ngOnInit() {
     this.sharedSvc.showLoader();
     this.sharedSvc.scanedQrCode = '100';
     this.getQRCodeOperAllInfoByQRCodeOperId(this.sharedSvc.scanedQrCode);
+    this.getCurrentLocation();
   }
 
   getQRCodeOperAllInfoByQRCodeOperId(id) {
@@ -51,6 +63,10 @@ export class ReceiveLotDetailsPage implements OnInit {
       })
       .catch((error) => {
         this.sharedSvc.dismissLoader();
+        this.toastSvc.show({
+          message: ConstantService.message.wentWrong,
+          type: 'error',
+        });
       });
   }
   async releventdata() {
@@ -80,24 +96,35 @@ export class ReceiveLotDetailsPage implements OnInit {
     return formatedDate;
   }
 
+  getCurrentLocation() {
+    this.geolocation
+      .getCurrentPosition()
+      .then((resp) => {
+        this.lat = resp.coords.latitude;
+        this.lng = resp.coords.longitude;
+      })
+      .catch((error) => {
+        console.log('Error getting location', error);
+      });
+  }
+
   yes() {
     if (this.networkSvc.status) {
       this.lotbody = {
-        "qrcodeoperation": {
-          "id_prior_operation": this.receivelot[0].id_prior_operation,
-          "id_user_received": this.receivelot[0].id_user_received,
-          "n_coord": 0,
-          "w_coord": 0
-        }
-      }
-      
+        qrcodeoperation: {
+          id_prior_operation: this.receivelot[0].id_prior_operation,
+          id_user_received: this.sharedSvc.userId,
+          n_coord: this.lat,
+          w_coord: this.lng,
+        },
+      };
+
       this.apiDataBinding
         .sendlotdata(this.lotbody)
         .then(async (data) => {
           console.log(data);
           if (data.status == 200) {
             console.log(data.data.id);
-
           } else {
             this.toastSvc.show({
               message: data.message,
@@ -111,7 +138,6 @@ export class ReceiveLotDetailsPage implements OnInit {
             type: 'error',
           });
         });
-
     } else {
       this.toastSvc.show({
         message: ConstantService.message.noInternetConnection,

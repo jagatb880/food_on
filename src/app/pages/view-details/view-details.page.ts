@@ -20,6 +20,7 @@ import { ToastService } from 'src/app/services/toast.service';
   styleUrls: ['./view-details.page.scss'],
 })
 export class ViewDetailsPage implements OnInit {
+  productData: any;
   productLotData: any;
   productLotDetails: any;
   productLotDetailsDataValue: any[];
@@ -41,6 +42,7 @@ export class ViewDetailsPage implements OnInit {
     private sharedSvc: SharedService,
     private toastSvc: ToastService
   ) {
+    this.productData = this.sharedSvc.productData;
     this.productLotData = this.sharedSvc.productLotData;
   }
 
@@ -54,6 +56,7 @@ export class ViewDetailsPage implements OnInit {
     } else {
       this.disablestatus = false;
       this.savebutton = true;
+      this.prductname = this.productData.name;
     }
   }
 

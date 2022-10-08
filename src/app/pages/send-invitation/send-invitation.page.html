@@ -41,9 +41,14 @@
         "
         >Email</span
       >
-      <div class="input-div">Distributor Email</div>
+      <ion-input class="input-div" [(ngModel)]="email"
+        >Distributor Email</ion-input
+      >
 
-      <ion-button expand="block" class="google-button"
+      <ion-button
+        expand="block"
+        class="google-button"
+        (click)="sendInvitation()"
         ><img src="assets/images/ic_near_me.png" class="goglelogin" />Send
         Invitation
       </ion-button>

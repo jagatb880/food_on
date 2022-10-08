@@ -50,6 +50,11 @@ export class RegisterPage implements OnInit {
           message: 'Enter your Full Email Address',
           type: 'error',
         });
+      } else if (!this.validateEmail(this.userRegister.emailAddress)) {
+        this.toastSvc.show({
+          message: 'Enter a valid email address',
+          type: 'error',
+        });
       } else if (this.userRegister.password == '') {
         this.toastSvc.show({
           message: 'Enter a Password',
@@ -87,6 +92,13 @@ export class RegisterPage implements OnInit {
         type: 'error',
       });
     }
+  }
+
+  validateEmail(mail) {
+    if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail)) {
+      return true;
+    }
+    return false;
   }
 
   goToBack() {

@@ -11,4 +11,6 @@ export interface IApis {
   createProducerQRCodeOperation: string;
   getQRCodeOperAllInfoByQRCodeOperId: string;
   qrcodeopeoperation: string;
+  prdCreateProductionLot: string;
+  usrGetUsuarioByEmail: string;
 }

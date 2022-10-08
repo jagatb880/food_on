@@ -237,9 +237,40 @@ export class ApiDataBindService {
     });
     return promise;
   }
+
   sendlotdata(body) {
     let promise = new Promise<any>((resolve, reject) => {
       this.authSvc.sendlotdeta(body).subscribe(
+        (res) => {
+          resolve(res);
+        },
+        (err) => {
+          console.log(err);
+          reject(err);
+        }
+      );
+    });
+    return promise;
+  }
+
+  prdCreateProductionLot(body) {
+    let promise = new Promise<any>((resolve, reject) => {
+      this.authSvc.prdCreateProductionLot(body).subscribe(
+        (res) => {
+          resolve(res);
+        },
+        (err) => {
+          console.log(err);
+          reject(err);
+        }
+      );
+    });
+    return promise;
+  }
+
+  usrGetUsuarioByEmail(email) {
+    let promise = new Promise<any>((resolve, reject) => {
+      this.authSvc.usrGetUsuarioByEmail(email).subscribe(
         (res) => {
           resolve(res);
         },

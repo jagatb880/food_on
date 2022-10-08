@@ -30,6 +30,11 @@ export class ForgotPasswordPage implements OnInit {
           message: 'Enter your email',
           type: 'error',
         });
+      } else if (!this.validateEmail(this.email)) {
+        this.toastSvc.show({
+          message: 'Enter a valid email address',
+          type: 'error',
+        });
       } else {
         this.apiDataBind
           .forgotpass(this.email)
@@ -59,5 +64,12 @@ export class ForgotPasswordPage implements OnInit {
 
   goToBack() {
     this._location.back();
+  }
+
+  validateEmail(mail) {
+    if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail)) {
+      return true;
+    }
+    return false;
   }
 }

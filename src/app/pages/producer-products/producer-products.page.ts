@@ -14,6 +14,7 @@ import {
 } from '@ionic/angular';
 import { PopoverController } from '@ionic/angular';
 import { SharedService } from 'src/app/services/shared.service';
+import { ToastService } from 'src/app/services/toast.service';
 
 @Component({
   selector: 'app-producer-products',
@@ -27,7 +28,7 @@ export class ProducerProductsPage implements OnInit {
   productList: any[];
   searchText: any;
   constructor(
-    private _location: Location,
+    private toastSvc: ToastService,
     private router: Router,
     private storage: Storage,
     private apiDataBind: ApiDataBindService,
@@ -38,9 +39,17 @@ export class ProducerProductsPage implements OnInit {
   ngOnInit() {}
   ionViewWillEnter() {
     this.sharedSvc.showLoader();
-    this.storage.get(ConstantService.dbKey.userID).then(async (userID) => {
-      await this.getProductList(userID);
-    });
+    this.storage
+      .get(ConstantService.dbKey.userID)
+      .then(async (userID) => {
+        await this.getProductList(userID);
+      })
+      .catch((error) => {
+        this.toastSvc.show({
+          message: ConstantService.message.wentWrong,
+          type: 'error',
+        });
+      });
   }
 
   goToHome() {
@@ -73,6 +82,10 @@ export class ProducerProductsPage implements OnInit {
       })
       .catch((error) => {
         this.sharedSvc.dismissLoader();
+        this.toastSvc.show({
+          message: ConstantService.message.wentWrong,
+          type: 'error',
+        });
       });
   }
 
