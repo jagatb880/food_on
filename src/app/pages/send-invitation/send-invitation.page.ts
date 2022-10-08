@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ApiDataBindService } from 'src/app/services/api-data-bind.service';
 import { ConstantService } from 'src/app/services/constant.service';
 import { NetworkConnectivityService } from 'src/app/services/network-connectivity.service';
+import { SharedService } from 'src/app/services/shared.service';
 import { ToastService } from 'src/app/services/toast.service';
 
 @Component({
@@ -16,6 +17,7 @@ export class SendInvitationPage implements OnInit {
     private _location: Location,
     private networkSvc: NetworkConnectivityService,
     private toastSvc: ToastService,
+    private sharedSvc: SharedService,
     private apiDataBinding: ApiDataBindService
   ) {}
 
@@ -36,9 +38,11 @@ export class SendInvitationPage implements OnInit {
           type: 'error',
         });
       } else {
+        this.sharedSvc.showLoader();
         this.apiDataBinding
           .usrGetUsuarioByEmail(this.email)
           .then((data) => {
+            this.sharedSvc.dismissLoader();
             if (data.status == 200) {
               this.toastSvc.show({
                 message: 'Successfully send the invitation to the email.',
@@ -47,6 +51,7 @@ export class SendInvitationPage implements OnInit {
             }
           })
           .catch((error) => {
+            this.sharedSvc.dismissLoader();
             this.toastSvc.show({
               message: ConstantService.message.wentWrong,
               type: 'error',
