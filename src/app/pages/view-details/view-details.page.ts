@@ -33,7 +33,6 @@ export class ViewDetailsPage implements OnInit {
   enddate: any;
   exipredate: any;
   disablestatus = false;
-  savebutton = false;
   constructor(
     private _location: Location,
     private modalCtrl: ModalController,
@@ -48,16 +47,37 @@ export class ViewDetailsPage implements OnInit {
 
   ngOnInit() {
     if (this.productLotData != null) {
-      this.savebutton = false;
       this.sharedSvc.showLoader();
       this.fetchProductLotDetails();
       this.productLotDetails = '';
       this.productLotDetailsDataValue = [];
     } else {
+      this.sharedSvc.showLoader();
+      this.getDataProductByProdtIdProfileId();
       this.disablestatus = false;
-      this.savebutton = true;
       this.prductname = this.productData.name;
     }
+  }
+
+  getDataProductByProdtIdProfileId() {
+    let params: any = {
+      idproduct: this.productData.id,
+      idprofile: 101,
+    };
+    let body = { params };
+    this.apiDataBinding
+      .getDataProductByProdtIdProfileId(body)
+      .then((data) => {
+        this.sharedSvc.dismissLoader();
+        if (data.status == 200) {
+          console.log(data.data);
+          this.productLotDetails = data.data[0];
+          this.productLotDetailsDataValue = this.productLotDetails.datavalues;
+        }
+      })
+      .catch((error) => {
+        this.sharedSvc.dismissLoader();
+      });
   }
 
   fetchProductLotDetails() {
@@ -71,7 +91,6 @@ export class ViewDetailsPage implements OnInit {
       if (data.status == 200 && data.data != null) {
         this.productLotDetails = data.data[0];
         this.productLotDetailsDataValue = this.productLotDetails.datavalues;
-        console.log();
         this.prductname = this.productLotDetails.name;
         this.lotcode = this.productLotDetails.code_bar_lot;
         this.amountofunit = this.productLotDetails.amount;
@@ -106,9 +125,10 @@ export class ViewDetailsPage implements OnInit {
       component: ViewDetailsPopupComponent,
       componentProps: {
         productLotDataValue: this.productLotDetailsDataValue,
-        productionDate: this.convertDate(
-          this.productLotDetails.production_date
-        ),
+        productionDate:
+          this.productLotDetails.production_date != null
+            ? this.convertDate(this.productLotDetails.production_date)
+            : null,
       },
       cssClass: 'login-unlock-modal-class',
     });

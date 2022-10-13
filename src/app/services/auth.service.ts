@@ -72,4 +72,11 @@ export class AuthService {
   usrGetUsuarioByEmail(email): Observable<any> {
     return this.http.put(ConstantService.api.usrGetUsuarioByEmail, email);
   }
+
+  getDataProductByProdtIdProfileId(body): Observable<any> {
+    return this.http.post(
+      ConstantService.api.getDataProductByProdtIdProfileId,
+      body
+    );
+  }
 }

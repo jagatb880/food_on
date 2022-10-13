@@ -13,4 +13,5 @@ export interface IApis {
   qrcodeopeoperation: string;
   prdCreateProductionLot: string;
   usrGetUsuarioByEmail: string;
+  getDataProductByProdtIdProfileId: string;
 }

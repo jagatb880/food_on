@@ -282,4 +282,19 @@ export class ApiDataBindService {
     });
     return promise;
   }
+
+  getDataProductByProdtIdProfileId(body) {
+    let promise = new Promise<any>((resolve, reject) => {
+      this.authSvc.getDataProductByProdtIdProfileId(body).subscribe(
+        (res) => {
+          resolve(res);
+        },
+        (err) => {
+          console.log(err);
+          reject(err);
+        }
+      );
+    });
+    return promise;
+  }
 }

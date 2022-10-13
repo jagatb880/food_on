@@ -4,6 +4,7 @@
       <span class="header">Customized Additional Data</span>
     </div>
     <span
+      *ngIf="productionDate != null"
       style="
         color: #333333;
         font-weight: 600;
@@ -12,7 +13,7 @@
       "
       >Reading Date</span
     >
-    <div class="dvvvvvvv">
+    <div *ngIf="productionDate != null" class="dvvvvvvv">
       {{ productionDate }}
       <img
         src="assets/images/ic_date.png"
@@ -41,7 +42,10 @@
       </ion-col>
     </ion-row>
     <div *ngFor="let data of productLotDataValue">
-      <ion-row style="background: #f8f8f8; padding-top: 4px">
+      <ion-row
+        *ngIf="data.description != undefined"
+        style="background: #f8f8f8; padding-top: 4px"
+      >
         <!-- <ion-col size="2.5">
           <ion-toggle mode="ios" [checked]="data.public"></ion-toggle>
         </ion-col> -->
@@ -50,6 +54,25 @@
         </ion-col>
         <ion-col size="6">
           <p style="margin: 0; color: #333333">{{ data.value }}</p>
+        </ion-col>
+      </ion-row>
+      <ion-row
+        *ngIf="data.description == undefined"
+        style="background: #f8f8f8; padding-top: 4px"
+      >
+        <!-- <ion-col size="2.5">
+          <ion-toggle mode="ios" [checked]="data.public"></ion-toggle>
+        </ion-col> -->
+        <ion-col size="6">
+          <p style="padding-left: 5px; color: #333333">
+            {{ data.data_description }}
+          </p>
+        </ion-col>
+        <ion-col size="6" style="padding-right: 10px">
+          <ion-input
+            style="margin: 0; color: #333333; border: 1px solid black"
+            [(ngModel)]="data.value"
+          ></ion-input>
         </ion-col>
       </ion-row>
     </div>

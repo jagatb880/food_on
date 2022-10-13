@@ -15,6 +15,12 @@ export class ViewDetailsPopupComponent implements OnInit {
 
   ngOnInit() {
     console.log(this.productLotDataValue);
+    if (this.productLotDataValue[0].description == undefined) {
+      for (let i = 0; i < this.productLotDataValue.length; i++) {
+        this.productLotDataValue[i]['value'] = '';
+      }
+    }
+    console.log(this.productLotDataValue);
   }
 
   close() {
