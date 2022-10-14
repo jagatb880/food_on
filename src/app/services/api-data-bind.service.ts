@@ -198,7 +198,12 @@ export class ApiDataBindService {
     return promise;
   }
 
-  createProducerQRCodeOperation(product_lot_id: any, lat: any, lng: any) {
+  createProducerQRCodeOperation(
+    product_lot_id: any,
+    lat: any,
+    lng: any,
+    dataValue: any[]
+  ) {
     let promise = new Promise<any>((resolve, reject) => {
       let qrcodeoperation = {
         id_production_lot: product_lot_id,
@@ -207,7 +212,7 @@ export class ApiDataBindService {
         show_value_each_prod: 0,
         n_coord: lat,
         w_coord: lng,
-        adddata: [],
+        adddata: dataValue,
       };
       let body = { qrcodeoperation };
       this.authSvc.createProducerQRCodeOperation(body).subscribe(

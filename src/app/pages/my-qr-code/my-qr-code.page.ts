@@ -76,11 +76,13 @@ export class MyQrCodePage implements OnInit {
       message: `There is no QR code registered for this product. Would you like to generate one?`,
     });
     if (value == true) {
+      let dataValue = [];
       this.apiDataBinding
         .createProducerQRCodeOperation(
           this.productLotData.id,
           this.lat,
-          this.lng
+          this.lng,
+          dataValue
         )
         .then((data) => {
           if (data.status == 200 && data.data != null) {

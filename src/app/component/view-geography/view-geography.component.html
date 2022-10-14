@@ -3,17 +3,17 @@
     <span class="header">Producer Details</span>
   </div>
   <div style="text-align: center; margin-top: 13px">
-    <img src="assets/images/profileimage.png" style="height: 120px" />
+    <img [src]="producerData.image" style="height: 100px; border-radius: 50%" />
     <P class="location">Location</P>
     <P class="locationname">{{ location }}</P>
     <P class="location">Name</P>
     <P class="locationname">{{ producerData.producer_name }}</P>
   </div>
-  <div style="padding: 10px 13px 0 13px; margin-top: 8%">
+  <div style="padding: 10px 13px 0 13px; margin-top: 6%">
     <span class="sub-header" style="color: #333333">relevant data</span>
     <div style="border-radius: 10px; margin-top: 10px" (click)="view()">
       <div
-        style="background: #fafafa; padding: 5px"
+        style="background: #fafafa; padding: 2px 5px 2px 5px"
         *ngFor="let data of producerData.datavalues"
       >
         <ion-row>

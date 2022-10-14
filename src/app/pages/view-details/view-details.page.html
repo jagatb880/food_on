@@ -57,31 +57,52 @@
             <ion-input
               placeholder="Lot Code"
               [(ngModel)]="lotcode"
-              disabled="{{disablestatus}}"
+              disabled="true"
             ></ion-input>
           </div>
         </ion-col>
         <ion-col size="6">
-          <span
-            style="
-              color: #333333;
-              font-weight: 600;
-              font-family: 'Nunito-Bold';
-              font-size: 3.4vw;
-            "
-            >Amount Of Unit</span
-          >
-          <div class="inputdv">
-            <ion-input
-              placeholder="Amount Of Unit"
-              [(ngModel)]="amountofunit"
-              disabled="{{disablestatus}}"
-            ></ion-input>
+          <div *ngIf="!disablestatus">
+            <span
+              style="
+                color: #333333;
+                font-weight: 600;
+                font-family: 'Nunito-Bold';
+                font-size: 3.4vw;
+              "
+              >Code Bar</span
+            >
+            <div class="inputdv">
+              <ion-input
+                placeholder="Code Bar"
+                (ionInput)="countChange($event)"
+                [(ngModel)]="codeBar"
+                disabled="{{disablestatus}}"
+              ></ion-input>
+            </div>
+          </div>
+          <div *ngIf="disablestatus">
+            <span
+              style="
+                color: #333333;
+                font-weight: 600;
+                font-family: 'Nunito-Bold';
+                font-size: 3.4vw;
+              "
+              >Amount Of Unit</span
+            >
+            <div class="inputdv">
+              <ion-input
+                placeholder="Amount Of Unit"
+                [(ngModel)]="amountofunit"
+                disabled="{{disablestatus}}"
+              ></ion-input>
+            </div>
           </div>
         </ion-col>
       </ion-row>
 
-      <ion-row>
+      <ion-row *ngIf="disablestatus">
         <ion-col size="6">
           <span
             style="
@@ -138,18 +159,22 @@
           >
           <ion-input
             disabled="true"
-            value="{{ enddate | date: 'yyyy/dd/MM' }}"
-            id="enddate"
+            value="{{ productiondate | date: 'yyyy/dd/MM' }}"
+            id="productiondate"
             class="producerselect"
             placeholder="Production Date"
           ></ion-input>
-          <ion-popover trigger="enddate" size="medium" show-backdrop="false">
+          <ion-popover
+            trigger="productiondate"
+            size="medium"
+            show-backdrop="false"
+          >
             <ng-template>
               <ion-datetime
-                presentation="enddate"
-                [(ngModel)]="enddate"
+                presentation="productiondate"
+                [(ngModel)]="productiondate"
                 locale="en-GB"
-                (ionChange)="enddatevalue()"
+                (ionChange)="productiondatevalue()"
                 disabled="{{disablestatus}}"
                 [showDefaultButtons]="true"
                 doneText="Ok"

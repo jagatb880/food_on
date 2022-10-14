@@ -52,7 +52,10 @@
         <ion-col size="6">
           <p style="margin: 0; color: #333333">{{ data.description }}</p>
         </ion-col>
-        <ion-col size="6">
+        <ion-col size="6" *ngIf="data.input == 'text'">
+          <p style="margin: 0; color: #333333">{{ data.value }}</p>
+        </ion-col>
+        <ion-col size="6" *ngIf="data.input == 'date'">
           <p style="margin: 0; color: #333333">{{ data.value }}</p>
         </ion-col>
       </ion-row>

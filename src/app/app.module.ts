@@ -13,6 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { IonicStorageModule, Storage } from '@ionic/storage-angular';
 import { NativeGeocoder } from '@awesome-cordova-plugins/native-geocoder/ngx';
 import { Geolocation } from '@awesome-cordova-plugins/geolocation/ngx';
+import { FormsModule } from '@angular/forms';
 // import { Chart } from 'chart.js';
 // import { ChartsModule } from 'ng2-charts';
 // import { NgChartsModule } from 'ng2-charts';
@@ -31,6 +32,7 @@ import { Geolocation } from '@awesome-cordova-plugins/geolocation/ngx';
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     HttpClientModule,
     IonicStorageModule,
     IonicModule.forRoot(),

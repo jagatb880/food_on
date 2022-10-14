@@ -45,7 +45,7 @@ export class ReceiveLotDetailsPage implements OnInit {
 
   ngOnInit() {
     this.sharedSvc.showLoader();
-    this.sharedSvc.scanedQrCode = '100';
+    // this.sharedSvc.scanedQrCode = '100';
     this.getQRCodeOperAllInfoByQRCodeOperId(this.sharedSvc.scanedQrCode);
     this.getCurrentLocation();
   }
@@ -124,7 +124,10 @@ export class ReceiveLotDetailsPage implements OnInit {
         .then(async (data) => {
           console.log(data);
           if (data.status == 200) {
-            console.log(data.data.id);
+            this.toastSvc.show({
+              message: data.message,
+              type: 'error',
+            });
           } else {
             this.toastSvc.show({
               message: data.message,

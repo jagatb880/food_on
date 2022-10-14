@@ -32,7 +32,7 @@ export class ReceiveLotPage implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.router.navigate(['receive-lot-details']);
+    // this.router.navigate(['receive-lot-details']);
   }
 
   ionViewWillEnter() {
