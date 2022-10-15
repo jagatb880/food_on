@@ -46,6 +46,13 @@ export class ViewDetailsPopupComponent implements OnInit {
   save() {
     if (this.productLotDataValue[0].description == undefined) {
       if (this.validateBlankOrNot()) {
+        for (let i = 0; i < this.productLotDataValue.length; i++) {
+          if (this.productLotDataValue[i].input == 'date') {
+            this.productLotDataValue[i].value = this.convertDate(
+              this.productLotDataValue[i].value
+            );
+          }
+        }
         this.sharedSvc.viewDetailsModal = this.productLotDataValue;
         this.modalCtrl.dismiss(true);
       } else {
@@ -57,6 +64,18 @@ export class ViewDetailsPopupComponent implements OnInit {
     } else {
       this.modalCtrl.dismiss();
     }
+  }
+
+  convertDate(date) {
+    let isoDate = new Date(date);
+    let newDate = isoDate.toISOString().substring(0, 10);
+    let formatedDate =
+      newDate.split('-')[0] +
+      '/' +
+      newDate.split('-')[1] +
+      '/' +
+      newDate.split('-')[2];
+    return formatedDate;
   }
 
   validateBlankOrNot() {
