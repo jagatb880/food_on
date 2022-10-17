@@ -143,9 +143,13 @@ export class HomePage implements OnInit {
     this.storage.get(ConstantService.dbKey.userID).then(async (userID) => {
       await this.getDistributorList(userID);
       await this.getProductList(userID);
-      this.createMap();
+      setTimeout(() => {
+        this.createMap();
+      }, 1000);
     });
   }
+
+  ionViewDidEnter() {}
 
   async createMap() {
     this.gMap = await GoogleMap.create({
@@ -231,6 +235,9 @@ export class HomePage implements OnInit {
       this.mapSec = false;
       this.closerightarow = false;
     } else {
+      setTimeout(() => {
+        this.createMap();
+      }, 1000);
       this.secondtext = false;
       this.thirdtext = false;
       this.graphshow = false;
@@ -254,6 +261,7 @@ export class HomePage implements OnInit {
       this.thirdgraph = true;
       this.thirdgrapg();
     } else {
+      this.gMap.destroy();
       this.lineChartMethod();
     }
   }
