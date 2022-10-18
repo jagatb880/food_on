@@ -14,4 +14,5 @@ export interface IApis {
   prdCreateProductionLot: string;
   usrGetUsuarioByEmail: string;
   getDataProductByProdtIdProfileId: string;
+  acceptInvitation: string;
 }

@@ -123,39 +123,55 @@ export class ViewDetailsPage implements OnInit {
   }
 
   async view() {
-    if (this.networkSvc.status) {
-      if (this.validateField()) {
-        const popover = await this.modalCtrl.create({
-          component: ViewDetailsPopupComponent,
-          componentProps: {
-            productLotDataValue: this.productLotDetailsDataValue,
-            productionDate:
-              this.productLotDetails.production_date != null
-                ? this.convertDate(this.productLotDetails.production_date)
-                : null,
-          },
-          cssClass: 'login-unlock-modal-class',
-        });
-        popover.onDidDismiss().then((data) => {
-          if (data.data == true) {
-            console.log(this.sharedSvc.viewDetailsModal);
-            this.sharedSvc.showLoader();
-            this.getCurrentLocation();
-          }
-        });
-        return await popover.present();
+    if (!this.disablestatus) {
+      if (this.networkSvc.status) {
+        if (this.validateField()) {
+          const popover = await this.modalCtrl.create({
+            component: ViewDetailsPopupComponent,
+            componentProps: {
+              productLotDataValue: this.productLotDetailsDataValue,
+              productionDate:
+                this.productLotDetails.production_date != null
+                  ? this.convertDate(this.productLotDetails.production_date)
+                  : null,
+            },
+            cssClass: 'login-unlock-modal-class',
+          });
+          popover.onDidDismiss().then((data) => {
+            if (data.data == true) {
+              console.log(this.sharedSvc.viewDetailsModal);
+              this.sharedSvc.showLoader();
+              this.getCurrentLocation();
+            }
+          });
+          return await popover.present();
+        } else {
+          this.toastSvc.show({
+            message: 'Fill all the field',
+            type: 'error',
+          });
+        }
       } else {
         this.toastSvc.show({
-          message: 'Fill all the field',
+          message: ConstantService.message.noInternetConnection,
           type: 'error',
         });
       }
     } else {
-      this.toastSvc.show({
-        message: ConstantService.message.noInternetConnection,
-        type: 'error',
+      const popover = await this.modalCtrl.create({
+        component: ViewDetailsPopupComponent,
+        componentProps: {
+          productLotDataValue: this.productLotDetailsDataValue,
+          productionDate:
+            this.productLotDetails.production_date != undefined
+              ? this.convertDate(this.productLotDetails.production_date)
+              : null,
+        },
+        cssClass: 'login-unlock-modal-class',
       });
+      return await popover.present();
     }
+
     //production_date
   }
 

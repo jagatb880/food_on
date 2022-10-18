@@ -299,12 +299,20 @@ export class HomePage implements OnInit {
     });
   }
   getDistributorList(userID) {
-    this.apiDataBind.getDistributorList(userID).then((data) => {
-      console.log(data);
-      if (data.status == 200) {
-        this.distributorList = data.data;
-      }
-    });
+    this.apiDataBind
+      .getDistributorList(userID)
+      .then((data) => {
+        console.log(data);
+        if (data.status == 200) {
+          this.distributorList = data.data;
+        }
+      })
+      .catch((error) => {
+        this.toastSvc.show({
+          message: ConstantService.message.wentWrong,
+          type: 'error',
+        });
+      });
   }
 
   getProductList(userID) {

@@ -79,4 +79,8 @@ export class AuthService {
       body
     );
   }
+
+  acceptInvitation(body): Observable<any> {
+    return this.http.post(ConstantService.api.acceptInvitation, body);
+  }
 }

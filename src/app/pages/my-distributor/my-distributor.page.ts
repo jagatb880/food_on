@@ -10,9 +10,13 @@ import {
   ModalController,
   Platform,
   AlertController,
+  ToastController,
 } from '@ionic/angular';
 import { PopoverController } from '@ionic/angular';
 import { SharedService } from 'src/app/services/shared.service';
+import { Dialog } from '@capacitor/dialog';
+import { NetworkConnectivityService } from 'src/app/services/network-connectivity.service';
+import { ToastService } from 'src/app/services/toast.service';
 
 @Component({
   selector: 'app-my-distributor',
@@ -22,7 +26,6 @@ import { SharedService } from 'src/app/services/shared.service';
 export class MyDistributorPage implements OnInit {
   @ViewChild('popover') popover;
   isOpen = false;
-  distrubutionarray: { name: string; invitation: string; color: string }[];
   distributorList: any;
   searchText: any;
   datas: any[];
@@ -31,18 +34,10 @@ export class MyDistributorPage implements OnInit {
     private router: Router,
     private apiDataBind: ApiDataBindService,
     private storage: Storage,
-    private sharedSvc: SharedService
-  ) {
-    this.distrubutionarray = [
-      { name: 'El Agrario', invitation: 'SUBMITTED', color: '#f28a5f' },
-      {
-        name: 'International Distributor',
-        invitation: 'accepted',
-        color: '#35d097',
-      },
-      { name: 'Cosmic INC', invitation: 'RECEIVED', color: '#ffd445' },
-    ];
-  }
+    private sharedSvc: SharedService,
+    private networkSvc: NetworkConnectivityService,
+    private toastSvc: ToastService
+  ) {}
 
   ngOnInit() {}
 
@@ -97,6 +92,10 @@ export class MyDistributorPage implements OnInit {
       })
       .catch((error) => {
         this.sharedSvc.dismissLoader();
+        this.toastSvc.show({
+          message: ConstantService.message.wentWrong,
+          type: 'error',
+        });
       });
   }
 
@@ -109,4 +108,43 @@ export class MyDistributorPage implements OnInit {
     this.popover.event = e;
     this.isOpen = true;
   }
+
+  prompt = async (id) => {
+    const { value } = await Dialog.confirm({
+      message: `Are you sure to accept this invitation?`,
+    });
+    if (value == true) {
+      if (this.networkSvc.status) {
+        let params = {
+          idUserWhoAccepts: this.sharedSvc.userId,
+          idUserWhoInvites: id,
+        };
+        let body = { params };
+        this.apiDataBind
+          .acceptInvitation(body)
+          .then((data) => {
+            if (data.status == 200 && data.data == null) {
+              this.toastSvc.show({
+                message: data.message,
+                type: 'error',
+              });
+            } else {
+              this.sharedSvc.showLoader();
+              this.getDistributorList(this.sharedSvc.userId);
+            }
+          })
+          .catch((error) => {
+            this.toastSvc.show({
+              message: ConstantService.message.wentWrong,
+              type: 'error',
+            });
+          });
+      } else {
+        this.toastSvc.show({
+          message: ConstantService.message.noInternetConnection,
+          type: 'error',
+        });
+      }
+    }
+  };
 }

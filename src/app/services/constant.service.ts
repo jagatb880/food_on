@@ -26,6 +26,7 @@ export class ConstantService {
     prdCreateProductionLot: 'prdCreateProductionLot',
     usrGetUsuarioByEmail: 'usrGetUsuarioByEmail',
     getDataProductByProdtIdProfileId: 'GetDataProductByProdtIdProfileId',
+    acceptInvitation: 'AcceptInvitation',
   };
 
   static message: IMessages = {

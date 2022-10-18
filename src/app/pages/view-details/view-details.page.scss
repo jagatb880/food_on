@@ -74,3 +74,13 @@ ion-title {
     padding-top: 8px;
     padding-left: 10px;
   }
+
+  ion-popover{
+    --offset-bottom: auto !important;
+        --overflow: hidden;
+        overflow: auto;
+    
+        &::-webkit-scrollbar {
+            display: none;
+        }
+    }

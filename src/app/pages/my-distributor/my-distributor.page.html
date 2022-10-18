@@ -1,7 +1,10 @@
 <ion-header>
   <ion-toolbar style="--background: #ffffff">
     <ion-buttons slot="start">
-      <img style="width: 32px; padding-left: 10%" src="assets/images/burger_menu_ic.png" />
+      <img
+        style="width: 32px; padding-left: 10%"
+        src="assets/images/burger_menu_ic.png"
+      />
     </ion-buttons>
     <ion-buttons slot="primary" (click)="presentPopover($event)">
       <img
@@ -9,7 +12,7 @@
         src="assets/images/profile_menu_ic.png"
       />
     </ion-buttons>
-    <ion-popover #popover [isOpen]="isOpen" (didDismiss)="isOpen = false" >
+    <ion-popover #popover [isOpen]="isOpen" (didDismiss)="isOpen = false">
       <ng-template>
         <ion-content class="ion-padding" (click)="logout()">Logout</ion-content>
       </ng-template>
@@ -29,8 +32,14 @@
         <p class="send-invite">Send Invitation To New Distributor</p>
       </div>
 
-      <ion-searchbar showCancelButton="focus" cancelButtonText="Custom Cancel" class="sechbar"
-        placeholder="Search products" (ionChange)="search()" [(ngModel)]="searchText"></ion-searchbar>
+      <ion-searchbar
+        showCancelButton="focus"
+        cancelButtonText="Custom Cancel"
+        class="sechbar"
+        placeholder="Search products"
+        (ionChange)="search()"
+        [(ngModel)]="searchText"
+      ></ion-searchbar>
 
       <ion-row class="last-row">
         <ion-col size="7">
@@ -41,20 +50,42 @@
         </ion-col>
       </ion-row>
 
-      <div style="border-bottom-left-radius: 13px;border-bottom-right-radius: 13px;">
+      <div
+        style="
+          border-bottom-left-radius: 13px;
+          border-bottom-right-radius: 13px;
+        "
+      >
         <ion-row *ngFor="let key of datas" class="value_deta">
           <ion-col size="7" style="display: flex; align-items: center">
             <p class="name-text">{{key.nombre}}</p>
           </ion-col>
           <ion-col size="5">
-            <ion-button class="button" *ngIf="key.sent_invitation == 0 && key.status == 0"
-              style="--background:#ffd445;">Pending</ion-button>
-            <ion-button class="button" *ngIf="key.sent_invitation == 0 && key.status == 1"
-              style="--background:#35d097;">Accepted</ion-button>
-            <ion-button class="button" *ngIf="key.sent_invitation == 1 && key.status == 0"
-              style="--background:#ffd445;">Pending</ion-button>
-            <ion-button class="button" *ngIf="key.sent_invitation == 1 && key.status == 1"
-              style="--background:#35d097;">Accepted</ion-button>
+            <ion-button
+              class="button"
+              *ngIf="key.sent_invitation == 0 && key.status == 0"
+              style="--background: #ffd445"
+              (click)="prompt(key.id_distributor_user)"
+              >Received–Pending</ion-button
+            >
+            <ion-button
+              class="button"
+              *ngIf="key.sent_invitation == 0 && key.status == 1"
+              style="--background: #35d097"
+              >Received–Accepted</ion-button
+            >
+            <ion-button
+              class="button"
+              *ngIf="key.sent_invitation == 1 && key.status == 0"
+              style="--background: #ffd445"
+              >Submitted–Pending</ion-button
+            >
+            <ion-button
+              class="button"
+              *ngIf="key.sent_invitation == 1 && key.status == 1"
+              style="--background: #35d097"
+              >Submitted-Accepted</ion-button
+            >
           </ion-col>
         </ion-row>
       </div>

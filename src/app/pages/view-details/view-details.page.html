@@ -19,209 +19,215 @@
 </ion-header>
 
 <ion-content style="--background: #ffffff">
-  <div style="padding: 12px 14px 26px 14px">
-    <div style="text-align: center">
-      <span class="header">My Products Lots Details</span>
-    </div>
-
-    <div class="shadowdv">
-      <span
-        style="
-          color: #333333;
-          font-weight: 600;
-          font-family: 'Nunito-Bold';
-          font-size: 3.4vw;
-        "
-        >Product Name</span
-      >
-      <div class="inputdv">
-        <ion-input
-          placeholder="Product Name"
-          [(ngModel)]="prductname"
-          disabled="{{disablestatus}}"
-        ></ion-input>
+  <ion-scroll scrollX="true">
+    <div style="padding: 12px 14px 26px 14px">
+      <div style="text-align: center">
+        <span class="header">My Products Lots Details</span>
       </div>
 
-      <ion-row>
-        <ion-col size="6">
-          <span
-            style="
-              color: #333333;
-              font-weight: 600;
-              font-family: 'Nunito-Bold';
-              font-size: 3.4vw;
-            "
-            >Lot Code</span
-          >
-          <div class="inputdv">
-            <ion-input
-              placeholder="Lot Code"
-              [(ngModel)]="lotcode"
-              disabled="true"
-            ></ion-input>
-          </div>
-        </ion-col>
-        <ion-col size="6">
-          <div *ngIf="!disablestatus">
-            <span
-              style="
-                color: #333333;
-                font-weight: 600;
-                font-family: 'Nunito-Bold';
-                font-size: 3.4vw;
-              "
-              >Code Bar</span
-            >
-            <div class="inputdv">
-              <ion-input
-                placeholder="Code Bar"
-                (ionInput)="countChange($event)"
-                [(ngModel)]="codeBar"
-                disabled="{{disablestatus}}"
-              ></ion-input>
-            </div>
-          </div>
-          <div *ngIf="disablestatus">
-            <span
-              style="
-                color: #333333;
-                font-weight: 600;
-                font-family: 'Nunito-Bold';
-                font-size: 3.4vw;
-              "
-              >Amount Of Unit</span
-            >
-            <div class="inputdv">
-              <ion-input
-                placeholder="Amount Of Unit"
-                [(ngModel)]="amountofunit"
-                disabled="{{disablestatus}}"
-              ></ion-input>
-            </div>
-          </div>
-        </ion-col>
-      </ion-row>
+      <div class="shadowdv">
+        <span
+          style="
+            color: #333333;
+            font-weight: 600;
+            font-family: 'Nunito-Bold';
+            font-size: 3.4vw;
+          "
+          >Product Name</span
+        >
+        <div class="inputdv">
+          <ion-input
+            placeholder="Product Name"
+            [(ngModel)]="prductname"
+            disabled="{{disablestatus}}"
+          ></ion-input>
+        </div>
 
-      <ion-row *ngIf="disablestatus">
-        <ion-col size="6">
-          <span
-            style="
-              color: #333333;
-              font-weight: 600;
-              font-family: 'Nunito-Bold';
-              font-size: 3.4vw;
-            "
-            >Sales Price</span
-          >
-          <div class="inputdv">
-            <ion-input
-              placeholder="Sales Price"
-              [(ngModel)]="salesprice"
-              disabled="{{disablestatus}}"
-            ></ion-input>
-          </div>
-        </ion-col>
-        <ion-col size="6">
-          <span
-            style="
-              color: #333333;
-              font-weight: 600;
-              font-family: 'Nunito-Bold';
-              font-size: 3.2vw;
-            "
-            >Value Each Unit</span
-          >
-          <div class="inputdv">
-            <ion-input
-              placeholder="Value Each Unit"
-              [(ngModel)]="valueeachunit"
-              disabled="{{disablestatus}}"
-            ></ion-input>
-          </div>
-        </ion-col>
-        <!-- <ion-col size="2">
+        <ion-row>
+          <ion-col size="6">
+            <span
+              style="
+                color: #333333;
+                font-weight: 600;
+                font-family: 'Nunito-Bold';
+                font-size: 3.4vw;
+              "
+              >Lot Code</span
+            >
+            <div class="inputdv">
+              <ion-input
+                placeholder="Lot Code"
+                [(ngModel)]="lotcode"
+                disabled="true"
+              ></ion-input>
+            </div>
+          </ion-col>
+          <ion-col size="6">
+            <div *ngIf="!disablestatus">
+              <span
+                style="
+                  color: #333333;
+                  font-weight: 600;
+                  font-family: 'Nunito-Bold';
+                  font-size: 3.4vw;
+                "
+                >Code Bar</span
+              >
+              <div class="inputdv">
+                <ion-input
+                  placeholder="Code Bar"
+                  (ionInput)="countChange($event)"
+                  [(ngModel)]="codeBar"
+                  disabled="{{disablestatus}}"
+                ></ion-input>
+              </div>
+            </div>
+            <div *ngIf="disablestatus">
+              <span
+                style="
+                  color: #333333;
+                  font-weight: 600;
+                  font-family: 'Nunito-Bold';
+                  font-size: 3.4vw;
+                "
+                >Amount Of Unit</span
+              >
+              <div class="inputdv">
+                <ion-input
+                  placeholder="Amount Of Unit"
+                  [(ngModel)]="amountofunit"
+                  disabled="{{disablestatus}}"
+                ></ion-input>
+              </div>
+            </div>
+          </ion-col>
+        </ion-row>
+
+        <ion-row *ngIf="disablestatus">
+          <ion-col size="6">
+            <span
+              style="
+                color: #333333;
+                font-weight: 600;
+                font-family: 'Nunito-Bold';
+                font-size: 3.4vw;
+              "
+              >Sales Price</span
+            >
+            <div class="inputdv">
+              <ion-input
+                placeholder="Sales Price"
+                [(ngModel)]="salesprice"
+                disabled="{{disablestatus}}"
+              ></ion-input>
+            </div>
+          </ion-col>
+          <ion-col size="6">
+            <span
+              style="
+                color: #333333;
+                font-weight: 600;
+                font-family: 'Nunito-Bold';
+                font-size: 3.2vw;
+              "
+              >Value Each Unit</span
+            >
+            <div class="inputdv">
+              <ion-input
+                placeholder="Value Each Unit"
+                [(ngModel)]="valueeachunit"
+                disabled="{{disablestatus}}"
+              ></ion-input>
+            </div>
+          </ion-col>
+          <!-- <ion-col size="2">
           <span style="color: #333333;font-weight: 600;font-family: 'Nunito-Bold';
           font-size: 3.4vw;">Public</span>
           <ion-toggle mode="ios"></ion-toggle>
         </ion-col> -->
-      </ion-row>
+        </ion-row>
 
-      <ion-row>
-        <ion-col size="6">
-          <span
-            style="
-              color: #333333;
-              font-weight: 600;
-              font-family: 'Nunito-Bold';
-              font-size: 3.4vw;
-            "
-            >Production Date</span
-          >
-          <ion-input
-            disabled="true"
-            value="{{ productiondate | date: 'yyyy/dd/MM' }}"
-            id="productiondate"
-            class="producerselect"
-            placeholder="Production Date"
-          ></ion-input>
-          <ion-popover
-            trigger="productiondate"
-            size="medium"
-            show-backdrop="false"
-          >
-            <ng-template>
-              <ion-datetime
-                presentation="productiondate"
-                [(ngModel)]="productiondate"
-                locale="en-GB"
-                (ionChange)="productiondatevalue()"
-                disabled="{{disablestatus}}"
-                [showDefaultButtons]="true"
-                doneText="Ok"
-                cancelText="Cancel"
-              ></ion-datetime>
-            </ng-template>
-          </ion-popover>
-        </ion-col>
-        <ion-col size="6">
-          <span
-            style="
-              color: #333333;
-              font-weight: 600;
-              font-family: 'Nunito-Bold';
-              font-size: 3.4vw;
-            "
-            >Expiration Date</span
-          >
-          <ion-input
-            disabled="true"
-            value="{{ exipredate | date: 'yyyy/dd/MM' }}"
-            id="exipredate"
-            class="producerselect"
-            placeholder="Expiration Date"
-          ></ion-input>
-          <ion-popover trigger="exipredate" size="medium" show-backdrop="false">
-            <ng-template>
-              <ion-datetime
-                presentation="exipredate"
-                disabled="{{disablestatus}}"
-                [(ngModel)]="exipredate"
-                locale="en-GB"
-                (ionChange)="expiredatevalue()"
-                [showDefaultButtons]="true"
-                doneText="Ok"
-                cancelText="Cancel"
-              ></ion-datetime>
-            </ng-template>
-          </ion-popover>
-        </ion-col>
-      </ion-row>
+        <ion-row>
+          <ion-col size="6">
+            <span
+              style="
+                color: #333333;
+                font-weight: 600;
+                font-family: 'Nunito-Bold';
+                font-size: 3.4vw;
+              "
+              >Production Date</span
+            >
+            <ion-input
+              disabled="true"
+              value="{{ productiondate | date: 'yyyy/dd/MM' }}"
+              id="productiondate"
+              class="producerselect"
+              placeholder="Production Date"
+            ></ion-input>
+            <ion-popover
+              trigger="productiondate"
+              size="medium"
+              show-backdrop="false"
+            >
+              <ng-template>
+                <ion-datetime
+                  presentation="productiondate"
+                  [(ngModel)]="productiondate"
+                  locale="en-GB"
+                  (ionChange)="productiondatevalue()"
+                  disabled="{{disablestatus}}"
+                  [showDefaultButtons]="true"
+                  doneText="Ok"
+                  cancelText="Cancel"
+                ></ion-datetime>
+              </ng-template>
+            </ion-popover>
+          </ion-col>
+          <ion-col size="6">
+            <span
+              style="
+                color: #333333;
+                font-weight: 600;
+                font-family: 'Nunito-Bold';
+                font-size: 3.4vw;
+              "
+              >Expiration Date</span
+            >
+            <ion-input
+              disabled="true"
+              value="{{ exipredate | date: 'yyyy/dd/MM' }}"
+              id="exipredate"
+              class="producerselect"
+              placeholder="Expiration Date"
+            ></ion-input>
+            <ion-popover
+              trigger="exipredate"
+              size="medium"
+              show-backdrop="false"
+            >
+              <ng-template>
+                <ion-datetime
+                  presentation="exipredate"
+                  disabled="{{disablestatus}}"
+                  [(ngModel)]="exipredate"
+                  locale="en-GB"
+                  (ionChange)="expiredatevalue()"
+                  [showDefaultButtons]="true"
+                  doneText="Ok"
+                  cancelText="Cancel"
+                ></ion-datetime>
+              </ng-template>
+            </ion-popover>
+          </ion-col>
+        </ion-row>
 
-      <ion-button expand="block" class="google-button" (click)="view()"
-        ><img src="assets/images/ic_create.png" class="goglelogin" /><span
-          >customized additional data</span
-        >
-      </ion-button>
+        <ion-button expand="block" class="google-button" (click)="view()"
+          ><img src="assets/images/ic_create.png" class="goglelogin" /><span
+            >customized additional data</span
+          >
+        </ion-button>
+      </div>
     </div>
-  </div>
+  </ion-scroll>
 </ion-content>
