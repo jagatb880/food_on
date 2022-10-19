@@ -12,7 +12,7 @@ import { ToastService } from 'src/app/services/toast.service';
   styleUrls: ['./send-invitation.page.scss'],
 })
 export class SendInvitationPage implements OnInit {
-  email: any;
+  email: string;
   constructor(
     private _location: Location,
     private networkSvc: NetworkConnectivityService,
@@ -32,7 +32,7 @@ export class SendInvitationPage implements OnInit {
           message: 'Enter email address',
           type: 'error',
         });
-      } else if (!this.validateEmail(this.email)) {
+      } else if (!this.validateEmail(this.email.trim())) {
         this.toastSvc.show({
           message: 'Enter a valid email address',
           type: 'error',
@@ -40,14 +40,11 @@ export class SendInvitationPage implements OnInit {
       } else {
         this.sharedSvc.showLoader();
         this.apiDataBinding
-          .usrGetUsuarioByEmail(this.email)
+          .usrGetUsuarioByEmail(this.email.trim())
           .then((data) => {
             this.sharedSvc.dismissLoader();
             if (data.status == 200) {
-              this.toastSvc.show({
-                message: 'Successfully send the invitation to the email.',
-                type: 'success',
-              });
+              this.sentInvite(data.data[0].id);
             }
           })
           .catch((error) => {
@@ -64,6 +61,35 @@ export class SendInvitationPage implements OnInit {
         type: 'error',
       });
     }
+  }
+
+  sentInvite(id) {
+    let params = {
+      idUserWhoAccepts: this.sharedSvc.userId,
+      idUserWhoInvites: id,
+    };
+    let body = { params };
+    this.apiDataBinding
+      .acceptInvitation(body)
+      .then((data) => {
+        if (data.status == 200 && data.data != null) {
+          this.toastSvc.show({
+            message: 'Successfully send the invitation to the email.',
+            type: 'success',
+          });
+        } else if (data.status == 200 && data.data == null) {
+          this.toastSvc.show({
+            message: data.message,
+            type: 'error',
+          });
+        }
+      })
+      .catch((error) => {
+        this.toastSvc.show({
+          message: ConstantService.message.wentWrong,
+          type: 'error',
+        });
+      });
   }
 
   goToBack() {

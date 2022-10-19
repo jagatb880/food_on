@@ -18,7 +18,7 @@ export class ForgotPasswordPage implements OnInit {
     private networkSvc: NetworkConnectivityService
   ) {}
 
-  email: any;
+  email: string;
   ngOnInit() {
     this.email = '';
   }
@@ -30,14 +30,14 @@ export class ForgotPasswordPage implements OnInit {
           message: 'Enter your email',
           type: 'error',
         });
-      } else if (!this.validateEmail(this.email)) {
+      } else if (!this.validateEmail(this.email.trim())) {
         this.toastSvc.show({
           message: 'Enter a valid email address',
           type: 'error',
         });
       } else {
         this.apiDataBind
-          .forgotpass(this.email)
+          .forgotpass(this.email.trim())
           .then((data) => {
             if (data.status == 200) {
               this.toastSvc.show({
