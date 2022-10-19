@@ -65,16 +65,16 @@ export class SendInvitationPage implements OnInit {
 
   sentInvite(id) {
     let params = {
-      idUserWhoAccepts: this.sharedSvc.userId,
-      idUserWhoInvites: id,
+      idUserWhoInvites: this.sharedSvc.userId,
+      idUserToInvite: id,
     };
     let body = { params };
     this.apiDataBinding
-      .acceptInvitation(body)
+      .sentInvitation(body)
       .then((data) => {
         if (data.status == 200 && data.data != null) {
           this.toastSvc.show({
-            message: 'Successfully send the invitation to the email.',
+            message: data.message,
             type: 'success',
           });
         } else if (data.status == 200 && data.data == null) {

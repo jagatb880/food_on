@@ -83,4 +83,8 @@ export class AuthService {
   acceptInvitation(body): Observable<any> {
     return this.http.post(ConstantService.api.acceptInvitation, body);
   }
+
+  sentInvitation(body): Observable<any> {
+    return this.http.post(ConstantService.api.sentInvitation, body);
+  }
 }

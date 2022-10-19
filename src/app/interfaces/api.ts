@@ -15,4 +15,5 @@ export interface IApis {
   usrGetUsuarioByEmail: string;
   getDataProductByProdtIdProfileId: string;
   acceptInvitation: string;
+  sentInvitation: string;
 }
