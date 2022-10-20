@@ -29,7 +29,9 @@ export class AppComponent {
       CapacitorApp.addListener('backButton', () => {
         if (
           this._location.isCurrentPathEqualTo('/home') ||
-          this._location.isCurrentPathEqualTo('/producer-products')
+          this._location.isCurrentPathEqualTo('/producer-products') ||
+          this._location.isCurrentPathEqualTo('/my-distributor') ||
+          this._location.isCurrentPathEqualTo('/splash-login')
         ) {
           navigator['app'].exitApp();
         } else {

@@ -97,7 +97,7 @@ export class ReceiveLotPage implements OnInit {
   logout() {
     this.popoverController.dismiss();
     this.storage.clear();
-    this.router.navigate(['login']);
+    this.router.navigate(['login'], { replaceUrl: true });
   }
 
   presentPopover(e: Event) {
@@ -106,6 +106,7 @@ export class ReceiveLotPage implements OnInit {
   }
 
   ionViewWillLeave() {
+    document.querySelector('body').classList.remove('scanner-active');
     BarcodeScanner.stopScan();
     this.scanActive = false;
   }

@@ -102,7 +102,7 @@ export class MyDistributorPage implements OnInit {
   logout() {
     this.popoverController.dismiss();
     this.storage.clear();
-    this.router.navigate(['login']);
+    this.router.navigate(['login'], { replaceUrl: true });
   }
   presentPopover(e: Event) {
     this.popover.event = e;
